@@ -10,6 +10,12 @@
   letter-spacing: 0.08em;
 }
 
+/* Hide on mobile — phone & email are reachable in the contact section
+   and footer, so the dark utility strip just adds noise on small screens. */
+@media (max-width: 760px) {
+  .top-bar { display: none; }
+}
+
 .top-bar__inner {
   display: flex;
   align-items: center;
