@@ -12,6 +12,8 @@
     "lang": "en",
     "locale": "en_US",
     "primaryEmail": "anchorapartmentshn@gmail.com",
+    "primaryPhone": "+382 69 785 573",
+    "primaryPhoneTel": "+38269785573",
     "address": {
       "street": "Marka Vojnovića 33",
       "postalCode": "85340",
@@ -498,14 +500,11 @@
     "title": "Plan your stay at <em>Anchora</em>.",
     "lede": "Tell us your dates and how many guests are travelling — we'll respond personally, usually within a few hours.",
     "details": [
+      { "icon": "phone",     "label": "Phone & WhatsApp", "value": "+382 69 785 573", "href": "tel:+38269785573" },
       { "icon": "mail",      "label": "Email",     "value": "anchorapartmentshn@gmail.com", "href": "mailto:anchorapartmentshn@gmail.com" },
-      { "icon": "pin",       "label": "Address",   "value": "Marka Vojnovića 33, 85340 Herceg Novi, Montenegro", "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" },
-      { "icon": "instagram", "label": "Instagram", "value": "@anchorapartmentshn", "href": "https://www.instagram.com/anchorapartmentshn/" }
-    ],
-    "form": {
-      "title": "Request availability",
-      "subtitle": "Pressing send opens your email client with the request pre-filled."
-    }
+      { "icon": "instagram", "label": "Instagram", "value": "@anchorapartmentshn", "href": "https://www.instagram.com/anchorapartmentshn/" },
+      { "icon": "pin",       "label": "Address",   "value": "Marka Vojnovića 33, 85340 Herceg Novi, Montenegro", "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" }
+    ]
   },
 
   "seo": {

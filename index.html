@@ -65,7 +65,7 @@
       "https://anchora-apartments.me/images/1/Apartmani sidro ENT 1_30.jpg",
       "https://anchora-apartments.me/images/3/Apartmani sidro ENT 1.jpg"
     ],
-    "telephone": "",
+    "telephone": "+38269785573",
     "email": "anchorapartmentshn@gmail.com",
     "priceRange": "$$",
     "starRating": { "@type": "Rating", "ratingValue": "5" },
@@ -105,14 +105,13 @@
 <div class="top-bar">
   <div class="container top-bar__inner">
     <div class="top-bar__contacts">
-      <span class="top-bar__contact">
+      <a class="top-bar__contact" href="tel:+38269785573">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
-        <span data-key="site.address.street">Marka Vojnovića 33</span>,
-        <span data-key="site.address.city">Herceg Novi</span>
-      </span>
-      <a class="top-bar__contact" data-attr-href="contact.details[0].href" href="mailto:anchorapartmentshn@gmail.com">
+        <span data-key="site.primaryPhone">+382 69 785 573</span>
+      </a>
+      <a class="top-bar__contact" href="mailto:anchorapartmentshn@gmail.com">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
         </svg>
@@ -612,9 +611,9 @@
 
   <!-- ───── CONTACT ───── -->
   <section class="contact" id="contact" aria-labelledby="contact-heading">
-    <div class="container contact__grid">
+    <div class="container">
 
-      <div class="contact__intro">
+      <div class="contact__intro contact__intro--centered">
         <span class="eyebrow reveal" data-key="contact.eyebrow">Reservations</span>
         <h2 id="contact-heading" class="reveal" data-key-html="contact.title">
           Plan your stay at <em>Anchora</em>.
@@ -622,100 +621,38 @@
         <p class="reveal" data-key="contact.lede">
           Tell us your dates and how many guests are travelling — we'll respond personally, usually within a few hours.
         </p>
-
-        <ul class="contact__details reveal" data-contact-details="contact.details">
-          <li class="contact__detail">
-            <span class="contact__detail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            </span>
-            <span>
-              <span class="contact__detail-label">Email</span>
-              <span class="contact__detail-value">
-                <a data-attr-href="contact.details[0].href" href="mailto:anchorapartmentshn@gmail.com" data-key="contact.details[0].value">anchorapartmentshn@gmail.com</a>
-              </span>
-            </span>
-          </li>
-          <li class="contact__detail">
-            <span class="contact__detail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <span>
-              <span class="contact__detail-label">Address</span>
-              <span class="contact__detail-value">
-                <a data-attr-href="contact.details[1].href" href="https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" target="_blank" rel="noopener" data-key="contact.details[1].value">Marka Vojnovića 33, 85340 Herceg Novi, Montenegro</a>
-              </span>
-            </span>
-          </li>
-          <li class="contact__detail">
-            <span class="contact__detail-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            </span>
-            <span>
-              <span class="contact__detail-label">Instagram</span>
-              <span class="contact__detail-value">
-                <a data-attr-href="contact.details[2].href" href="https://www.instagram.com/anchorapartmentshn/" target="_blank" rel="noopener" data-key="contact.details[2].value">@anchorapartmentshn</a>
-              </span>
-            </span>
-          </li>
-        </ul>
       </div>
 
-      <div class="contact__form-wrapper reveal">
-        <h3 class="contact__form-title" data-key="contact.form.title">Request availability</h3>
-        <p class="contact__form-sub" data-key="contact.form.subtitle">Pressing send opens your email client with the request pre-filled.</p>
-
-        <form class="form" id="contact-form" novalidate>
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="cf-name">Your name</label>
-              <input class="field__input" type="text" id="cf-name" name="name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label class="field__label" for="cf-email">Email</label>
-              <input class="field__input" type="email" id="cf-email" name="email" autocomplete="email" required>
-            </div>
-          </div>
-
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="cf-checkin">Check-in</label>
-              <input class="field__input" type="date" id="cf-checkin" name="checkin">
-            </div>
-            <div class="field">
-              <label class="field__label" for="cf-checkout">Check-out</label>
-              <input class="field__input" type="date" id="cf-checkout" name="checkout">
-            </div>
-          </div>
-
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="cf-guests">Guests</label>
-              <input class="field__input" type="number" min="1" max="12" id="cf-guests" name="guests" placeholder="2">
-            </div>
-            <div class="field">
-              <label class="field__label" for="cf-apt">Preferred apartment</label>
-              <select class="field__input" id="cf-apt" name="apartment">
-                <option value="">No preference</option>
-                <option>Suite 01 — Stone &amp; Beam</option>
-                <option>Suite 02 — Maestral</option>
-                <option>Suite 03 — Heritage Apartment</option>
-                <option>Suite 04 — Levanat</option>
-                <option>Suite 05 — The Garret</option>
-                <option>Suite 06 — Bonaca</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="cf-message">Message</label>
-            <textarea class="field__textarea" id="cf-message" name="message" placeholder="Tell us a little about your trip…"></textarea>
-          </div>
-
-          <button class="btn btn--primary" type="submit" style="align-self: start;">
-            Send request <span class="arrow" aria-hidden="true"></span>
-          </button>
-        </form>
-      </div>
+      <ul class="contact__cards reveal" data-contact-details="contact.details">
+        <li class="contact__card">
+          <span class="contact__card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="contact__card-label">Phone &amp; WhatsApp</span>
+          <a class="contact__card-value" data-attr-href="contact.details[0].href" href="tel:+38269785573" data-key="contact.details[0].value">+382 69 785 573</a>
+        </li>
+        <li class="contact__card">
+          <span class="contact__card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span class="contact__card-label">Email</span>
+          <a class="contact__card-value" data-attr-href="contact.details[1].href" href="mailto:anchorapartmentshn@gmail.com" data-key="contact.details[1].value">anchorapartmentshn@gmail.com</a>
+        </li>
+        <li class="contact__card">
+          <span class="contact__card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </span>
+          <span class="contact__card-label">Instagram</span>
+          <a class="contact__card-value" data-attr-href="contact.details[2].href" href="https://www.instagram.com/anchorapartmentshn/" target="_blank" rel="noopener" data-key="contact.details[2].value">@anchorapartmentshn</a>
+        </li>
+        <li class="contact__card">
+          <span class="contact__card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="contact__card-label">Address</span>
+          <a class="contact__card-value" data-attr-href="contact.details[3].href" href="https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" target="_blank" rel="noopener" data-key="contact.details[3].value">Marka Vojnovića 33, 85340 Herceg Novi</a>
+        </li>
+      </ul>
 
     </div>
   </section>
@@ -799,7 +736,6 @@
 <script src="js/main.js"></script>
 <script src="js/reveal.js"></script>
 <script src="js/lightbox.js"></script>
-<script src="js/contact-form.js"></script>
 
 </body>
 </html>

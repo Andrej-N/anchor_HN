@@ -527,6 +527,10 @@ a:hover{color:var(--aqua)}
           ${fieldText("Primary email","site.primaryEmail")}
         </div>
         <div class="row">
+          ${fieldText("Phone (display)","site.primaryPhone",{hint:"E.g. +382 69 785 573"})}
+          ${fieldText("Phone (tel: link)","site.primaryPhoneTel",{hint:"Digits only with +country, e.g. +38269785573"})}
+        </div>
+        <div class="row">
           ${fieldText("Language code","site.lang",{hint:"E.g. en, sr"})}
           ${fieldText("Locale","site.locale",{hint:"E.g. en_US"})}
         </div>
@@ -758,16 +762,11 @@ a:hover{color:var(--aqua)}
       <div class="group">
         <h3 class="group__title">Contact rows (icons + values)</h3>
         ${listObjects("Rows","contact.details",[
-          {key:"icon",label:"Icon",type:"select",options:["mail","pin","instagram"]},
+          {key:"icon",label:"Icon",type:"select",options:["phone","mail","pin","instagram"]},
           {key:"label",label:"Label"},
           {key:"value",label:"Display value"},
-          {key:"href",label:"Link href"}
+          {key:"href",label:"Link href",hint:"E.g. tel:+38269..., mailto:..., https://..."}
         ])}
-      </div>
-      <div class="group">
-        <h3 class="group__title">Form headings</h3>
-        ${fieldText("Form title","contact.form.title")}
-        ${fieldText("Form subtitle","contact.form.subtitle")}
       </div>
     `;
   }
