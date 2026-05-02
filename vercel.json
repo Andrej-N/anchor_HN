@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": false,
-  "trailingSlash": false,
   "headers": [
     {
       "source": "/admin/:path*",
@@ -40,8 +39,5 @@
         { "key": "Cache-Control", "value": "public, max-age=2592000, immutable" }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/admin", "destination": "/admin/", "permanent": false }
   ]
 }
