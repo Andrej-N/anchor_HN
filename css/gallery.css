@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Anchora Apartments — Gallery page
+   ========================================================================== */
+
+.gallery-hero {
+  padding-top: clamp(3rem, 2rem + 4vw, 6rem);
+  padding-bottom: clamp(2rem, 1rem + 2vw, 3rem);
+}
+
+.gallery-hero__crumbs {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--space-8);
+}
+
+.gallery-hero__crumbs a:hover {
+  color: var(--color-aqua-deep);
+}
+
+.gallery-hero__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: end;
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.gallery-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.gallery-hero__title em {
+  font-style: italic;
+  color: var(--color-aqua-deep);
+  font-weight: 300;
+}
+
+.gallery-hero__lede {
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  font-weight: 300;
+  max-width: 50ch;
+}
+
+@media (max-width: 860px) {
+  .gallery-hero__head {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* ---- Section toggle bar ---- */
+.gallery-tabs {
+  position: sticky;
+  top: 78px;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  z-index: var(--z-elevated);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.gallery-tabs__inner {
+  display: flex;
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gallery-tab {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  border: 1px solid transparent;
+  transition: background var(--dur-fast) var(--ease-out-quart),
+              color var(--dur-fast) var(--ease-out-quart),
+              border-color var(--dur-fast) var(--ease-out-quart);
+}
+
+.gallery-tab:hover {
+  background: var(--color-cream);
+}
+
+.gallery-tab.is-active {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+.gallery-count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  margin-left: auto;
+  letter-spacing: 0.08em;
+}
+
+/* ---- Section blocks ---- */
+.gallery-section {
+  padding-block: clamp(3rem, 2rem + 3vw, 5rem);
+}
+
+.gallery-section__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: end;
+  margin-bottom: var(--space-12);
+}
+
+.gallery-section__head .section-id {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-4xl);
+  color: var(--color-aqua-deep);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.gallery-section__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin-top: var(--space-3);
+}
+
+.gallery-section__title em {
+  font-style: italic;
+  color: var(--color-aqua-deep);
+  font-weight: 300;
+}
+
+.gallery-section__lede {
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  font-weight: 300;
+  max-width: 50ch;
+}
+
+@media (max-width: 860px) {
+  .gallery-section__head {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ---- Masonry-style grid (CSS columns) for variable aspects ---- */
+.masonry {
+  column-count: 4;
+  column-gap: var(--space-4);
+}
+
+@media (max-width: 1280px) { .masonry { column-count: 3; } }
+@media (max-width: 860px)  { .masonry { column-count: 2; } }
+@media (max-width: 540px)  { .masonry { column-count: 1; } }
+
+.masonry__item {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
+  background: var(--color-cream);
+  position: relative;
+}
+
+.masonry__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out-expo),
+              filter var(--dur-base) var(--ease-out-quart);
+}
+
+.masonry__item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.04);
+}
+
+.masonry__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(31,27,22,0.18));
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out-quart);
+  pointer-events: none;
+}
+
+.masonry__item:hover::after {
+  opacity: 1;
+}
+
+/* ---- Section divider ---- */
+.gallery-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-line) 50%, transparent);
+  border: 0;
+  margin-block: var(--space-16);
+}

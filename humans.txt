@@ -1,0 +1,25 @@
+/* TEAM */
+
+Owner & Host: Anchora Apartments
+Contact: anchorapartmentshn@gmail.com
+Instagram: https://www.instagram.com/anchorapartmentshn/
+Location: Herceg Novi, Montenegro
+
+/* SITE */
+
+Name: Anchora Apartments
+Property: Six luxury rustic apartments inside a 400-year-old stone
+         house in the strict centre of Herceg Novi old town.
+Address: Marka Vojnovica 33, 85340 Herceg Novi, Montenegro
+Coordinates: 42.4530, 18.5375
+Language: English
+Standards: HTML5, CSS3, JavaScript
+Components: Hand-built static site, no frameworks, no trackers.
+Last update: 2026-04-30
+
+/* THANKS */
+
+Thank you to every guest who has stayed with us, shared a meal on the
+terrace, and helped this old stone house keep telling its story.
+Thanks to the craftspeople who restored the building stone by stone,
+and to the small team that keeps it running every season.

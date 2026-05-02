@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin/
+
+Sitemap: https://anchora-apartments.me/sitemap.xml

@@ -1,0 +1,14 @@
+{
+  "name": "anchora-apartments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Anchora Apartments — six rustic-luxe apartments in old-town Herceg Novi.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "echo 'Static site — open index.html in any browser, or run a local static server:' && echo '  npx serve .'",
+    "start": "npx serve ."
+  },
+  "type": "module"
+}

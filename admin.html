@@ -1,0 +1,1653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchora Apartments — Content Editor</title>
+<style>
+  /* ================================================================
+     Anchora Apartments — Admin Editor
+     Self-contained, vanilla HTML/CSS/JS. No external libraries.
+     Palette: cream #FAF7F2, ink #1F1B16, turquoise #1F8C8C
+     ================================================================ */
+  :root {
+    --cream: #FAF7F2;
+    --cream-2: #F2EDE4;
+    --ink: #1F1B16;
+    --ink-2: #4A453E;
+    --line: #E2DAC9;
+    --line-2: #D4C9B2;
+    --accent: #1F8C8C;
+    --accent-2: #176D6D;
+    --accent-soft: #DBEEEE;
+    --warn: #B6492C;
+    --warn-bg: #FBEAE3;
+    --ok: #4D7C3F;
+    --shadow: 0 1px 3px rgba(31, 27, 22, .07), 0 6px 24px -10px rgba(31, 27, 22, .12);
+    --radius: 6px;
+    --radius-lg: 10px;
+    --serif: "Cormorant Garamond", "EB Garamond", "Georgia", "Times New Roman", serif;
+    --sans: "Manrope", "Inter", "Helvetica Neue", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; }
+  h1 { font-size: 2.1rem; margin: 0; }
+  h2 { font-size: 1.4rem; margin: 0 0 .8rem; }
+  h3 { font-size: 1.1rem; margin: 0 0 .6rem; }
+  em { font-style: italic; color: var(--accent-2); }
+  a { color: var(--accent-2); }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 242, .94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 26px;
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  }
+  .brand {
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .brand-mark {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    letter-spacing: .02em;
+  }
+  .brand-tag {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--ink-2);
+  }
+  .topbar-actions {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-left: auto;
+    align-items: center;
+  }
+  .saved-stamp {
+    font-size: .78rem;
+    color: var(--ink-2);
+    margin-right: 6px;
+  }
+  .saved-stamp strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Buttons ---------- */
+  button, .btn {
+    font-family: var(--sans);
+    font-size: .85rem;
+    font-weight: 500;
+    border: 1px solid var(--line-2);
+    background: #fff;
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+    line-height: 1.2;
+  }
+  button:hover, .btn:hover {
+    background: var(--cream-2);
+    border-color: var(--ink-2);
+  }
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  button.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  button.primary:hover {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+  }
+  button.ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--ink-2);
+    padding: 6px 8px;
+  }
+  button.ghost:hover { background: var(--cream-2); color: var(--ink); }
+  button.danger { color: var(--warn); border-color: var(--line-2); }
+  button.danger:hover { background: var(--warn-bg); border-color: var(--warn); }
+  button.tiny { padding: 4px 8px; font-size: .75rem; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr) 320px;
+    gap: 0;
+    min-height: calc(100vh - 64px);
+  }
+  .sidebar {
+    border-right: 1px solid var(--line);
+    padding: 22px 0;
+    background: var(--cream);
+    position: sticky; top: 64px;
+    align-self: start;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .sidebar-group {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--ink-2);
+    padding: 14px 22px 6px;
+  }
+  .tab-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 8px 22px;
+    color: var(--ink-2);
+    font-size: .92rem;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+  }
+  .tab-btn:hover { background: var(--cream-2); color: var(--ink); }
+  .tab-btn.active {
+    background: #fff;
+    color: var(--ink);
+    border-left-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .main {
+    padding: 30px 36px 80px;
+    min-width: 0;
+  }
+  .main-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--ink-2);
+  }
+  .main-empty h2 { font-size: 1.8rem; margin-bottom: 10px; }
+  .main-empty p { max-width: 480px; margin: 0 auto 26px; }
+
+  .preview {
+    border-left: 1px solid var(--line);
+    background: var(--cream);
+    padding: 22px;
+    position: sticky; top: 64px;
+    align-self: start;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .preview h3 {
+    font-family: var(--sans);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--ink-2);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  /* ---------- Section / panels ---------- */
+  .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  .panel-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; margin-bottom: 14px;
+  }
+  .panel-head h2 { margin: 0; }
+  .panel-sub {
+    font-size: .85rem;
+    color: var(--ink-2);
+    margin: -6px 0 16px;
+  }
+
+  /* ---------- Form fields ---------- */
+  .field { margin-bottom: 14px; }
+  .field-row {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-bottom: 14px;
+  }
+  label.lbl {
+    display: block;
+    font-size: .78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-2);
+    margin-bottom: 5px;
+  }
+  .hint {
+    display: block;
+    font-size: .74rem;
+    color: var(--ink-2);
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .err {
+    display: block;
+    font-size: .78rem;
+    color: var(--warn);
+    margin-top: 5px;
+    min-height: 0;
+  }
+  input[type="text"], input[type="email"], input[type="url"], input[type="number"], textarea, select {
+    width: 100%;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: .92rem;
+    padding: 8px 10px;
+    line-height: 1.4;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea {
+    min-height: 76px;
+    resize: vertical;
+    font-family: var(--sans);
+  }
+  textarea.tall { min-height: 130px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(31, 140, 140, .18);
+  }
+  input.invalid, textarea.invalid {
+    border-color: var(--warn);
+    background: var(--warn-bg);
+  }
+
+  /* ---------- Lists (images, paragraphs, etc.) ---------- */
+  .list {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--cream);
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  .list-empty {
+    color: var(--ink-2);
+    font-style: italic;
+    font-size: .85rem;
+    padding: 10px 6px;
+  }
+  .list-row {
+    display: flex; gap: 6px; align-items: center;
+    padding: 5px 6px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 6px;
+  }
+  .list-row:last-child { margin-bottom: 0; }
+  .list-row .grip {
+    color: var(--ink-2);
+    font-size: .9rem;
+    user-select: none;
+    cursor: grab;
+    padding: 0 4px;
+  }
+  .list-row input { flex: 1; min-width: 0; border: none; background: transparent; padding: 5px 4px; }
+  .list-row input:focus { box-shadow: none; background: var(--cream); border-radius: 4px; }
+  .list-row textarea { flex: 1; min-width: 0; border: none; background: transparent; padding: 5px 4px; min-height: 60px; }
+  .list-row textarea:focus { box-shadow: none; background: var(--cream); border-radius: 4px; }
+  .list-actions { display: flex; gap: 2px; flex-shrink: 0; }
+  .list-actions button { padding: 4px 7px; font-size: .8rem; line-height: 1; min-width: 28px; }
+  .list-thumb {
+    width: 36px; height: 36px;
+    background: var(--line);
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .list-thumb.placeholder {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-2); font-size: .65rem; text-align: center;
+  }
+
+  .list-add {
+    display: flex; gap: 6px; margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .list-add input { flex: 1; min-width: 200px; }
+
+  details.bulk { margin-top: 10px; }
+  details.bulk summary {
+    cursor: pointer;
+    font-size: .82rem;
+    color: var(--accent-2);
+    padding: 6px 0;
+    font-weight: 500;
+  }
+  details.bulk textarea {
+    min-height: 90px;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: .82rem;
+    margin-top: 6px;
+  }
+  .bulk-actions { display: flex; gap: 6px; margin-top: 6px; }
+
+  /* ---------- Subtab (apartment switcher) ---------- */
+  .subtabs {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 18px;
+  }
+  .subtabs button {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 8px 12px;
+    font-size: .85rem;
+    color: var(--ink-2);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .subtabs button:hover { color: var(--ink); background: transparent; }
+  .subtabs button.active { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+
+  /* ---------- Preview cards ---------- */
+  .pv-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .pv-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-2); font-size: .75rem;
+    overflow: hidden;
+  }
+  .pv-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pv-card-body { padding: 14px 16px; }
+  .pv-eyebrow {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--ink-2); margin-bottom: 4px;
+  }
+  .pv-title { font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; margin: 0 0 6px; }
+  .pv-sub { font-size: .85rem; color: var(--ink-2); margin: 0 0 8px; }
+  .pv-meta { display: flex; gap: 10px; font-size: .72rem; color: var(--ink-2); flex-wrap: wrap; margin-top: 8px; }
+  .pv-meta span { background: var(--cream-2); padding: 2px 8px; border-radius: 99px; }
+
+  /* ---------- Toast / dialog ---------- */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--ink); color: var(--cream);
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    font-size: .88rem;
+    box-shadow: var(--shadow);
+    z-index: 200;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .2s, transform .2s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .toast.err { background: var(--warn); }
+
+  .dialog-bg {
+    position: fixed; inset: 0;
+    background: rgba(31, 27, 22, .55);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 300;
+    padding: 20px;
+  }
+  .dialog {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: var(--shadow);
+  }
+  .dialog h2 { margin-top: 0; }
+  .dialog-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+
+  /* ---------- Validation summary ---------- */
+  .vsum {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn);
+    color: var(--warn);
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    font-size: .82rem;
+    margin-bottom: 14px;
+  }
+  .vsum.ok {
+    background: #E8F2E0;
+    border-color: var(--ok);
+    color: var(--ok);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 200px minmax(0, 1fr); }
+    .preview { display: none; }
+  }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--line); padding: 14px 0; }
+    .sidebar-group { padding-top: 6px; }
+    .main { padding: 20px 18px 60px; }
+    .topbar { padding: 12px 18px; }
+    h1 { font-size: 1.5rem; }
+  }
+
+  /* Hide native file input — we use a labelled button */
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); border: 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar" role="banner">
+  <div class="brand">
+    <span class="brand-mark">Anchora</span>
+    <span class="brand-tag">Content Editor</span>
+  </div>
+  <div class="topbar-actions">
+    <span id="savedStamp" class="saved-stamp" aria-live="polite"></span>
+    <input id="fileInput" type="file" accept="application/json,.json" class="visually-hidden">
+    <button id="loadBtn" type="button">Load content.json</button>
+    <button id="resetBtn" type="button" disabled>Reset to loaded</button>
+    <button id="downloadBtn" type="button" class="primary" disabled>Download updated content.json</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar" aria-label="Sections">
+    <div class="sidebar-group">Site</div>
+    <button class="tab-btn" data-tab="site">Site &amp; Brand</button>
+    <button class="tab-btn" data-tab="nav">Navigation</button>
+    <div class="sidebar-group">Home page</div>
+    <button class="tab-btn" data-tab="hero">Hero</button>
+    <button class="tab-btn" data-tab="marquee">Marquee</button>
+    <button class="tab-btn" data-tab="story">Our Story</button>
+    <button class="tab-btn" data-tab="apartmentsSection">Apartments — intro</button>
+    <button class="tab-btn" data-tab="apartments">Apartments (6)</button>
+    <button class="tab-btn" data-tab="amenities">Amenity tiles</button>
+    <button class="tab-btn" data-tab="building">Building</button>
+    <button class="tab-btn" data-tab="parking">Parking</button>
+    <button class="tab-btn" data-tab="location">Location</button>
+    <button class="tab-btn" data-tab="contact">Contact</button>
+    <div class="sidebar-group">Meta</div>
+    <button class="tab-btn" data-tab="seo">SEO</button>
+    <button class="tab-btn" data-tab="meta">_meta</button>
+  </nav>
+
+  <main class="main" id="main" role="main">
+    <div id="emptyState" class="main-empty">
+      <h2>Welcome.</h2>
+      <p>Click <strong>Load content.json</strong> in the top right and choose your existing <code>data/content.json</code> file. The editor will open every text and image list on the website for you to update. When you're done, click <strong>Download updated content.json</strong> and replace the file on your server.</p>
+      <button type="button" class="primary" onclick="document.getElementById('loadBtn').click()">Load content.json</button>
+    </div>
+    <div id="editor" hidden></div>
+  </main>
+
+  <aside class="preview" id="preview" aria-label="Live preview" hidden>
+    <h3>Live preview</h3>
+    <div id="previewBody"></div>
+  </aside>
+
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let data = null;          // current working copy
+let original = null;      // last loaded snapshot (for "Reset")
+let activeTab = "site";
+let activeApartmentIdx = 0;
+
+const KEY_LAST_SAVED = "anchora_admin_lastSaved";
+
+/* ============================================================
+   SMALL HELPERS
+   ============================================================ */
+function $(sel, root) { return (root || document).querySelector(sel); }
+function $$(sel, root) { return Array.from((root || document).querySelectorAll(sel)); }
+
+function el(tag, attrs, kids) {
+  const n = document.createElement(tag);
+  if (attrs) {
+    for (const k in attrs) {
+      const v = attrs[k];
+      if (v == null || v === false) continue;
+      if (k === "class") n.className = v;
+      else if (k === "html") n.innerHTML = v;
+      else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
+      else if (k === "style" && typeof v === "object") Object.assign(n.style, v);
+      else if (v === true) n.setAttribute(k, "");
+      else n.setAttribute(k, v);
+    }
+  }
+  if (kids != null) {
+    if (!Array.isArray(kids)) kids = [kids];
+    for (const c of kids) {
+      if (c == null || c === false) continue;
+      n.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    }
+  }
+  return n;
+}
+
+function deepClone(v) { return JSON.parse(JSON.stringify(v)); }
+
+function toast(msg, isErr) {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.toggle("err", !!isErr);
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function () { t.classList.remove("show"); }, 2600);
+}
+
+function todayISO() {
+  const d = new Date();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + m + "-" + day;
+}
+
+function fmtTimestamp(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+}
+
+function paint() {
+  // Reflect "Last saved" timestamp from localStorage
+  const ls = localStorage.getItem(KEY_LAST_SAVED);
+  $("#savedStamp").innerHTML = ls
+    ? "Last download: <strong>" + fmtTimestamp(ls) + "</strong>"
+    : "";
+}
+
+/* ============================================================
+   FILE LOAD / SAVE
+   ============================================================ */
+$("#loadBtn").addEventListener("click", function () { $("#fileInput").click(); });
+
+$("#fileInput").addEventListener("change", function (e) {
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onerror = function () { toast("Could not read that file.", true); };
+  reader.onload = function () {
+    try {
+      const parsed = JSON.parse(reader.result);
+      adoptData(parsed);
+      toast("Loaded " + f.name);
+    } catch (err) {
+      toast("That file is not valid JSON.", true);
+      console.error(err);
+    }
+  };
+  reader.readAsText(f);
+  // reset so re-selecting same file works
+  e.target.value = "";
+});
+
+function adoptData(parsed) {
+  data = parsed;
+  original = deepClone(parsed);
+  $("#emptyState").hidden = true;
+  $("#editor").hidden = false;
+  $("#preview").hidden = false;
+  $("#downloadBtn").disabled = false;
+  $("#resetBtn").disabled = false;
+  setActiveTab(activeTab || "site");
+}
+
+$("#resetBtn").addEventListener("click", function () {
+  if (!original) return;
+  if (!confirm("Discard all unsaved changes and revert to the file you loaded?")) return;
+  data = deepClone(original);
+  setActiveTab(activeTab);
+  toast("Reverted to loaded file.");
+});
+
+$("#downloadBtn").addEventListener("click", function () {
+  if (!data) return;
+  // Update _meta.lastUpdated to today
+  if (!data._meta) data._meta = {};
+  data._meta.lastUpdated = todayISO();
+  refreshFieldFromState("meta_lastUpdated");
+
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "content.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+
+  const stamp = new Date().toISOString();
+  localStorage.setItem(KEY_LAST_SAVED, stamp);
+  paint();
+  toast("Downloaded content.json — upload it to /data/ on your server.");
+});
+
+function refreshFieldFromState(id) {
+  const node = document.getElementById(id);
+  if (node && data && data._meta) node.value = data._meta.lastUpdated || "";
+}
+
+/* ============================================================
+   TAB NAV
+   ============================================================ */
+$$(".tab-btn").forEach(function (b) {
+  b.addEventListener("click", function () { setActiveTab(b.dataset.tab); });
+});
+
+function setActiveTab(tab) {
+  activeTab = tab;
+  $$(".tab-btn").forEach(function (b) {
+    b.classList.toggle("active", b.dataset.tab === tab);
+  });
+  if (data) renderEditor();
+}
+
+/* ============================================================
+   FIELD HELPERS — render <label>+<input/textarea> bound to a path
+   ============================================================ */
+
+// Validators registry: id -> function returning error message or ""
+const validators = {};
+
+function validateAll() {
+  let errors = 0;
+  for (const id in validators) {
+    const node = document.getElementById(id);
+    const errNode = document.getElementById(id + "_err");
+    if (!node || !errNode) continue;
+    const msg = validators[id]();
+    errNode.textContent = msg || "";
+    node.classList.toggle("invalid", !!msg);
+    if (msg) errors++;
+  }
+  return errors;
+}
+
+function makeField(opts) {
+  // opts: { id, label, value, multiline, html, required, type, hint, onInput, validator, placeholder }
+  const id = opts.id;
+  const wrap = el("div", { class: "field" });
+  wrap.appendChild(el("label", { class: "lbl", for: id, text: opts.label }));
+  let input;
+  if (opts.multiline) {
+    input = el("textarea", {
+      id: id,
+      rows: opts.rows || 3,
+      placeholder: opts.placeholder || "",
+      class: opts.tall ? "tall" : ""
+    });
+    input.value = opts.value == null ? "" : opts.value;
+  } else {
+    input = el("input", {
+      id: id,
+      type: opts.type || "text",
+      placeholder: opts.placeholder || ""
+    });
+    input.value = opts.value == null ? "" : opts.value;
+  }
+  input.addEventListener("input", function () {
+    if (opts.onInput) opts.onInput(input.value);
+    validateAll();
+    schedulePreview();
+  });
+  wrap.appendChild(input);
+  if (opts.hint) wrap.appendChild(el("span", { class: "hint", text: opts.hint }));
+  if (opts.html) wrap.appendChild(el("span", { class: "hint", html: "HTML allowed: <code>&lt;em&gt;italic&lt;/em&gt;</code>" }));
+  wrap.appendChild(el("span", { class: "err", id: id + "_err" }));
+
+  if (opts.validator || opts.required || opts.imagePath) {
+    validators[id] = function () {
+      const v = input.value;
+      if (opts.required && (!v || !v.trim())) return "This field is required.";
+      if (opts.imagePath && v && !/^images\//.test(v.trim())) return "Image paths should start with images/...";
+      if (opts.validator) {
+        const m = opts.validator(v);
+        if (m) return m;
+      }
+      return "";
+    };
+  }
+  return wrap;
+}
+
+/* ============================================================
+   LIST EDITOR (used for image arrays, paragraph arrays, string arrays)
+   ============================================================ */
+function renderStringList(opts) {
+  // opts: {
+  //   container, items (array bound to data),
+  //   placeholder, multiline, isImage, galleryHint, allowBulkAdd, allowTemplate, templateHint
+  // }
+  const root = el("div");
+  const list = el("div", { class: "list" });
+  root.appendChild(list);
+
+  function paintList() {
+    list.innerHTML = "";
+    if (!opts.items.length) {
+      list.appendChild(el("div", { class: "list-empty", text: "No entries yet." }));
+      return;
+    }
+    opts.items.forEach(function (val, idx) {
+      const row = el("div", { class: "list-row" });
+
+      if (opts.isImage) {
+        const img = el("img", { class: "list-thumb", alt: "", src: val || "" });
+        img.addEventListener("error", function () {
+          if (img.parentNode) {
+            const ph = el("div", { class: "list-thumb placeholder", text: "no img" });
+            img.parentNode.replaceChild(ph, img);
+          }
+        });
+        row.appendChild(img);
+      }
+
+      let inputEl;
+      if (opts.multiline) {
+        inputEl = el("textarea", { rows: 3 });
+        inputEl.value = val || "";
+      } else {
+        inputEl = el("input", { type: "text", placeholder: opts.placeholder || "" });
+        inputEl.value = val || "";
+      }
+      inputEl.addEventListener("input", function () {
+        opts.items[idx] = inputEl.value;
+        // Re-validate this row
+        if (opts.isImage) {
+          const ok = /^images\//.test(inputEl.value.trim()) || !inputEl.value.trim();
+          inputEl.classList.toggle("invalid", !ok);
+        }
+        schedulePreview();
+      });
+      if (opts.isImage) {
+        const ok = /^images\//.test((val || "").trim()) || !(val || "").trim();
+        inputEl.classList.toggle("invalid", !ok);
+      }
+      row.appendChild(inputEl);
+
+      const acts = el("div", { class: "list-actions" });
+      const upBtn = el("button", {
+        type: "button", class: "tiny", title: "Move up",
+        "aria-label": "Move up",
+        onclick: function () {
+          if (idx === 0) return;
+          const tmp = opts.items[idx - 1];
+          opts.items[idx - 1] = opts.items[idx];
+          opts.items[idx] = tmp;
+          paintList();
+          schedulePreview();
+        }
+      }, "▲");
+      const downBtn = el("button", {
+        type: "button", class: "tiny", title: "Move down",
+        "aria-label": "Move down",
+        onclick: function () {
+          if (idx === opts.items.length - 1) return;
+          const tmp = opts.items[idx + 1];
+          opts.items[idx + 1] = opts.items[idx];
+          opts.items[idx] = tmp;
+          paintList();
+          schedulePreview();
+        }
+      }, "▼");
+      const delBtn = el("button", {
+        type: "button", class: "tiny danger", title: "Remove",
+        "aria-label": "Remove",
+        onclick: function () {
+          if (!confirm("Remove this entry?")) return;
+          opts.items.splice(idx, 1);
+          paintList();
+          schedulePreview();
+        }
+      }, "✕");
+      if (idx === 0) upBtn.disabled = true;
+      if (idx === opts.items.length - 1) downBtn.disabled = true;
+      acts.appendChild(upBtn);
+      acts.appendChild(downBtn);
+      acts.appendChild(delBtn);
+      row.appendChild(acts);
+
+      list.appendChild(row);
+    });
+  }
+  paintList();
+
+  // Add row
+  const addWrap = el("div", { class: "list-add" });
+  const addInput = el("input", {
+    type: "text",
+    placeholder: opts.addPlaceholder || (opts.isImage ? "images/folder/new-photo.jpg" : "New entry...")
+  });
+  addInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { e.preventDefault(); addBtn.click(); }
+  });
+  const addBtn = el("button", {
+    type: "button", class: "primary",
+    onclick: function () {
+      const v = addInput.value.trim();
+      if (!v) { addInput.focus(); return; }
+      opts.items.push(v);
+      addInput.value = "";
+      paintList();
+      schedulePreview();
+    }
+  }, "＋ Add");
+  addWrap.appendChild(addInput);
+  addWrap.appendChild(addBtn);
+  root.appendChild(addWrap);
+
+  // Template button (image galleries)
+  if (opts.allowTemplate) {
+    const tplBtn = el("button", {
+      type: "button", class: "tiny",
+      onclick: function () {
+        addInput.value = opts.templateHint || "images/N/photo-01.jpg";
+        addInput.focus();
+        addInput.select();
+      }
+    }, "Copy template path");
+    addWrap.appendChild(tplBtn);
+  }
+
+  // Bulk add
+  if (opts.allowBulkAdd) {
+    const det = el("details", { class: "bulk" });
+    det.appendChild(el("summary", { text: "Bulk add — paste a list of filenames, one per line" }));
+    const ta = el("textarea", { placeholder: "images/3/photo-21.jpg\nimages/3/photo-22.jpg\nimages/3/photo-23.jpg" });
+    det.appendChild(ta);
+    const ba = el("div", { class: "bulk-actions" });
+    ba.appendChild(el("button", {
+      type: "button", class: "primary",
+      onclick: function () {
+        const lines = ta.value.split(/\r?\n/).map(function (s) { return s.trim(); }).filter(Boolean);
+        if (!lines.length) { toast("Nothing to add — paste filenames first.", true); return; }
+        for (const ln of lines) opts.items.push(ln);
+        ta.value = "";
+        paintList();
+        schedulePreview();
+        toast("Added " + lines.length + " entr" + (lines.length === 1 ? "y" : "ies") + ".");
+      }
+    }, "Add all"));
+    ba.appendChild(el("button", {
+      type: "button",
+      onclick: function () { ta.value = ""; }
+    }, "Clear"));
+    det.appendChild(ba);
+    root.appendChild(det);
+  }
+
+  opts.container.appendChild(root);
+}
+
+/* ============================================================
+   PANEL BUILDERS
+   ============================================================ */
+
+function panel(title, sub) {
+  const p = el("section", { class: "panel" });
+  const h = el("div", { class: "panel-head" });
+  h.appendChild(el("h2", { text: title }));
+  p.appendChild(h);
+  if (sub) p.appendChild(el("p", { class: "panel-sub", text: sub }));
+  return p;
+}
+
+/* --- SITE --- */
+function tabSite() {
+  const wrap = el("div");
+  const s = data.site = data.site || {};
+  s.address = s.address || {};
+  s.social = s.social || {};
+
+  const p = panel("Site & Brand", "Top-level details about your business.");
+  const row1 = el("div", { class: "field-row" });
+  row1.appendChild(makeField({ id: "site_brand", label: "Brand name", value: s.brand, required: true, onInput: function (v) { s.brand = v; } }));
+  row1.appendChild(makeField({ id: "site_tagline", label: "Tagline", value: s.tagline, onInput: function (v) { s.tagline = v; } }));
+  p.appendChild(row1);
+
+  const row2 = el("div", { class: "field-row" });
+  row2.appendChild(makeField({ id: "site_logo", label: "Logo path", value: s.logo, imagePath: true, onInput: function (v) { s.logo = v; } }));
+  row2.appendChild(makeField({ id: "site_url", label: "Site URL", value: s.url, type: "url", onInput: function (v) { s.url = v; } }));
+  p.appendChild(row2);
+
+  const row3 = el("div", { class: "field-row" });
+  row3.appendChild(makeField({ id: "site_lang", label: "Language code", value: s.lang, hint: "e.g. en, sr, me", onInput: function (v) { s.lang = v; } }));
+  row3.appendChild(makeField({ id: "site_locale", label: "Locale", value: s.locale, hint: "e.g. en_US", onInput: function (v) { s.locale = v; } }));
+  row3.appendChild(makeField({ id: "site_email", label: "Primary email", value: s.primaryEmail, type: "email", required: true, onInput: function (v) { s.primaryEmail = v; } }));
+  p.appendChild(row3);
+  wrap.appendChild(p);
+
+  const a = panel("Address", "Used in the footer, contact card, and structured data.");
+  const ar1 = el("div", { class: "field-row" });
+  ar1.appendChild(makeField({ id: "addr_street", label: "Street", value: s.address.street, onInput: function (v) { s.address.street = v; } }));
+  ar1.appendChild(makeField({ id: "addr_postal", label: "Postal code", value: s.address.postalCode, onInput: function (v) { s.address.postalCode = v; } }));
+  a.appendChild(ar1);
+  const ar2 = el("div", { class: "field-row" });
+  ar2.appendChild(makeField({ id: "addr_city", label: "City", value: s.address.city, onInput: function (v) { s.address.city = v; } }));
+  ar2.appendChild(makeField({ id: "addr_country", label: "Country", value: s.address.country, onInput: function (v) { s.address.country = v; } }));
+  ar2.appendChild(makeField({ id: "addr_cc", label: "Country code", value: s.address.countryCode, hint: "ISO 3166-1 alpha-2 (e.g. ME)", onInput: function (v) { s.address.countryCode = v; } }));
+  a.appendChild(ar2);
+  const ar3 = el("div", { class: "field-row" });
+  ar3.appendChild(makeField({ id: "addr_lat", label: "Latitude", value: s.address.lat, onInput: function (v) { s.address.lat = v; } }));
+  ar3.appendChild(makeField({ id: "addr_lng", label: "Longitude", value: s.address.lng, onInput: function (v) { s.address.lng = v; } }));
+  a.appendChild(ar3);
+  wrap.appendChild(a);
+
+  const so = panel("Social", "");
+  const sr1 = el("div", { class: "field-row" });
+  sr1.appendChild(makeField({ id: "soc_ig", label: "Instagram URL", value: s.social.instagram, type: "url", onInput: function (v) { s.social.instagram = v; } }));
+  sr1.appendChild(makeField({ id: "soc_iglabel", label: "Instagram handle", value: s.social.instagramHandle, onInput: function (v) { s.social.instagramHandle = v; } }));
+  so.appendChild(sr1);
+  wrap.appendChild(so);
+
+  return wrap;
+}
+
+/* --- NAV --- */
+function tabNav() {
+  const wrap = el("div");
+  const p = panel("Navigation", "Header menu links.");
+  data.nav = data.nav || [];
+
+  const list = el("div", { class: "list" });
+  function paintNav() {
+    list.innerHTML = "";
+    if (!data.nav.length) {
+      list.appendChild(el("div", { class: "list-empty", text: "No nav items." }));
+      return;
+    }
+    data.nav.forEach(function (item, idx) {
+      const row = el("div", { class: "list-row" });
+      const lblIn = el("input", { type: "text", placeholder: "Label" });
+      lblIn.value = item.label || "";
+      lblIn.style.flex = "0 0 35%";
+      lblIn.addEventListener("input", function () { item.label = lblIn.value; schedulePreview(); });
+      const hrefIn = el("input", { type: "text", placeholder: "href" });
+      hrefIn.value = item.href || "";
+      hrefIn.addEventListener("input", function () { item.href = hrefIn.value; });
+      row.appendChild(lblIn);
+      row.appendChild(hrefIn);
+      const acts = el("div", { class: "list-actions" });
+      acts.appendChild(el("button", {
+        type: "button", class: "tiny",
+        onclick: function () {
+          if (idx === 0) return;
+          const t = data.nav[idx - 1]; data.nav[idx - 1] = data.nav[idx]; data.nav[idx] = t;
+          paintNav();
+        }
+      }, "▲"));
+      acts.appendChild(el("button", {
+        type: "button", class: "tiny",
+        onclick: function () {
+          if (idx === data.nav.length - 1) return;
+          const t = data.nav[idx + 1]; data.nav[idx + 1] = data.nav[idx]; data.nav[idx] = t;
+          paintNav();
+        }
+      }, "▼"));
+      acts.appendChild(el("button", {
+        type: "button", class: "tiny danger",
+        onclick: function () {
+          if (!confirm("Remove this menu item?")) return;
+          data.nav.splice(idx, 1);
+          paintNav();
+        }
+      }, "✕"));
+      row.appendChild(acts);
+      list.appendChild(row);
+    });
+  }
+  paintNav();
+  p.appendChild(list);
+
+  const addBtn = el("button", {
+    type: "button", class: "primary",
+    onclick: function () {
+      data.nav.push({ label: "New", href: "#" });
+      paintNav();
+    }
+  }, "＋ Add menu item");
+  p.appendChild(addBtn);
+
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* --- HERO --- */
+function tabHero() {
+  const wrap = el("div");
+  const h = data.hero = data.hero || {};
+  h.primaryCta = h.primaryCta || { label: "", href: "" };
+  h.secondaryCta = h.secondaryCta || { label: "", href: "" };
+
+  const p = panel("Hero", "The headline section visitors see first.");
+  p.appendChild(makeField({ id: "hero_eyebrow", label: "Eyebrow", value: h.eyebrow, onInput: function (v) { h.eyebrow = v; } }));
+  p.appendChild(makeField({ id: "hero_title", label: "Title", value: h.title, multiline: true, html: true, required: true, onInput: function (v) { h.title = v; } }));
+  p.appendChild(makeField({ id: "hero_lede", label: "Lede paragraph", value: h.lede, multiline: true, onInput: function (v) { h.lede = v; } }));
+  p.appendChild(makeField({ id: "hero_image", label: "Hero image path", value: h.image, imagePath: true, onInput: function (v) { h.image = v; } }));
+  p.appendChild(makeField({ id: "hero_alt", label: "Hero image alt text", value: h.imageAlt, onInput: function (v) { h.imageAlt = v; } }));
+  const r1 = el("div", { class: "field-row" });
+  r1.appendChild(makeField({ id: "hero_capt", label: "Caption title", value: h.captionTitle, onInput: function (v) { h.captionTitle = v; } }));
+  r1.appendChild(makeField({ id: "hero_captm", label: "Caption meta", value: h.captionMeta, onInput: function (v) { h.captionMeta = v; } }));
+  p.appendChild(r1);
+  const r2 = el("div", { class: "field-row" });
+  r2.appendChild(makeField({ id: "hero_pcta_l", label: "Primary button label", value: h.primaryCta.label, onInput: function (v) { h.primaryCta.label = v; } }));
+  r2.appendChild(makeField({ id: "hero_pcta_h", label: "Primary button href", value: h.primaryCta.href, onInput: function (v) { h.primaryCta.href = v; } }));
+  p.appendChild(r2);
+  const r3 = el("div", { class: "field-row" });
+  r3.appendChild(makeField({ id: "hero_scta_l", label: "Secondary button label", value: h.secondaryCta.label, onInput: function (v) { h.secondaryCta.label = v; } }));
+  r3.appendChild(makeField({ id: "hero_scta_h", label: "Secondary button href", value: h.secondaryCta.href, onInput: function (v) { h.secondaryCta.href = v; } }));
+  p.appendChild(r3);
+  p.appendChild(makeField({ id: "hero_sig", label: "Signature line", value: h.signature, onInput: function (v) { h.signature = v; } }));
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* --- MARQUEE --- */
+function tabMarquee() {
+  const wrap = el("div");
+  const p = panel("Marquee words", "Phrases that scroll across the homepage.");
+  data.marqueeWords = data.marqueeWords || [];
+  renderStringList({
+    container: p,
+    items: data.marqueeWords,
+    addPlaceholder: "e.g. Old-town Herceg Novi"
+  });
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* --- STORY --- */
+function tabStory() {
+  const wrap = el("div");
+  const s = data.story = data.story || {};
+  s.paragraphs = s.paragraphs || [];
+  s.stats = s.stats || [];
+  s.images = s.images || [];
+
+  const p = panel("Our Story", "");
+  p.appendChild(makeField({ id: "story_eb", label: "Eyebrow", value: s.eyebrow, onInput: function (v) { s.eyebrow = v; } }));
+  p.appendChild(makeField({ id: "story_title", label: "Title", value: s.title, multiline: true, html: true, onInput: function (v) { s.title = v; } }));
+
+  const parah = el("div");
+  parah.appendChild(el("label", { class: "lbl", text: "Paragraphs" }));
+  parah.appendChild(el("p", { class: "hint", text: "Each paragraph is a separate row. Reorder, edit or remove as needed." }));
+  renderStringList({ container: parah, items: s.paragraphs, multiline: true, addPlaceholder: "Type a paragraph..." });
+  p.appendChild(parah);
+
+  p.appendChild(makeField({ id: "story_sig", label: "Signature line", value: s.signature, onInput: function (v) { s.signature = v; } }));
+  wrap.appendChild(p);
+
+  const stp = panel("Stats", "Three numbered stats shown next to the story.");
+  const statList = el("div", { class: "list" });
+  function paintStats() {
+    statList.innerHTML = "";
+    if (!s.stats.length) statList.appendChild(el("div", { class: "list-empty", text: "No stats." }));
+    s.stats.forEach(function (it, idx) {
+      const row = el("div", { class: "list-row" });
+      const v = el("input", { type: "text", placeholder: "Value (HTML allowed)" });
+      v.value = it.value || "";
+      v.style.flex = "0 0 35%";
+      v.addEventListener("input", function () { it.value = v.value; });
+      const l = el("input", { type: "text", placeholder: "Label" });
+      l.value = it.label || "";
+      l.addEventListener("input", function () { it.label = l.value; });
+      row.appendChild(v); row.appendChild(l);
+      const acts = el("div", { class: "list-actions" });
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === 0) return; const t = s.stats[idx - 1]; s.stats[idx - 1] = s.stats[idx]; s.stats[idx] = t; paintStats(); } }, "▲"));
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === s.stats.length - 1) return; const t = s.stats[idx + 1]; s.stats[idx + 1] = s.stats[idx]; s.stats[idx] = t; paintStats(); } }, "▼"));
+      acts.appendChild(el("button", { type: "button", class: "tiny danger", onclick: function () { if (!confirm("Remove?")) return; s.stats.splice(idx, 1); paintStats(); } }, "✕"));
+      row.appendChild(acts);
+      statList.appendChild(row);
+    });
+  }
+  paintStats();
+  stp.appendChild(statList);
+  stp.appendChild(el("button", { type: "button", class: "primary", onclick: function () { s.stats.push({ value: "", label: "" }); paintStats(); } }, "＋ Add stat"));
+  wrap.appendChild(stp);
+
+  const ip = panel("Story images", "");
+  renderStringList({
+    container: ip,
+    items: s.images,
+    isImage: true,
+    allowBulkAdd: true,
+    allowTemplate: true,
+    templateHint: "images/Exterijer/photo.jpg",
+    addPlaceholder: "images/Exterijer/photo.jpg"
+  });
+  wrap.appendChild(ip);
+
+  return wrap;
+}
+
+/* --- APARTMENTS SECTION INTRO --- */
+function tabApartmentsSection() {
+  const wrap = el("div");
+  const s = data.apartmentsSection = data.apartmentsSection || {};
+  const p = panel("Apartments — section intro", "Heading shown above the six apartment cards.");
+  p.appendChild(makeField({ id: "apsec_eb", label: "Eyebrow", value: s.eyebrow, onInput: function (v) { s.eyebrow = v; } }));
+  p.appendChild(makeField({ id: "apsec_title", label: "Title", value: s.title, multiline: true, html: true, onInput: function (v) { s.title = v; } }));
+  p.appendChild(makeField({ id: "apsec_lede", label: "Lede", value: s.lede, multiline: true, onInput: function (v) { s.lede = v; } }));
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* --- APARTMENTS --- */
+function tabApartments() {
+  const wrap = el("div");
+  data.apartments = data.apartments || [];
+
+  // Subtab strip
+  const subs = el("div", { class: "subtabs" });
+  data.apartments.forEach(function (ap, i) {
+    const lab = "No. " + String(ap.id || i + 1).padStart(2, "0") + (ap.subtitle ? " — " + ap.subtitle : "");
+    const b = el("button", {
+      type: "button",
+      class: i === activeApartmentIdx ? "active" : "",
+      onclick: function () { activeApartmentIdx = i; renderEditor(); }
+    }, lab);
+    subs.appendChild(b);
+  });
+  wrap.appendChild(subs);
+
+  if (!data.apartments.length) {
+    wrap.appendChild(el("div", { class: "panel", text: "No apartments." }));
+    return wrap;
+  }
+
+  const ap = data.apartments[activeApartmentIdx];
+  ap.facts = ap.facts || {};
+  ap.longDescription = ap.longDescription || [];
+  ap.amenities = ap.amenities || [];
+  ap.gallery = ap.gallery || [];
+
+  const p = panel("Apartment basics", "");
+  const r1 = el("div", { class: "field-row" });
+  r1.appendChild(makeField({ id: "ap_id", label: "ID", value: ap.id, type: "number", onInput: function (v) { ap.id = Number(v) || v; } }));
+  r1.appendChild(makeField({ id: "ap_slug", label: "Slug", value: ap.slug, onInput: function (v) { ap.slug = v; } }));
+  r1.appendChild(makeField({ id: "ap_url", label: "Page URL", value: ap.url, onInput: function (v) { ap.url = v; } }));
+  p.appendChild(r1);
+  p.appendChild(makeField({ id: "ap_name", label: "Name", value: ap.name, html: true, required: true, onInput: function (v) { ap.name = v; } }));
+  p.appendChild(makeField({ id: "ap_sub", label: "Subtitle", value: ap.subtitle, onInput: function (v) { ap.subtitle = v; renderEditor(); } }));
+  p.appendChild(makeField({ id: "ap_short", label: "Short description", value: ap.shortDescription, multiline: true, onInput: function (v) { ap.shortDescription = v; } }));
+  wrap.appendChild(p);
+
+  const lp = panel("Long description", "Each paragraph is its own row.");
+  renderStringList({ container: lp, items: ap.longDescription, multiline: true, addPlaceholder: "Type a paragraph..." });
+  wrap.appendChild(lp);
+
+  const fp = panel("Facts", "");
+  const fr = el("div", { class: "field-row" });
+  fr.appendChild(makeField({ id: "ap_f_g", label: "Guests", value: ap.facts.guests, html: true, onInput: function (v) { ap.facts.guests = v; } }));
+  fr.appendChild(makeField({ id: "ap_f_b", label: "Bedrooms", value: ap.facts.bedrooms, onInput: function (v) { ap.facts.bedrooms = v; } }));
+  fr.appendChild(makeField({ id: "ap_f_ba", label: "Bathrooms", value: ap.facts.bathrooms, onInput: function (v) { ap.facts.bathrooms = v; } }));
+  fr.appendChild(makeField({ id: "ap_f_s", label: "Size", value: ap.facts.size, onInput: function (v) { ap.facts.size = v; } }));
+  fp.appendChild(fr);
+  wrap.appendChild(fp);
+
+  const am = panel("Amenities", "Short pillbox words shown on the apartment card.");
+  renderStringList({ container: am, items: ap.amenities, addPlaceholder: "e.g. Air conditioning" });
+  wrap.appendChild(am);
+
+  const ip = panel("Images", "");
+  const ir = el("div", { class: "field-row" });
+  ir.appendChild(makeField({ id: "ap_hero", label: "Hero image", value: ap.heroImage, imagePath: true, onInput: function (v) { ap.heroImage = v; } }));
+  ir.appendChild(makeField({ id: "ap_thumb", label: "Card thumbnail", value: ap.thumbImage, imagePath: true, onInput: function (v) { ap.thumbImage = v; } }));
+  ip.appendChild(ir);
+  ip.appendChild(el("label", { class: "lbl", text: "Gallery" }));
+  ip.appendChild(el("p", { class: "hint", text: "Drop new photos into images/" + (ap.id || "N") + "/ and paste their filenames below." }));
+  renderStringList({
+    container: ip,
+    items: ap.gallery,
+    isImage: true,
+    allowBulkAdd: true,
+    allowTemplate: true,
+    templateHint: "images/" + (ap.id || "N") + "/photo-01.jpg",
+    addPlaceholder: "images/" + (ap.id || "N") + "/photo.jpg"
+  });
+  wrap.appendChild(ip);
+
+  return wrap;
+}
+
+/* --- AMENITY TILES --- */
+function tabAmenities() {
+  const wrap = el("div");
+  data.amenities = data.amenities || [];
+  const p = panel("Site-wide amenity tiles", "The four feature tiles shown across the site.");
+  const list = el("div", { class: "list" });
+  function paintTiles() {
+    list.innerHTML = "";
+    if (!data.amenities.length) list.appendChild(el("div", { class: "list-empty", text: "No tiles." }));
+    data.amenities.forEach(function (it, idx) {
+      const row = el("div", { class: "list-row", style: { flexWrap: "wrap" } });
+      const ic = el("input", { type: "text", placeholder: "icon" });
+      ic.value = it.icon || ""; ic.style.flex = "0 0 90px";
+      ic.addEventListener("input", function () { it.icon = ic.value; });
+      const tt = el("input", { type: "text", placeholder: "Title" });
+      tt.value = it.title || ""; tt.style.flex = "0 0 30%";
+      tt.addEventListener("input", function () { it.title = tt.value; });
+      const bd = el("textarea", { placeholder: "Body", rows: 2 });
+      bd.value = it.body || "";
+      bd.addEventListener("input", function () { it.body = bd.value; });
+      row.appendChild(ic); row.appendChild(tt); row.appendChild(bd);
+      const acts = el("div", { class: "list-actions" });
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === 0) return; const t = data.amenities[idx - 1]; data.amenities[idx - 1] = data.amenities[idx]; data.amenities[idx] = t; paintTiles(); } }, "▲"));
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === data.amenities.length - 1) return; const t = data.amenities[idx + 1]; data.amenities[idx + 1] = data.amenities[idx]; data.amenities[idx] = t; paintTiles(); } }, "▼"));
+      acts.appendChild(el("button", { type: "button", class: "tiny danger", onclick: function () { if (!confirm("Remove?")) return; data.amenities.splice(idx, 1); paintTiles(); } }, "✕"));
+      row.appendChild(acts);
+      list.appendChild(row);
+    });
+  }
+  paintTiles();
+  p.appendChild(list);
+  p.appendChild(el("button", { type: "button", class: "primary", onclick: function () { data.amenities.push({ icon: "", title: "", body: "" }); paintTiles(); } }, "＋ Add tile"));
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* --- BUILDING / PARKING (shared shape) --- */
+function tabBuildingLike(key, title) {
+  const wrap = el("div");
+  const o = data[key] = data[key] || {};
+  o.metaItems = o.metaItems || [];
+  o.images = o.images || [];
+
+  const p = panel(title, "");
+  p.appendChild(makeField({ id: key + "_title", label: "Title", value: o.title, multiline: true, html: true, onInput: function (v) { o.title = v; } }));
+  p.appendChild(makeField({ id: key + "_lede", label: "Lede", value: o.lede, multiline: true, onInput: function (v) { o.lede = v; } }));
+
+  const mp = panel("Meta items", "Short bullets shown next to the section.");
+  renderStringList({ container: mp, items: o.metaItems, addPlaceholder: "e.g. Built ~ 1620" });
+
+  const ip = panel("Gallery", "");
+  renderStringList({
+    container: ip,
+    items: o.images,
+    isImage: true,
+    allowBulkAdd: true,
+    allowTemplate: true,
+    templateHint: "images/" + (key === "parking" ? "Parking" : "Exterijer") + "/photo-01.jpg",
+    addPlaceholder: "images/" + (key === "parking" ? "Parking" : "Exterijer") + "/photo.jpg"
+  });
+
+  wrap.appendChild(p);
+  wrap.appendChild(mp);
+  wrap.appendChild(ip);
+  return wrap;
+}
+
+/* --- LOCATION --- */
+function tabLocation() {
+  const wrap = el("div");
+  const o = data.location = data.location || {};
+  o.distances = o.distances || [];
+
+  const p = panel("Location", "");
+  p.appendChild(makeField({ id: "loc_eb", label: "Eyebrow", value: o.eyebrow, onInput: function (v) { o.eyebrow = v; } }));
+  p.appendChild(makeField({ id: "loc_title", label: "Title", value: o.title, multiline: true, html: true, onInput: function (v) { o.title = v; } }));
+  p.appendChild(makeField({ id: "loc_lede", label: "Lede", value: o.lede, multiline: true, onInput: function (v) { o.lede = v; } }));
+  p.appendChild(makeField({ id: "loc_map", label: "Map embed URL", value: o.mapEmbed, type: "url", hint: "Google Maps embed URL", onInput: function (v) { o.mapEmbed = v; } }));
+  wrap.appendChild(p);
+
+  const dp = panel("Distances", "Two columns: place name and distance/time.");
+  const list = el("div", { class: "list" });
+  function paintD() {
+    list.innerHTML = "";
+    if (!o.distances.length) list.appendChild(el("div", { class: "list-empty", text: "No entries." }));
+    o.distances.forEach(function (it, idx) {
+      const row = el("div", { class: "list-row" });
+      const n = el("input", { type: "text", placeholder: "Place" });
+      n.value = it.name || ""; n.style.flex = "0 0 45%";
+      n.addEventListener("input", function () { it.name = n.value; });
+      const v = el("input", { type: "text", placeholder: "Distance / time" });
+      v.value = it.value || "";
+      v.addEventListener("input", function () { it.value = v.value; });
+      row.appendChild(n); row.appendChild(v);
+      const acts = el("div", { class: "list-actions" });
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === 0) return; const t = o.distances[idx - 1]; o.distances[idx - 1] = o.distances[idx]; o.distances[idx] = t; paintD(); } }, "▲"));
+      acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === o.distances.length - 1) return; const t = o.distances[idx + 1]; o.distances[idx + 1] = o.distances[idx]; o.distances[idx] = t; paintD(); } }, "▼"));
+      acts.appendChild(el("button", { type: "button", class: "tiny danger", onclick: function () { if (!confirm("Remove?")) return; o.distances.splice(idx, 1); paintD(); } }, "✕"));
+      row.appendChild(acts);
+      list.appendChild(row);
+    });
+  }
+  paintD();
+  dp.appendChild(list);
+  dp.appendChild(el("button", { type: "button", class: "primary", onclick: function () { o.distances.push({ name: "", value: "" }); paintD(); } }, "＋ Add row"));
+  wrap.appendChild(dp);
+
+  return wrap;
+}
+
+/* --- CONTACT --- */
+function tabContact() {
+  const wrap = el("div");
+  const o = data.contact = data.contact || {};
+  o.details = o.details || [];
+  o.form = o.form || {};
+
+  const p = panel("Contact", "");
+  p.appendChild(makeField({ id: "co_eb", label: "Eyebrow", value: o.eyebrow, onInput: function (v) { o.eyebrow = v; } }));
+  p.appendChild(makeField({ id: "co_title", label: "Title", value: o.title, multiline: true, html: true, onInput: function (v) { o.title = v; } }));
+  p.appendChild(makeField({ id: "co_lede", label: "Lede", value: o.lede, multiline: true, onInput: function (v) { o.lede = v; } }));
+  wrap.appendChild(p);
+
+  const dp = panel("Contact details", "Email / address / Instagram links.");
+  const list = el("div", { class: "list" });
+  function paintRow(it, idx) {
+    const row = el("div", { class: "list-row", style: { flexWrap: "wrap" } });
+    const ic = el("input", { type: "text", placeholder: "icon" });
+    ic.value = it.icon || ""; ic.style.flex = "0 0 80px";
+    ic.addEventListener("input", function () { it.icon = ic.value; });
+    const lb = el("input", { type: "text", placeholder: "Label" });
+    lb.value = it.label || ""; lb.style.flex = "0 0 100px";
+    lb.addEventListener("input", function () { it.label = lb.value; });
+    const v = el("input", { type: "text", placeholder: "Value" });
+    v.value = it.value || ""; v.style.flex = "1 1 200px";
+    v.addEventListener("input", function () { it.value = v.value; });
+    const h = el("input", { type: "text", placeholder: "href" });
+    h.value = it.href || ""; h.style.flex = "1 1 200px";
+    h.addEventListener("input", function () { it.href = h.value; });
+    row.appendChild(ic); row.appendChild(lb); row.appendChild(v); row.appendChild(h);
+    const acts = el("div", { class: "list-actions" });
+    acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === 0) return; const t = o.details[idx - 1]; o.details[idx - 1] = o.details[idx]; o.details[idx] = t; paintList(); } }, "▲"));
+    acts.appendChild(el("button", { type: "button", class: "tiny", onclick: function () { if (idx === o.details.length - 1) return; const t = o.details[idx + 1]; o.details[idx + 1] = o.details[idx]; o.details[idx] = t; paintList(); } }, "▼"));
+    acts.appendChild(el("button", { type: "button", class: "tiny danger", onclick: function () { if (!confirm("Remove?")) return; o.details.splice(idx, 1); paintList(); } }, "✕"));
+    row.appendChild(acts);
+    return row;
+  }
+  function paintList() {
+    list.innerHTML = "";
+    if (!o.details.length) list.appendChild(el("div", { class: "list-empty", text: "No details." }));
+    o.details.forEach(function (it, idx) { list.appendChild(paintRow(it, idx)); });
+  }
+  paintList();
+  dp.appendChild(list);
+  dp.appendChild(el("button", { type: "button", class: "primary", onclick: function () { o.details.push({ icon: "", label: "", value: "", href: "" }); paintList(); } }, "＋ Add detail"));
+  wrap.appendChild(dp);
+
+  const fp = panel("Form labels", "");
+  fp.appendChild(makeField({ id: "co_form_t", label: "Form title", value: o.form.title, onInput: function (v) { o.form.title = v; } }));
+  fp.appendChild(makeField({ id: "co_form_s", label: "Form subtitle", value: o.form.subtitle, multiline: true, onInput: function (v) { o.form.subtitle = v; } }));
+  wrap.appendChild(fp);
+
+  return wrap;
+}
+
+/* --- SEO --- */
+function tabSEO() {
+  const wrap = el("div");
+  const s = data.seo = data.seo || {};
+  s.home = s.home || {};
+  s.gallery = s.gallery || {};
+
+  const p = panel("Home page SEO", "Title, description, keywords for search engines.");
+  p.appendChild(makeField({ id: "seo_title", label: "Page title", value: s.home.title, required: true, onInput: function (v) { s.home.title = v; } }));
+  p.appendChild(makeField({ id: "seo_desc", label: "Meta description", value: s.home.description, multiline: true, required: true, onInput: function (v) { s.home.description = v; } }));
+  p.appendChild(makeField({ id: "seo_og", label: "Open Graph image", value: s.home.ogImage, imagePath: true, onInput: function (v) { s.home.ogImage = v; } }));
+  p.appendChild(makeField({ id: "seo_kw", label: "Keywords", value: s.home.keywords, multiline: true, hint: "Comma-separated", onInput: function (v) { s.home.keywords = v; } }));
+  wrap.appendChild(p);
+
+  const tp = panel("Apartment templates", "Use {name}, {type}, {guests} as placeholders.");
+  tp.appendChild(makeField({ id: "seo_aptt", label: "Apartment title template", value: s.apartmentTitleTemplate, onInput: function (v) { s.apartmentTitleTemplate = v; } }));
+  tp.appendChild(makeField({ id: "seo_apdt", label: "Apartment description template", value: s.apartmentDescriptionTemplate, multiline: true, onInput: function (v) { s.apartmentDescriptionTemplate = v; } }));
+  wrap.appendChild(tp);
+
+  const gp = panel("Gallery page SEO", "");
+  gp.appendChild(makeField({ id: "seo_g_t", label: "Page title", value: s.gallery.title, onInput: function (v) { s.gallery.title = v; } }));
+  gp.appendChild(makeField({ id: "seo_g_d", label: "Meta description", value: s.gallery.description, multiline: true, onInput: function (v) { s.gallery.description = v; } }));
+  wrap.appendChild(gp);
+
+  return wrap;
+}
+
+/* --- META --- */
+function tabMeta() {
+  const wrap = el("div");
+  const m = data._meta = data._meta || {};
+  const p = panel("File meta", "Auto-managed; usually no need to touch.");
+  p.appendChild(makeField({ id: "meta_version", label: "Version", value: m.version, onInput: function (v) { m.version = v; } }));
+  p.appendChild(makeField({ id: "meta_lastUpdated", label: "Last updated", value: m.lastUpdated, hint: "Auto-set when you click Download.", onInput: function (v) { m.lastUpdated = v; } }));
+  p.appendChild(makeField({ id: "meta_inst", label: "Editor instructions", value: m.instructions, multiline: true, onInput: function (v) { m.instructions = v; } }));
+  wrap.appendChild(p);
+  return wrap;
+}
+
+/* ============================================================
+   RENDER ROUTER
+   ============================================================ */
+function renderEditor() {
+  // Wipe previous validators registry
+  for (const k in validators) delete validators[k];
+
+  const root = $("#editor");
+  root.innerHTML = "";
+
+  // Validation summary placeholder (top of editor)
+  const vsum = el("div", { class: "vsum ok", id: "vsum" }, "All fields look good.");
+  root.appendChild(vsum);
+
+  let body;
+  switch (activeTab) {
+    case "site": body = tabSite(); break;
+    case "nav": body = tabNav(); break;
+    case "hero": body = tabHero(); break;
+    case "marquee": body = tabMarquee(); break;
+    case "story": body = tabStory(); break;
+    case "apartmentsSection": body = tabApartmentsSection(); break;
+    case "apartments": body = tabApartments(); break;
+    case "amenities": body = tabAmenities(); break;
+    case "building": body = tabBuildingLike("building", "Building"); break;
+    case "parking": body = tabBuildingLike("parking", "Parking"); break;
+    case "location": body = tabLocation(); break;
+    case "contact": body = tabContact(); break;
+    case "seo": body = tabSEO(); break;
+    case "meta": body = tabMeta(); break;
+    default: body = el("div", null, "Unknown tab.");
+  }
+  root.appendChild(body);
+
+  // Run validation now that fields exist
+  setTimeout(function () {
+    const errs = validateAll();
+    const v = $("#vsum");
+    if (errs > 0) {
+      v.classList.remove("ok");
+      v.textContent = errs + " field" + (errs === 1 ? "" : "s") + " need attention. They are highlighted below.";
+    } else {
+      v.classList.add("ok");
+      v.textContent = "All fields look good.";
+    }
+  }, 0);
+
+  schedulePreview();
+}
+
+/* ============================================================
+   PREVIEW PANE
+   ============================================================ */
+let previewT = null;
+function schedulePreview() {
+  clearTimeout(previewT);
+  previewT = setTimeout(renderPreview, 80);
+}
+
+function renderPreview() {
+  const root = $("#previewBody");
+  if (!root || !data) return;
+  root.innerHTML = "";
+
+  if (activeTab === "apartments" && data.apartments && data.apartments[activeApartmentIdx]) {
+    const ap = data.apartments[activeApartmentIdx];
+    const card = el("div", { class: "pv-card" });
+    const imgWrap = el("div", { class: "pv-card-img" });
+    if (ap.thumbImage) {
+      const img = el("img", { src: ap.thumbImage, alt: "" });
+      img.addEventListener("error", function () {
+        imgWrap.textContent = "image not found: " + ap.thumbImage;
+      });
+      imgWrap.appendChild(img);
+    } else {
+      imgWrap.textContent = "(no thumbnail)";
+    }
+    card.appendChild(imgWrap);
+    const body = el("div", { class: "pv-card-body" });
+    body.appendChild(el("div", { class: "pv-eyebrow", text: "Suite" }));
+    body.appendChild(el("h3", { class: "pv-title", html: ap.name || "(untitled)" }));
+    if (ap.subtitle) body.appendChild(el("p", { class: "pv-sub", text: ap.subtitle }));
+    if (ap.shortDescription) body.appendChild(el("p", { class: "pv-sub", text: ap.shortDescription }));
+    const m = el("div", { class: "pv-meta" });
+    if (ap.facts) {
+      if (ap.facts.guests) m.appendChild(el("span", { html: "Guests " + ap.facts.guests }));
+      if (ap.facts.bedrooms) m.appendChild(el("span", { text: ap.facts.bedrooms + " BR" }));
+      if (ap.facts.bathrooms) m.appendChild(el("span", { text: ap.facts.bathrooms + " bath" }));
+      if (ap.facts.size) m.appendChild(el("span", { text: ap.facts.size }));
+    }
+    body.appendChild(m);
+    card.appendChild(body);
+    root.appendChild(card);
+
+    if (ap.gallery && ap.gallery.length) {
+      root.appendChild(el("div", { class: "pv-eyebrow", text: "Gallery (" + ap.gallery.length + ")" }));
+    }
+    return;
+  }
+
+  if (activeTab === "hero" && data.hero) {
+    const h = data.hero;
+    const card = el("div", { class: "pv-card" });
+    const imgWrap = el("div", { class: "pv-card-img" });
+    if (h.image) {
+      const img = el("img", { src: h.image, alt: "" });
+      img.addEventListener("error", function () { imgWrap.textContent = "image not found"; });
+      imgWrap.appendChild(img);
+    } else imgWrap.textContent = "(no hero image)";
+    card.appendChild(imgWrap);
+    const body = el("div", { class: "pv-card-body" });
+    if (h.eyebrow) body.appendChild(el("div", { class: "pv-eyebrow", text: h.eyebrow }));
+    body.appendChild(el("h3", { class: "pv-title", html: h.title || "" }));
+    if (h.lede) body.appendChild(el("p", { class: "pv-sub", text: h.lede }));
+    card.appendChild(body);
+    root.appendChild(card);
+    return;
+  }
+
+  if ((activeTab === "building" || activeTab === "parking") && data[activeTab]) {
+    const o = data[activeTab];
+    const card = el("div", { class: "pv-card" });
+    const imgWrap = el("div", { class: "pv-card-img" });
+    const first = (o.images || [])[0];
+    if (first) {
+      const img = el("img", { src: first, alt: "" });
+      img.addEventListener("error", function () { imgWrap.textContent = "image not found"; });
+      imgWrap.appendChild(img);
+    } else imgWrap.textContent = "(no image)";
+    card.appendChild(imgWrap);
+    const body = el("div", { class: "pv-card-body" });
+    body.appendChild(el("h3", { class: "pv-title", html: o.title || "" }));
+    if (o.lede) body.appendChild(el("p", { class: "pv-sub", text: o.lede }));
+    card.appendChild(body);
+    root.appendChild(card);
+    return;
+  }
+
+  if (activeTab === "site" && data.site) {
+    const s = data.site;
+    const card = el("div", { class: "pv-card" });
+    const body = el("div", { class: "pv-card-body" });
+    body.appendChild(el("div", { class: "pv-eyebrow", text: s.tagline || "" }));
+    body.appendChild(el("h3", { class: "pv-title", text: s.brand || "" }));
+    if (s.address) {
+      const a = s.address;
+      body.appendChild(el("p", { class: "pv-sub", text: [a.street, a.postalCode, a.city, a.country].filter(Boolean).join(", ") }));
+    }
+    if (s.primaryEmail) body.appendChild(el("p", { class: "pv-sub", text: s.primaryEmail }));
+    card.appendChild(body);
+    root.appendChild(card);
+    return;
+  }
+
+  // Default: tab summary
+  root.appendChild(el("div", { class: "pv-card" }, [
+    el("div", { class: "pv-card-body" }, [
+      el("div", { class: "pv-eyebrow", text: "Editing" }),
+      el("h3", { class: "pv-title", text: activeTab })
+    ])
+  ]));
+}
+
+/* ============================================================
+   ESC closes any open <details> dialog (we don't have modals,
+   but ESC blurs the focused input so user can quickly escape)
+   ============================================================ */
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    const t = document.activeElement;
+    if (t && t.blur) t.blur();
+    // Close any open bulk-add details
+    $$("details.bulk[open]").forEach(function (d) { d.open = false; });
+  }
+});
+
+/* Warn before navigating away if there are unsaved changes */
+window.addEventListener("beforeunload", function (e) {
+  if (!data || !original) return;
+  try {
+    if (JSON.stringify(data) !== JSON.stringify(original)) {
+      e.preventDefault();
+      e.returnValue = "";
+    }
+  } catch (err) { /* ignore */ }
+});
+
+paint();
+setActiveTab("site");
+</script>
+</body>
+</html>

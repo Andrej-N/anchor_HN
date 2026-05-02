@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchora — Content Editor</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#FAF7F2; --cream:#F5EFE5; --bone:#ECE3D2; --line:#E6DCC9;
+  --ink:#1F1B16; --ink-soft:#3A332B; --muted:#7A7065; --muted-light:#A29789;
+  --aqua:#1F8C8C; --aqua-deep:#145E60; --aqua-mist:#E5F1F0;
+  --error:#B0463A; --success:#5A8A5C; --brass:#B08A4F;
+  --display:"Cormorant Garamond", Georgia, serif;
+  --body:"Manrope", -apple-system, sans-serif;
+  --r-sm:4px; --r-md:8px; --r-lg:14px; --r-pill:999px;
+  --shadow:0 18px 40px -22px rgba(31,27,22,0.22);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+a{color:var(--aqua-deep);text-decoration:none}
+a:hover{color:var(--aqua)}
+
+/* ─── Login screen ─── */
+.login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--ivory)}
+.login__card{width:100%;max-width:420px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:2.5rem;box-shadow:var(--shadow)}
+.login__brand{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.login__brand img{width:42px;height:42px;object-fit:contain}
+.login__brand span{font-family:var(--display);font-size:1.4rem;letter-spacing:.02em}
+.login h1{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0 0 .35rem}
+.login p{color:var(--muted);margin:0 0 1.5rem;font-size:.875rem}
+.login__error{color:var(--error);font-size:.8rem;margin-top:-.5rem;margin-bottom:.75rem;min-height:1em}
+.login__sub{margin-top:1rem;color:var(--muted-light);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* ─── Inputs ─── */
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.field__label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.field__hint{font-size:.7rem;color:var(--muted);font-style:italic}
+.input,.textarea,.select{width:100%;padding:.75rem .85rem;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);font-size:.875rem;color:var(--ink);transition:border-color .15s, background .15s}
+.input:focus,.textarea:focus,.select:focus{outline:0;border-color:var(--aqua);background:#fff}
+.textarea{resize:vertical;min-height:90px;font-family:inherit;line-height:1.5}
+.select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 6l4 4 4-4' fill='none' stroke='%237A7065' stroke-width='1.5'/></svg>");background-repeat:no-repeat;background-position:right .65rem center;padding-right:2rem}
+
+/* ─── Buttons ─── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem 1.1rem;border-radius:var(--r-pill);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .15s;white-space:nowrap}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn--primary{background:var(--ink);color:var(--ivory)}
+.btn--primary:hover{background:var(--aqua-deep)}
+.btn--primary:disabled{background:var(--muted-light);cursor:not-allowed;transform:none}
+.btn--ghost{border:1px solid var(--line);background:#fff;color:var(--ink-soft)}
+.btn--ghost:hover{border-color:var(--aqua);color:var(--aqua-deep)}
+.btn--aqua{background:var(--aqua-deep);color:var(--ivory)}
+.btn--aqua:hover{background:var(--aqua)}
+.btn--danger{color:var(--error)}
+.btn--danger:hover{background:#fceeec}
+.btn--sm{padding:.45rem .75rem;font-size:.7rem}
+.btn--icon{padding:.4rem;width:32px;height:32px}
+
+/* ─── App shell ─── */
+.app{display:none;height:100%;flex-direction:column}
+.app.is-active{display:flex}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.25rem;border-bottom:1px solid var(--line);background:rgba(250,247,242,.92);backdrop-filter:saturate(180%) blur(10px);position:sticky;top:0;z-index:20;gap:1rem}
+.topbar__brand{display:flex;align-items:center;gap:.55rem}
+.topbar__brand img{width:32px;height:32px;object-fit:contain}
+.topbar__brand strong{font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:.02em}
+.topbar__brand small{font-family:var(--display);font-style:italic;color:var(--aqua-deep);margin-left:.4rem;font-size:.85rem}
+.topbar__status{flex:1;text-align:center;font-size:.78rem;letter-spacing:.06em;color:var(--muted);min-height:1.2em}
+.topbar__status.is-saving{color:var(--brass)}
+.topbar__status.is-saved{color:var(--success)}
+.topbar__status.is-error{color:var(--error)}
+.topbar__actions{display:flex;align-items:center;gap:.5rem}
+
+.workspace{flex:1;display:grid;grid-template-columns:240px 1fr;min-height:0;overflow:hidden}
+.sidebar{background:var(--cream);border-right:1px solid var(--line);overflow-y:auto;padding:.75rem .35rem 4rem}
+.sb-section{padding:.6rem .5rem .25rem;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.sb-link{display:block;padding:.5rem .75rem;border-radius:var(--r-sm);font-size:.825rem;color:var(--ink-soft);cursor:pointer;border:0;background:none;width:100%;text-align:left}
+.sb-link:hover{background:rgba(31,140,140,.08);color:var(--aqua-deep)}
+.sb-link.is-active{background:var(--ink);color:var(--ivory);font-weight:500}
+.sb-link.is-nested{padding-left:1.5rem;font-size:.78rem}
+
+.editor{overflow-y:auto;padding:1.5rem 2rem 6rem}
+.editor__head{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.editor__title{font-family:var(--display);font-weight:400;font-size:1.85rem;letter-spacing:-.01em;margin:0}
+.editor__title em{color:var(--aqua-deep);font-style:italic}
+.editor__sub{color:var(--muted);font-size:.85rem;margin:.25rem 0 0}
+
+.group{margin-bottom:1.75rem;padding:1.25rem;background:#fff;border:1px solid var(--line);border-radius:var(--r-md)}
+.group__title{font-family:var(--display);font-size:1.1rem;font-weight:500;margin:0 0 .85rem;color:var(--ink)}
+.group__title em{font-style:italic;color:var(--aqua-deep)}
+
+/* Two-column layout for compact fields */
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:780px){.row{grid-template-columns:1fr}}
+
+/* ─── Lists (paragraphs, amenities, distances, galleries) ─── */
+.list{display:flex;flex-direction:column;gap:.55rem;margin-top:.4rem}
+.list__row{display:flex;align-items:flex-start;gap:.4rem;background:var(--cream);padding:.5rem;border-radius:var(--r-sm);border:1px solid var(--line)}
+.list__row .input,.list__row .textarea{background:#fff}
+.list__row-inner{flex:1;min-width:0;display:flex;flex-direction:column;gap:.4rem}
+.list__row .row{gap:.5rem}
+.list__ctrl{display:flex;flex-direction:column;gap:.2rem;padding-top:.15rem}
+.list__ctrl .btn--icon{font-size:.85rem;border-radius:var(--r-sm);background:#fff;border:1px solid var(--line);color:var(--muted)}
+.list__ctrl .btn--icon:hover{border-color:var(--aqua);color:var(--aqua-deep)}
+.list__add{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+
+/* ─── Image rows ─── */
+.imgrow{display:flex;align-items:center;gap:.6rem;background:var(--cream);padding:.5rem;border:1px solid var(--line);border-radius:var(--r-sm)}
+.imgrow__thumb{width:66px;height:54px;object-fit:cover;border-radius:var(--r-sm);background:var(--bone);flex:0 0 auto;border:1px solid var(--line)}
+.imgrow__thumb-fallback{width:66px;height:54px;border:1px dashed var(--line);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--muted-light);font-size:.65rem;flex:0 0 auto}
+.imgrow__path{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;color:var(--ink-soft);background:#fff;padding:.4rem .55rem;border-radius:var(--r-sm);border:1px solid var(--line);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.imgrow__ctrl{display:flex;gap:.2rem}
+
+/* ─── Drop zone ─── */
+.dropzone{margin-top:.6rem;padding:1.1rem;border:1.5px dashed var(--line);border-radius:var(--r-md);text-align:center;color:var(--muted);font-size:.8rem;transition:all .15s;background:rgba(255,255,255,.4)}
+.dropzone.is-over{border-color:var(--aqua);background:var(--aqua-mist);color:var(--aqua-deep)}
+.dropzone strong{display:block;color:var(--ink-soft);font-weight:600;margin-bottom:.25rem}
+.dropzone__progress{margin-top:.4rem;color:var(--brass);font-family:ui-monospace,monospace;font-size:.75rem}
+
+/* ─── Save bar (sticky bottom) ─── */
+.savebar{position:sticky;bottom:0;left:0;right:0;background:rgba(250,247,242,.96);backdrop-filter:saturate(180%) blur(10px);border-top:1px solid var(--line);padding:.85rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:0 -2rem -6rem;z-index:10}
+.savebar__hint{font-size:.78rem;color:var(--muted)}
+.savebar__hint strong{color:var(--ink-soft)}
+.savebar__actions{display:flex;gap:.5rem}
+
+/* ─── Toast ─── */
+.toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ivory);padding:.8rem 1.2rem;border-radius:var(--r-pill);font-size:.825rem;opacity:0;pointer-events:none;transition:all .35s cubic-bezier(.16,1,.3,1);z-index:100;max-width:90vw;box-shadow:var(--shadow)}
+.toast.is-shown{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.is-error{background:var(--error)}
+.toast.is-success{background:var(--aqua-deep)}
+
+/* ─── Mobile toggle ─── */
+.menu-toggle{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;align-items:center;justify-content:center;color:var(--ink-soft)}
+@media (max-width:840px){
+  .menu-toggle{display:inline-flex}
+  .workspace{grid-template-columns:1fr}
+  .sidebar{position:fixed;inset:54px 0 0 0;z-index:15;transform:translateX(-100%);transition:transform .25s;width:260px;border-right:1px solid var(--line)}
+  .sidebar.is-open{transform:translateX(0)}
+  .editor{padding:1rem}
+  .savebar{margin:0 -1rem -6rem;padding:.75rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ───── Login ───── -->
+<div class="login" id="login">
+  <form class="login__card" id="login-form" autocomplete="off">
+    <div class="login__brand">
+      <img src="../images/logo.png" alt="">
+      <span>Anchora</span>
+    </div>
+    <h1>Content Editor</h1>
+    <p>Sign in with the password to edit text, photos and gallery contents on the public site.</p>
+
+    <div class="field">
+      <label class="field__label" for="login-pass">Password</label>
+      <input class="input" type="password" id="login-pass" name="password" required autocomplete="current-password">
+    </div>
+    <div class="login__error" id="login-error"></div>
+    <button class="btn btn--primary" type="submit" id="login-btn" style="width:100%">Sign in</button>
+
+    <p class="login__sub">Anchora Apartments · Herceg Novi</p>
+  </form>
+</div>
+
+<!-- ───── App ───── -->
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+      </button>
+      <img src="../images/logo.png" alt="">
+      <strong>Anchora</strong><small>editor</small>
+    </div>
+    <div class="topbar__status" id="status"></div>
+    <div class="topbar__actions">
+      <a class="btn btn--ghost btn--sm" href="../index.html" target="_blank" rel="noopener" title="Open the public site">View site ↗</a>
+      <button class="btn btn--ghost btn--sm" id="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="editor" id="editor">
+      <div class="editor__head">
+        <h1 class="editor__title" id="page-title">Loading…</h1>
+        <p class="editor__sub" id="page-sub">Fetching latest content from GitHub.</p>
+      </div>
+      <div id="page-body"></div>
+
+      <div class="savebar">
+        <div class="savebar__hint">
+          <strong>Tip:</strong> Save sends an update to GitHub. The public site is rebuilt automatically (~30 s).
+        </div>
+        <div class="savebar__actions">
+          <button class="btn btn--ghost btn--sm" id="reload-btn">Discard changes</button>
+          <button class="btn btn--primary" id="save-btn" disabled>Save changes</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ───── Toast ───── -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ==========================================================================
+   Anchora Editor — single-file, vanilla JS
+   - Login → cookie session via /api/login
+   - GET /api/content (current state from GitHub)
+   - PUT /api/content (commit on save)
+   - POST /api/upload (drag-drop new photos)
+   ========================================================================== */
+(function(){
+  "use strict";
+
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+  /* ---------- API ---------- */
+  async function api(path, opts={}){
+    const r = await fetch(path, {
+      method: opts.method || "GET",
+      headers: opts.body ? {"Content-Type":"application/json"} : {},
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+      credentials: "same-origin"
+    });
+    let body = null;
+    try { body = await r.json(); } catch {}
+    if (!r.ok) {
+      const err = new Error((body && body.error) || ("HTTP " + r.status));
+      err.status = r.status;
+      throw err;
+    }
+    return body;
+  }
+
+  /* ---------- State ---------- */
+  let content = null;       // working copy (gets mutated on edit)
+  let baseline = null;      // pristine (for "discard changes")
+  let sha = null;
+  let dirty = false;
+  let activeSection = "site";
+
+  /* ---------- Toast ---------- */
+  const toastEl = $("#toast");
+  let toastT;
+  function toast(msg, kind=""){
+    toastEl.textContent = msg;
+    toastEl.className = "toast is-shown " + (kind ? "is-" + kind : "");
+    clearTimeout(toastT);
+    toastT = setTimeout(()=>{ toastEl.classList.remove("is-shown"); }, 2800);
+  }
+
+  /* ---------- Status bar ---------- */
+  const statusEl = $("#status");
+  function setStatus(msg, kind=""){
+    statusEl.textContent = msg || "";
+    statusEl.className = "topbar__status " + (kind ? "is-" + kind : "");
+  }
+
+  /* ---------- Path resolve ---------- */
+  function getAt(obj, path){
+    return path.replace(/\[(\w+)\]/g,".$1").split(".").filter(Boolean).reduce((o,k)=>o==null?o:o[k], obj);
+  }
+  function setAt(obj, path, value){
+    const keys = path.replace(/\[(\w+)\]/g,".$1").split(".").filter(Boolean);
+    let cur = obj;
+    for (let i=0;i<keys.length-1;i++){
+      const k = keys[i];
+      if (cur[k] == null) cur[k] = /^\d+$/.test(keys[i+1]) ? [] : {};
+      cur = cur[k];
+    }
+    cur[keys[keys.length-1]] = value;
+  }
+  function deepClone(v){ return JSON.parse(JSON.stringify(v)); }
+
+  function markDirty(){
+    dirty = true;
+    $("#save-btn").disabled = false;
+  }
+  function markClean(){
+    dirty = false;
+    $("#save-btn").disabled = true;
+  }
+
+  /* ---------- Sidebar ---------- */
+  const SECTIONS = [
+    { id:"site",          label:"Site",            group:"General" },
+    { id:"hero",          label:"Hero",            group:"Homepage" },
+    { id:"marquee",       label:"Marquee",         group:"Homepage" },
+    { id:"story",         label:"Story",           group:"Homepage" },
+    { id:"essentials",    label:"Stay essentials", group:"Homepage" },
+    { id:"apartments",    label:"Apartments — header", group:"Apartments" },
+    { id:"apt-1",         label:"Suite 01", group:"Apartments", nested:true, aptIndex:0 },
+    { id:"apt-2",         label:"Suite 02", group:"Apartments", nested:true, aptIndex:1 },
+    { id:"apt-3",         label:"Suite 03", group:"Apartments", nested:true, aptIndex:2 },
+    { id:"apt-4",         label:"Suite 04", group:"Apartments", nested:true, aptIndex:3 },
+    { id:"apt-5",         label:"Suite 05", group:"Apartments", nested:true, aptIndex:4 },
+    { id:"apt-6",         label:"Suite 06", group:"Apartments", nested:true, aptIndex:5 },
+    { id:"building",      label:"The Building",     group:"Photo collections" },
+    { id:"parking",       label:"Private Parking",  group:"Photo collections" },
+    { id:"location",      label:"Location",         group:"Footer & misc" },
+    { id:"contact",       label:"Contact",          group:"Footer & misc" },
+    { id:"seo",           label:"SEO",              group:"Advanced" }
+  ];
+
+  function renderSidebar(){
+    const sb = $("#sidebar");
+    let html = "";
+    let lastGroup = null;
+    SECTIONS.forEach(s => {
+      if (s.group !== lastGroup) {
+        html += `<div class="sb-section">${s.group}</div>`;
+        lastGroup = s.group;
+      }
+      const cls = "sb-link" + (s.nested ? " is-nested" : "") + (s.id===activeSection?" is-active":"");
+      html += `<button class="${cls}" data-sect="${s.id}">${s.label}</button>`;
+    });
+    sb.innerHTML = html;
+    $$(".sb-link", sb).forEach(b => b.addEventListener("click", () => {
+      goToSection(b.getAttribute("data-sect"));
+      sb.classList.remove("is-open");
+    }));
+  }
+
+  function goToSection(id){
+    activeSection = id;
+    $$(".sb-link").forEach(b => b.classList.toggle("is-active", b.getAttribute("data-sect") === id));
+    renderSection();
+    $("#editor").scrollTop = 0;
+  }
+
+  /* ---------- Field builders ---------- */
+  function fieldText(label, path, opts={}){
+    const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
+    const v = getAt(content, path) ?? "";
+    const hint = opts.hint ? `<span class="field__hint">${opts.hint}</span>` : "";
+    return `<div class="field">
+      <label class="field__label" for="${id}">${label}</label>
+      <input class="input" type="${opts.type||"text"}" id="${id}" data-bind="${path}" value="${escapeAttr(v)}">
+      ${hint}
+    </div>`;
+  }
+  function fieldArea(label, path, opts={}){
+    const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
+    const v = getAt(content, path) ?? "";
+    const hint = opts.hint ? `<span class="field__hint">${opts.hint}</span>` : "";
+    return `<div class="field">
+      <label class="field__label" for="${id}">${label}</label>
+      <textarea class="textarea" id="${id}" data-bind="${path}" rows="${opts.rows||3}">${escapeHtml(v)}</textarea>
+      ${hint}
+    </div>`;
+  }
+  function fieldImage(label, path){
+    const v = getAt(content, path) ?? "";
+    const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
+    return `<div class="field">
+      <label class="field__label">${label}</label>
+      <div class="imgrow" data-image-row="${path}">
+        ${imgThumbHtml(v)}
+        <input class="imgrow__path" type="text" id="${id}" data-bind="${path}" value="${escapeAttr(v)}" placeholder="images/...">
+        <div class="imgrow__ctrl">
+          <button class="btn btn--ghost btn--sm" data-pick-image="${path}" type="button">Upload…</button>
+        </div>
+      </div>
+    </div>`;
+  }
+  function imgThumbHtml(src){
+    if (!src) return `<div class="imgrow__thumb-fallback">no image</div>`;
+    return `<img class="imgrow__thumb" src="../${src.replace(/^\.?\//,"")}" alt="" onerror="this.outerHTML='<div class=\\'imgrow__thumb-fallback\\'>missing</div>'">`;
+  }
+  function fieldSelect(label, path, options, opts={}){
+    const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
+    const v = getAt(content, path) ?? "";
+    const optsHtml = options.map(o => `<option value="${escapeAttr(o)}"${o===v?" selected":""}>${escapeHtml(o)}</option>`).join("");
+    return `<div class="field">
+      <label class="field__label" for="${id}">${label}</label>
+      <select class="select" id="${id}" data-bind="${path}">${optsHtml}</select>
+      ${opts.hint ? `<span class="field__hint">${opts.hint}</span>` : ""}
+    </div>`;
+  }
+
+  /* ---------- List of strings (paragraphs, amenities, words…) ---------- */
+  function listStrings(label, path, opts={}){
+    const arr = getAt(content, path) || [];
+    const isArea = !!opts.textarea;
+    const placeholder = opts.placeholder || "";
+    let rows = arr.map((v, i) => {
+      const itemPath = `${path}[${i}]`;
+      const inputHtml = isArea
+        ? `<textarea class="textarea" rows="2" data-bind="${itemPath}" placeholder="${escapeAttr(placeholder)}">${escapeHtml(v)}</textarea>`
+        : `<input class="input" type="text" data-bind="${itemPath}" value="${escapeAttr(v)}" placeholder="${escapeAttr(placeholder)}">`;
+      return `<div class="list__row" data-list-row="${path}" data-list-index="${i}">
+        <div class="list__row-inner">${inputHtml}</div>
+        <div class="list__ctrl">
+          <button class="btn--icon" type="button" title="Move up" data-list-move="up">▲</button>
+          <button class="btn--icon" type="button" title="Move down" data-list-move="down">▼</button>
+          <button class="btn--icon" type="button" title="Remove" data-list-remove>✕</button>
+        </div>
+      </div>`;
+    }).join("");
+    return `<div class="field">
+      <label class="field__label">${label}</label>
+      <div class="list" data-list-container="${path}" data-list-textarea="${isArea?1:0}">${rows}</div>
+      <div class="list__add">
+        <button class="btn btn--ghost btn--sm" type="button" data-list-add="${path}">+ Add</button>
+      </div>
+    </div>`;
+  }
+
+  /* ---------- List of objects (stats, distances, contact rows…) ---------- */
+  function listObjects(label, path, fields, opts={}){
+    const arr = getAt(content, path) || [];
+    const rows = arr.map((item, i) => {
+      const itemPath = `${path}[${i}]`;
+      const inner = fields.map(f => {
+        const fp = `${itemPath}.${f.key}`;
+        if (f.type === "textarea") return fieldArea(f.label, fp, { rows:2 });
+        if (f.type === "select")   return fieldSelect(f.label, fp, f.options || []);
+        return fieldText(f.label, fp, { hint:f.hint });
+      }).join("");
+      return `<div class="list__row" data-list-row="${path}" data-list-index="${i}">
+        <div class="list__row-inner">${inner}</div>
+        <div class="list__ctrl">
+          <button class="btn--icon" type="button" title="Move up" data-list-move="up">▲</button>
+          <button class="btn--icon" type="button" title="Move down" data-list-move="down">▼</button>
+          <button class="btn--icon" type="button" title="Remove" data-list-remove>✕</button>
+        </div>
+      </div>`;
+    }).join("");
+    return `<div class="field">
+      <label class="field__label">${label}</label>
+      <div class="list" data-list-container="${path}" data-list-objects='${JSON.stringify(fields).replace(/'/g,"&apos;")}'>${rows}</div>
+      <div class="list__add">
+        <button class="btn btn--ghost btn--sm" type="button" data-list-add-obj="${path}">+ Add</button>
+      </div>
+    </div>`;
+  }
+
+  /* ---------- Image gallery list (uploadable) ---------- */
+  function listImages(label, path, opts={}){
+    const arr = getAt(content, path) || [];
+    const rows = arr.map((src, i) => {
+      const itemPath = `${path}[${i}]`;
+      return `<div class="list__row" data-list-row="${path}" data-list-index="${i}">
+        <div class="imgrow" style="padding:0;background:transparent;border:0">
+          ${imgThumbHtml(src)}
+          <input class="imgrow__path" type="text" data-bind="${itemPath}" value="${escapeAttr(src)}">
+        </div>
+        <div class="list__ctrl">
+          <button class="btn--icon" type="button" title="Move up" data-list-move="up">▲</button>
+          <button class="btn--icon" type="button" title="Move down" data-list-move="down">▼</button>
+          <button class="btn--icon" type="button" title="Remove" data-list-remove>✕</button>
+        </div>
+      </div>`;
+    }).join("");
+
+    const targetFolder = opts.folder || "images/";
+    return `<div class="field">
+      <label class="field__label">${label}</label>
+      <div class="list" data-list-container="${path}" data-list-images="1">${rows}</div>
+      <div class="dropzone" data-dropzone="${path}" data-folder="${targetFolder}">
+        <strong>Drop photos here or click Upload</strong>
+        Files go to <code>${escapeHtml(targetFolder)}</code> · max ~4 MB each · jpg, png, webp
+        <div class="dropzone__progress" data-dz-progress></div>
+      </div>
+      <div class="list__add">
+        <button class="btn btn--ghost btn--sm" type="button" data-pick-images="${path}" data-folder="${targetFolder}">+ Upload photos</button>
+        <button class="btn btn--ghost btn--sm" type="button" data-list-add="${path}">+ Add path manually</button>
+      </div>
+    </div>`;
+  }
+
+  /* ---------- Section renderers ---------- */
+  function renderSection(){
+    const s = SECTIONS.find(x => x.id === activeSection);
+    if (!s) return;
+    let title = s.label, sub = "", body = "";
+
+    if (s.aptIndex != null) {
+      title = `Suite No. ${String(s.aptIndex+1).padStart(2,"0")}`;
+      sub = "All editable details and the photo gallery for this apartment.";
+      body = renderApartment(s.aptIndex);
+    } else {
+      switch (s.id) {
+        case "site":       sub="Brand, contact email, address, social."; body=renderSite(); break;
+        case "hero":       sub="The first thing people see on the homepage."; body=renderHero(); break;
+        case "marquee":    sub="The horizontal scrolling word band under the hero."; body=renderMarquee(); break;
+        case "story":      sub="The 'Our House' block: paragraphs, stats, three small photos."; body=renderStory(); break;
+        case "essentials": sub="The four icon tiles (Wi-Fi, Self check-in, Parking, Linen)."; body=renderEssentials(); break;
+        case "apartments": sub="The headline above the apartments grid on the homepage."; body=renderApartmentsHeader(); break;
+        case "building":   sub="The whole 400-year-old stone building (gallery + sidebar)."; body=renderBuilding(); break;
+        case "parking":    sub="The private parking section."; body=renderParking(); break;
+        case "location":   sub="Distances, embed map URL."; body=renderLocation(); break;
+        case "contact":    sub="Contact rows + form headings."; body=renderContact(); break;
+        case "seo":        sub="Page titles and descriptions for search engines + social previews."; body=renderSeo(); break;
+      }
+    }
+
+    $("#page-title").innerHTML = title;
+    $("#page-sub").textContent = sub;
+    $("#page-body").innerHTML = body;
+    bindFieldEvents();
+  }
+
+  function renderSite(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Brand</h3>
+        <div class="row">
+          ${fieldText("Brand name","site.brand")}
+          ${fieldText("Tagline","site.tagline")}
+        </div>
+        ${fieldImage("Logo","site.logo")}
+        <div class="row">
+          ${fieldText("Public URL","site.url",{hint:"E.g. https://anchora-apartments.me"})}
+          ${fieldText("Primary email","site.primaryEmail")}
+        </div>
+        <div class="row">
+          ${fieldText("Language code","site.lang",{hint:"E.g. en, sr"})}
+          ${fieldText("Locale","site.locale",{hint:"E.g. en_US"})}
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="group__title">Address</h3>
+        <div class="row">
+          ${fieldText("Street","site.address.street")}
+          ${fieldText("Postal code","site.address.postalCode")}
+        </div>
+        <div class="row">
+          ${fieldText("City","site.address.city")}
+          ${fieldText("Country","site.address.country")}
+        </div>
+        <div class="row">
+          ${fieldText("Country code","site.address.countryCode",{hint:"2-letter ISO, e.g. ME"})}
+          ${fieldText("Latitude","site.address.lat")}
+        </div>
+        ${fieldText("Longitude","site.address.lng")}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Social</h3>
+        <div class="row">
+          ${fieldText("Instagram URL","site.social.instagram")}
+          ${fieldText("Instagram handle","site.social.instagramHandle")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderHero(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Headline</h3>
+        ${fieldText("Eyebrow (small label above the title)","hero.eyebrow")}
+        ${fieldText("Title","hero.title",{hint:"HTML allowed. Wrap a word with &lt;em&gt;...&lt;/em&gt; for italic accent."})}
+        ${fieldArea("Lede paragraph","hero.lede",{rows:3})}
+        ${fieldText("Bottom signature line","hero.signature")}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Background image</h3>
+        ${fieldImage("Hero image","hero.image")}
+        ${fieldText("Image alt-text","hero.imageAlt")}
+        <div class="row">
+          ${fieldText("Caption — title","hero.captionTitle")}
+          ${fieldText("Caption — meta","hero.captionMeta")}
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="group__title">Call-to-action buttons</h3>
+        <div class="row">
+          ${fieldText("Primary — label","hero.primaryCta.label")}
+          ${fieldText("Primary — href","hero.primaryCta.href")}
+        </div>
+        <div class="row">
+          ${fieldText("Secondary — label","hero.secondaryCta.label")}
+          ${fieldText("Secondary — href","hero.secondaryCta.href")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderMarquee(){
+    return `<div class="group">
+      <h3 class="group__title">Scrolling words band</h3>
+      ${listStrings("Words / phrases","marqueeWords",{placeholder:"E.g. 200 m to the sea"})}
+    </div>`;
+  }
+
+  function renderStory(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Headline</h3>
+        ${fieldText("Eyebrow","story.eyebrow")}
+        ${fieldText("Title (HTML allowed)","story.title")}
+        ${fieldText("Closing signature line","story.signature")}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Body paragraphs</h3>
+        ${listStrings("Paragraphs","story.paragraphs",{textarea:true,placeholder:"Tell the story…"})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Stats row (3 numbers)</h3>
+        ${listObjects("Stats","story.stats",[
+          {key:"value",label:"Value (HTML allowed)",hint:"E.g. 400&lt;em&gt;+&lt;/em&gt;"},
+          {key:"label",label:"Label"}
+        ])}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Story photos (3 small)</h3>
+        ${listImages("Photos","story.images",{folder:"images/Exterijer/"})}
+      </div>
+    `;
+  }
+
+  function renderEssentials(){
+    return `<div class="group">
+      <h3 class="group__title">Stay essentials — 4 icon tiles</h3>
+      ${listObjects("Tiles","amenities",[
+        {key:"icon",label:"Icon",type:"select",options:["wifi","key","car","linen"]},
+        {key:"title",label:"Title"},
+        {key:"body",label:"Body",type:"textarea"}
+      ])}
+    </div>`;
+  }
+
+  function renderApartmentsHeader(){
+    return `<div class="group">
+      <h3 class="group__title">Apartments — section heading on the homepage</h3>
+      ${fieldText("Eyebrow","apartmentsSection.eyebrow")}
+      ${fieldText("Title (HTML allowed)","apartmentsSection.title")}
+      ${fieldArea("Lede","apartmentsSection.lede",{rows:2})}
+    </div>`;
+  }
+
+  function renderApartment(i){
+    const base = `apartments[${i}]`;
+    const folder = `images/${i+1}/`;
+    return `
+      <div class="group">
+        <h3 class="group__title">Identity</h3>
+        <div class="row">
+          ${fieldText("Display name (HTML allowed)", base+".name", {hint:"E.g. Suite No. &lt;em&gt;01&lt;/em&gt;"})}
+          ${fieldText("Subtitle / theme name", base+".subtitle")}
+        </div>
+        <div class="row">
+          ${fieldText("Slug", base+".slug")}
+          ${fieldText("URL filename", base+".url",{hint:"E.g. apartment-1.html"})}
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="group__title">Description</h3>
+        ${fieldArea("Short description", base+".shortDescription",{rows:3})}
+        ${listStrings("Long description (paragraphs)", base+".longDescription",{textarea:true})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Quick facts</h3>
+        <div class="row">
+          ${fieldText("Guests", base+".facts.guests",{hint:"HTML allowed"})}
+          ${fieldText("Bedrooms", base+".facts.bedrooms")}
+        </div>
+        <div class="row">
+          ${fieldText("Bathrooms", base+".facts.bathrooms")}
+          ${fieldText("Size", base+".facts.size",{hint:"E.g. 42 m²"})}
+        </div>
+      </div>
+      <div class="group">
+        <h3 class="group__title">Amenities</h3>
+        ${listStrings("Amenities (one per line)", base+".amenities",{placeholder:"E.g. Air conditioning"})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Featured photos</h3>
+        ${fieldImage("Hero image (top of detail page)", base+".heroImage")}
+        ${fieldImage("Card thumbnail (homepage grid)", base+".thumbImage")}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Photo gallery</h3>
+        ${listImages("Gallery", base+".gallery",{folder})}
+      </div>
+    `;
+  }
+
+  function renderBuilding(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Heading</h3>
+        ${fieldText("Title (HTML allowed)","building.title")}
+        ${fieldArea("Lede","building.lede",{rows:3})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Meta tags row</h3>
+        ${listStrings("Tags","building.metaItems",{placeholder:"E.g. Built ~ 1620"})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Photo gallery</h3>
+        ${listImages("Building photos","building.images",{folder:"images/Exterijer/"})}
+      </div>
+    `;
+  }
+
+  function renderParking(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Heading</h3>
+        ${fieldText("Title (HTML allowed)","parking.title")}
+        ${fieldArea("Lede","parking.lede",{rows:3})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Meta tags row</h3>
+        ${listStrings("Tags","parking.metaItems",{placeholder:"E.g. Reserved spot"})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Photo gallery</h3>
+        ${listImages("Parking photos","parking.images",{folder:"images/Parking/"})}
+      </div>
+    `;
+  }
+
+  function renderLocation(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Heading</h3>
+        ${fieldText("Eyebrow","location.eyebrow")}
+        ${fieldText("Title (HTML allowed)","location.title")}
+        ${fieldArea("Lede","location.lede",{rows:3})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Distances</h3>
+        ${listObjects("Distance rows","location.distances",[
+          {key:"name",label:"Place"},
+          {key:"value",label:"Distance / time",hint:"E.g. 200 m · 2 min walk"}
+        ])}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Map</h3>
+        ${fieldArea("Google Maps embed URL","location.mapEmbed",{rows:2,hint:"From Google Maps → Share → Embed → copy the src URL"})}
+      </div>
+    `;
+  }
+
+  function renderContact(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Heading</h3>
+        ${fieldText("Eyebrow","contact.eyebrow")}
+        ${fieldText("Title (HTML allowed)","contact.title")}
+        ${fieldArea("Lede","contact.lede",{rows:2})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Contact rows (icons + values)</h3>
+        ${listObjects("Rows","contact.details",[
+          {key:"icon",label:"Icon",type:"select",options:["mail","pin","instagram"]},
+          {key:"label",label:"Label"},
+          {key:"value",label:"Display value"},
+          {key:"href",label:"Link href"}
+        ])}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Form headings</h3>
+        ${fieldText("Form title","contact.form.title")}
+        ${fieldText("Form subtitle","contact.form.subtitle")}
+      </div>
+    `;
+  }
+
+  function renderSeo(){
+    return `
+      <div class="group">
+        <h3 class="group__title">Home page</h3>
+        ${fieldText("Page title","seo.home.title",{hint:"~60 characters"})}
+        ${fieldArea("Meta description","seo.home.description",{rows:3,hint:"~155 characters"})}
+        ${fieldImage("Social share image","seo.home.ogImage")}
+        ${fieldArea("Keywords","seo.home.keywords",{rows:2})}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Apartment pages</h3>
+        ${fieldText("Title template","seo.apartmentTitleTemplate",{hint:"Use {name}"})}
+        ${fieldText("Description template","seo.apartmentDescriptionTemplate")}
+      </div>
+      <div class="group">
+        <h3 class="group__title">Gallery page</h3>
+        ${fieldText("Page title","seo.gallery.title")}
+        ${fieldArea("Meta description","seo.gallery.description",{rows:2})}
+      </div>
+    `;
+  }
+
+  /* ---------- Field event binding ---------- */
+  function bindFieldEvents(){
+    // Bind text/textarea/select inputs
+    $$("[data-bind]").forEach(el => {
+      el.addEventListener("input", () => {
+        const path = el.getAttribute("data-bind");
+        setAt(content, path, el.value);
+        markDirty();
+        // If image path field, update its sibling thumbnail
+        if (el.classList.contains("imgrow__path")) {
+          const row = el.closest(".imgrow");
+          if (row) {
+            const oldThumb = row.querySelector(".imgrow__thumb,.imgrow__thumb-fallback");
+            if (oldThumb) oldThumb.outerHTML = imgThumbHtml(el.value);
+          }
+        }
+      });
+    });
+
+    // List moves & removes
+    $$("[data-list-move]").forEach(b => b.addEventListener("click", () => {
+      const row = b.closest(".list__row");
+      const path = row.getAttribute("data-list-row");
+      const idx = parseInt(row.getAttribute("data-list-index"), 10);
+      const dir = b.getAttribute("data-list-move");
+      const arr = getAt(content, path);
+      if (!Array.isArray(arr)) return;
+      const target = dir === "up" ? idx - 1 : idx + 1;
+      if (target < 0 || target >= arr.length) return;
+      [arr[idx], arr[target]] = [arr[target], arr[idx]];
+      markDirty();
+      renderSection();
+    }));
+
+    $$("[data-list-remove]").forEach(b => b.addEventListener("click", () => {
+      const row = b.closest(".list__row");
+      const path = row.getAttribute("data-list-row");
+      const idx = parseInt(row.getAttribute("data-list-index"), 10);
+      const arr = getAt(content, path);
+      if (!Array.isArray(arr)) return;
+      arr.splice(idx, 1);
+      markDirty();
+      renderSection();
+    }));
+
+    // List add (string)
+    $$("[data-list-add]").forEach(b => b.addEventListener("click", () => {
+      const path = b.getAttribute("data-list-add");
+      const arr = getAt(content, path) || [];
+      arr.push("");
+      setAt(content, path, arr);
+      markDirty();
+      renderSection();
+    }));
+
+    // List add (object)
+    $$("[data-list-add-obj]").forEach(b => b.addEventListener("click", () => {
+      const path = b.getAttribute("data-list-add-obj");
+      const container = b.parentElement.parentElement.querySelector("[data-list-container]");
+      const fieldsRaw = container ? container.getAttribute("data-list-objects") : null;
+      const fields = fieldsRaw ? JSON.parse(fieldsRaw.replace(/&apos;/g,"'")) : [];
+      const obj = {};
+      fields.forEach(f => obj[f.key] = "");
+      const arr = getAt(content, path) || [];
+      arr.push(obj);
+      setAt(content, path, arr);
+      markDirty();
+      renderSection();
+    }));
+
+    // Single-image upload
+    $$("[data-pick-image]").forEach(b => b.addEventListener("click", async () => {
+      const path = b.getAttribute("data-pick-image");
+      const f = await pickFile();
+      if (!f) return;
+      const folder = "images/";
+      const result = await uploadFile(f, folder);
+      if (result) {
+        setAt(content, path, result.path);
+        markDirty();
+        renderSection();
+        toast("Photo uploaded", "success");
+      }
+    }));
+
+    // Multi-image upload (gallery)
+    $$("[data-pick-images]").forEach(b => b.addEventListener("click", async () => {
+      const path = b.getAttribute("data-pick-images");
+      const folder = b.getAttribute("data-folder") || "images/";
+      const files = await pickFiles();
+      if (!files || !files.length) return;
+      await batchUpload(files, folder, path);
+    }));
+
+    // Drag-drop on dropzones
+    $$("[data-dropzone]").forEach(dz => {
+      const path = dz.getAttribute("data-dropzone");
+      const folder = dz.getAttribute("data-folder") || "images/";
+      ["dragenter","dragover"].forEach(ev => dz.addEventListener(ev, e => {
+        e.preventDefault(); e.stopPropagation();
+        dz.classList.add("is-over");
+      }));
+      ["dragleave","drop"].forEach(ev => dz.addEventListener(ev, e => {
+        e.preventDefault(); e.stopPropagation();
+        if (ev === "dragleave" && dz.contains(e.relatedTarget)) return;
+        dz.classList.remove("is-over");
+      }));
+      dz.addEventListener("drop", async e => {
+        const files = Array.from(e.dataTransfer.files || []).filter(f => /^image\//.test(f.type));
+        if (!files.length) return;
+        await batchUpload(files, folder, path);
+      });
+    });
+  }
+
+  async function batchUpload(files, folder, listPath){
+    const dz = $(`[data-dropzone="${cssEsc(listPath)}"]`);
+    const progEl = dz ? dz.querySelector("[data-dz-progress]") : null;
+    let done = 0;
+    for (const f of files) {
+      if (progEl) progEl.textContent = `Uploading ${++done} / ${files.length} — ${f.name}`;
+      try {
+        const r = await uploadFile(f, folder);
+        if (r) {
+          const arr = getAt(content, listPath) || [];
+          arr.push(r.path);
+          setAt(content, listPath, arr);
+          markDirty();
+        }
+      } catch (e) {
+        toast("Upload failed: " + (e.message || e), "error");
+      }
+    }
+    if (progEl) progEl.textContent = "";
+    renderSection();
+    if (done) toast(`${done} photo${done>1?"s":""} uploaded`, "success");
+  }
+
+  async function uploadFile(file, folder){
+    const safeName = file.name.replace(/[^a-zA-Z0-9_\-. ]+/g, "-").replace(/-+/g,"-");
+    let path = (folder.endsWith("/") ? folder : folder + "/") + safeName;
+    if (path.length > 240) path = path.slice(0,240);
+
+    const dataBase64 = await fileToBase64(file);
+    setStatus("Uploading photo…", "saving");
+    try {
+      const r = await api("/api/upload", { method:"POST", body:{ path, dataBase64 } });
+      setStatus("");
+      return r;
+    } catch (e) {
+      setStatus("Upload failed: " + e.message, "error");
+      throw e;
+    }
+  }
+
+  function fileToBase64(file){
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => {
+        const s = r.result;
+        const i = s.indexOf("base64,");
+        resolve(i >= 0 ? s.slice(i + 7) : s);
+      };
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+  }
+
+  function pickFile(){
+    return new Promise(resolve => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.onchange = () => resolve(input.files && input.files[0]);
+      input.click();
+    });
+  }
+  function pickFiles(){
+    return new Promise(resolve => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.multiple = true;
+      input.onchange = () => resolve(Array.from(input.files || []));
+      input.click();
+    });
+  }
+
+  /* ---------- Save ---------- */
+  async function save(){
+    if (!dirty) return;
+    setStatus("Saving to GitHub…", "saving");
+    $("#save-btn").disabled = true;
+    try {
+      const r = await api("/api/content", { method:"PUT", body:{ content, sha } });
+      sha = r.sha;
+      baseline = deepClone(content);
+      markClean();
+      setStatus("Saved · site is rebuilding (~30 s)", "saved");
+      toast("Changes saved", "success");
+      // Clear status after a while
+      setTimeout(() => setStatus(""), 8000);
+    } catch (e) {
+      setStatus("");
+      $("#save-btn").disabled = false;
+      if (e.status === 409 || /sha/i.test(e.message)) {
+        toast("Someone else edited the file — reloading", "error");
+        await loadContent();
+      } else {
+        toast("Save failed: " + e.message, "error");
+      }
+    }
+  }
+
+  /* ---------- Reload / discard ---------- */
+  async function loadContent(){
+    setStatus("Loading content…");
+    try {
+      const r = await api("/api/content");
+      content = r.content;
+      baseline = deepClone(content);
+      sha = r.sha;
+      markClean();
+      setStatus("");
+      renderSection();
+    } catch (e) {
+      setStatus("Failed to load content: " + e.message, "error");
+      toast("Could not load content. Check Vercel env vars.", "error");
+    }
+  }
+
+  /* ---------- Auth ---------- */
+  async function checkAuth(){
+    try {
+      await api("/api/me");
+      showApp();
+      await loadContent();
+    } catch (e) {
+      showLogin();
+    }
+  }
+
+  function showLogin(){
+    $("#login").style.display = "flex";
+    $("#app").classList.remove("is-active");
+    setTimeout(() => $("#login-pass").focus(), 50);
+  }
+  function showApp(){
+    $("#login").style.display = "none";
+    $("#app").classList.add("is-active");
+  }
+
+  /* ---------- Login form ---------- */
+  $("#login-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const pass = $("#login-pass").value;
+    const errEl = $("#login-error");
+    const btn = $("#login-btn");
+    errEl.textContent = "";
+    btn.disabled = true; btn.textContent = "Signing in…";
+    try {
+      await api("/api/login", { method:"POST", body:{ password: pass } });
+      showApp();
+      await loadContent();
+    } catch (e) {
+      errEl.textContent = e.message || "Sign-in failed";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Sign in";
+      $("#login-pass").value = "";
+    }
+  });
+
+  /* ---------- Save / reload / logout ---------- */
+  $("#save-btn").addEventListener("click", save);
+  $("#reload-btn").addEventListener("click", () => {
+    if (dirty && !confirm("Discard all unsaved changes?")) return;
+    content = deepClone(baseline);
+    markClean();
+    renderSection();
+    toast("Changes discarded");
+  });
+  $("#logout-btn").addEventListener("click", async () => {
+    if (dirty && !confirm("You have unsaved changes — log out anyway?")) return;
+    try { await api("/api/logout", { method:"POST" }); } catch {}
+    showLogin();
+  });
+  $("#menu-toggle").addEventListener("click", () => $("#sidebar").classList.toggle("is-open"));
+
+  /* ---------- Keyboard: Cmd/Ctrl+S = save ---------- */
+  document.addEventListener("keydown", e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+      e.preventDefault();
+      save();
+    }
+  });
+
+  /* ---------- Beforeunload ---------- */
+  window.addEventListener("beforeunload", e => {
+    if (dirty) { e.preventDefault(); e.returnValue = ""; }
+  });
+
+  /* ---------- Helpers ---------- */
+  function escapeHtml(s){ return String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+  function escapeAttr(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+  function cssEsc(s){ return String(s).replace(/(["\\\[\]])/g,"\\$1"); }
+
+  /* ---------- Boot ---------- */
+  renderSidebar();
+  checkAuth();
+})();
+</script>
+
+</body>
+</html>

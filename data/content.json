@@ -1,0 +1,525 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-30",
+    "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder."
+  },
+  "site": {
+    "brand": "Anchora Apartments",
+    "tagline": "Herceg Novi · Old Town",
+    "logo": "images/logo.png",
+    "url": "https://anchora-apartments.me",
+    "lang": "en",
+    "locale": "en_US",
+    "primaryEmail": "anchorapartmentshn@gmail.com",
+    "address": {
+      "street": "Marka Vojnovića 33",
+      "postalCode": "85340",
+      "city": "Herceg Novi",
+      "country": "Montenegro",
+      "countryCode": "ME",
+      "lat": "42.4530",
+      "lng": "18.5375"
+    },
+    "social": {
+      "instagram": "https://www.instagram.com/anchorapartmentshn/",
+      "instagramHandle": "@anchorapartmentshn"
+    }
+  },
+
+  "nav": [
+    { "label": "Apartments", "href": "index.html#apartments" },
+    { "label": "The Building",  "href": "index.html#building" },
+    { "label": "Location",   "href": "index.html#location" },
+    { "label": "Gallery",    "href": "gallery.html" },
+    { "label": "Contact",    "href": "index.html#contact" }
+  ],
+
+  "hero": {
+    "eyebrow": "Anchora · Est. in a 400-year-old stone house",
+    "title": "Six rustic-luxe retreats in <em>old-town</em> Herceg Novi.",
+    "lede": "A quiet sanctuary inside a 400-year-old stone house, two minutes from the Adriatic, in the historic heart of Herceg Novi.",
+    "image": "images/Exterijer/Sidro napolje.jpg",
+    "imageAlt": "Anchora Apartments — historic stone façade in old-town Herceg Novi",
+    "captionTitle": "Marka Vojnovića 33",
+    "captionMeta": "42.4530° N · 18.5375° E",
+    "primaryCta": { "label": "Browse Apartments", "href": "#apartments" },
+    "secondaryCta": { "label": "Get In Touch", "href": "#contact" },
+    "signature": "Six keys · One stone house · Four centuries"
+  },
+
+  "marqueeWords": [
+    "Old-town Herceg Novi",
+    "200 m to the sea",
+    "Tivat airport · 25 min",
+    "Dubrovnik airport · 40 min",
+    "Private parking",
+    "400-year-old stone house",
+    "Six unique apartments"
+  ],
+
+  "story": {
+    "eyebrow": "Our House",
+    "title": "Four centuries of stone, refined for the way you travel <em>today</em>.",
+    "paragraphs": [
+      "Anchora occupies a 17th-century stone house in the strict centre of Herceg Novi's old town — a building shaped by Venetian, Austro-Hungarian and Mediterranean hands, now carefully reimagined into six distinct apartments.",
+      "Original walls, hand-hewn timber beams and quiet inner courtyards have been preserved alongside considered modern comforts: linen-soft beds, deep showers, fast Wi-Fi and air conditioning. Rustic in spirit, luxurious in detail."
+    ],
+    "signature": "— It feels like a private home, because it once was.",
+    "stats": [
+      { "value": "400<em>+</em>", "label": "Years of history" },
+      { "value": "06",            "label": "Curated apartments" },
+      { "value": "200<em>m</em>", "label": "To the Adriatic" }
+    ],
+    "images": [
+      "images/Exterijer/Sidro napolje 1.jpg",
+      "images/Exterijer/Sidro napolje_5.jpg",
+      "images/Exterijer/Sidro napolje_12.jpg"
+    ]
+  },
+
+  "apartmentsSection": {
+    "eyebrow": "The Six Keys",
+    "title": "Each apartment has its <em>own character</em>.",
+    "lede": "Six layouts, six moods. Whether you are travelling solo, as a couple, or with the family, there is a key in our hands for you."
+  },
+
+  "apartments": [
+    {
+      "id": 1,
+      "slug": "apartment-1",
+      "url": "apartment-1.html",
+      "name": "Suite No. <em>01</em>",
+      "subtitle": "Stone & Beam",
+      "shortDescription": "A spacious suite with original stone walls, exposed beams and a generous double bedroom — our most-loved retreat.",
+      "longDescription": [
+        "Our flagship suite occupies a corner of the building where the original stone walls and timber beams have been left fully exposed — the kind of room that lets the house tell its own story.",
+        "A king-size bed, a deep soaking experience in the bath, a thoughtful living area with a writing desk, and a compact kitchenette make this the quiet retreat regular guests return to year after year.",
+        "Tall narrow windows frame the cobbled lane below; mornings come gently, evenings come golden."
+      ],
+      "facts": {
+        "guests": "2<em>–3</em>",
+        "bedrooms": "1",
+        "bathrooms": "1",
+        "size": "42 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Kitchenette", "Espresso machine",
+        "Walk-in shower", "Premium linen", "Blackout curtains", "Hair dryer",
+        "Iron & board", "Safe", "Daily housekeeping"
+      ],
+      "heroImage": "images/1/Apartmani sidro ENT 1_30.jpg",
+      "thumbImage": "images/1/Apartmani sidro ENT 1_30.jpg",
+      "gallery": [
+        "images/1/Apartmani sidro ENT 1_30.jpg",
+        "images/1/Apartmani sidro ENT 1_31.jpg",
+        "images/1/Apartmani sidro ENT 1_32.jpg",
+        "images/1/Apartmani sidro ENT 1_33.jpg",
+        "images/1/Apartmani sidro ENT 1_34.jpg",
+        "images/1/Apartmani sidro ENT 1_35.jpg",
+        "images/1/Apartmani sidro ENT 1_36.jpg",
+        "images/1/Apartmani sidro ENT 1_37.jpg",
+        "images/1/Apartmani sidro ENT 1_38.jpg",
+        "images/1/Apartmani sidro ENT 1_39.jpg",
+        "images/1/Apartmani sidro ENT 1_40.jpg",
+        "images/1/Apartmani sidro ENT 1_41.jpg",
+        "images/1/Apartmani sidro ENT 1_42.jpg",
+        "images/1/Apartmani sidro ENT_38.jpg",
+        "images/1/Apartmani sidro ENT_39.jpg",
+        "images/1/Apartmani sidro ENT_40.jpg",
+        "images/1/Apartmani sidro ENT_41.jpg",
+        "images/1/Apartmani sidro ENT_42.jpg",
+        "images/1/Apartmani sidro ENT_43.jpg",
+        "images/1/Apartmani sidro ENT_44.jpg",
+        "images/1/Apartmani sidro ENT_45.jpg",
+        "images/1/Apartmani sidro ENT_46.jpg",
+        "images/1/Apartmani sidro ENT_47.jpg",
+        "images/1/Apartmani sidro ENT_48.jpg",
+        "images/1/Apartmani sidro ENT_49.jpg",
+        "images/1/Apartmani sidro ENT_50.jpg",
+        "images/1/Apartmani sidro ENT_51.jpg",
+        "images/1/Apartmani sidro ENT_52.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "apartment-2",
+      "url": "apartment-2.html",
+      "name": "Suite No. <em>02</em>",
+      "subtitle": "Maestral",
+      "shortDescription": "A bright corner studio carrying the name of the cool sea breeze — compact, calm, considered.",
+      "longDescription": [
+        "Studio Maestral is named after the gentle north-westerly that drifts through the bay each summer afternoon. Soft linens, a queen-size bed and a quiet sitting nook make it our most popular pick for couples on a short Adriatic break.",
+        "A compact kitchenette and a generous bathroom round out the studio — everything you need, nothing in the way."
+      ],
+      "facts": {
+        "guests": "2",
+        "bedrooms": "Studio",
+        "bathrooms": "1",
+        "size": "28 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Kitchenette", "Nespresso",
+        "Walk-in shower", "Premium linen", "Blackout curtains", "Hair dryer",
+        "Iron on request", "Safe", "Weekly housekeeping"
+      ],
+      "heroImage": "images/2/Apartmani sidro ENT 1_45.jpg",
+      "thumbImage": "images/2/Apartmani sidro ENT 1_45.jpg",
+      "gallery": [
+        "images/2/Apartmani sidro ENT 1_45.jpg",
+        "images/2/Apartmani sidro ENT 1_46.jpg",
+        "images/2/Apartmani sidro ENT 1_47.jpg",
+        "images/2/Apartmani sidro ENT 1_48.jpg",
+        "images/2/Apartmani sidro ENT 1_49.jpg",
+        "images/2/Apartmani sidro ENT 1_50.jpg",
+        "images/2/Apartmani sidro ENT 1_51.jpg",
+        "images/2/Apartmani sidro ENT 1_52.jpg",
+        "images/2/Apartmani sidro ENT 1_62.jpg",
+        "images/2/Apartmani sidro ENT_60.jpg",
+        "images/2/Apartmani sidro ENT_61.jpg",
+        "images/2/Apartmani sidro ENT_62.jpg",
+        "images/2/Apartmani sidro ENT_63.jpg",
+        "images/2/Apartmani sidro ENT_64.jpg",
+        "images/2/Apartmani sidro ENT_65.jpg",
+        "images/2/Apartmani sidro ENT_67.jpg",
+        "images/2/Apartmani sidro ENT_68.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "apartment-3",
+      "url": "apartment-3.html",
+      "name": "Suite No. <em>03</em>",
+      "subtitle": "The Heritage Apartment",
+      "shortDescription": "Our largest residence — two bedrooms, a separate living room and the building's most generous bathroom.",
+      "longDescription": [
+        "The Heritage is the largest of our six apartments — two private bedrooms, a separate sitting room, a fully equipped kitchen and a marble bathroom that you'll want to linger in.",
+        "It's the home we recommend for families, friends travelling together, or anyone who simply wants room to breathe. Original stone meets soft, hand-finished plasterwork; light pours in from two sides through the day."
+      ],
+      "facts": {
+        "guests": "4<em>–6</em>",
+        "bedrooms": "2",
+        "bathrooms": "1",
+        "size": "62 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Full kitchen", "Dishwasher",
+        "Espresso machine", "Walk-in shower", "Premium linen", "Blackout curtains",
+        "Hair dryer", "Washing machine", "Iron & board", "Safe", "Daily housekeeping"
+      ],
+      "heroImage": "images/3/Apartmani sidro ENT 1.jpg",
+      "thumbImage": "images/3/Apartmani sidro ENT 1.jpg",
+      "gallery": [
+        "images/3/Apartmani sidro ENT 1.jpg",
+        "images/3/Apartmani sidro ENT 1_1.jpg",
+        "images/3/Apartmani sidro ENT 1_2.jpg",
+        "images/3/Apartmani sidro ENT 1_3.jpg",
+        "images/3/Apartmani sidro ENT 1_4.jpg",
+        "images/3/Apartmani sidro ENT 1_5.jpg",
+        "images/3/Apartmani sidro ENT 1_6.jpg",
+        "images/3/Apartmani sidro ENT 1_7.jpg",
+        "images/3/Apartmani sidro ENT 1_8.jpg",
+        "images/3/Apartmani sidro ENT 1_9.jpg",
+        "images/3/Apartmani sidro ENT.jpg",
+        "images/3/Apartmani sidro ENT_1.jpg",
+        "images/3/Apartmani sidro ENT_10.jpg",
+        "images/3/Apartmani sidro ENT_11.jpg",
+        "images/3/Apartmani sidro ENT_12.jpg",
+        "images/3/Apartmani sidro ENT_13.jpg",
+        "images/3/Apartmani sidro ENT_14.jpg",
+        "images/3/Apartmani sidro ENT_15.jpg",
+        "images/3/Apartmani sidro ENT_16.jpg",
+        "images/3/Apartmani sidro ENT_17.jpg",
+        "images/3/Apartmani sidro ENT_18.jpg",
+        "images/3/Apartmani sidro ENT_19.jpg",
+        "images/3/Apartmani sidro ENT_2.jpg",
+        "images/3/Apartmani sidro ENT_20.jpg",
+        "images/3/Apartmani sidro ENT_21.jpg",
+        "images/3/Apartmani sidro ENT_3.jpg",
+        "images/3/Apartmani sidro ENT_30.jpg",
+        "images/3/Apartmani sidro ENT_31.jpg",
+        "images/3/Apartmani sidro ENT_4.jpg",
+        "images/3/Apartmani sidro ENT_5.jpg",
+        "images/3/Apartmani sidro ENT_6.jpg",
+        "images/3/Apartmani sidro ENT_7.jpg",
+        "images/3/Apartmani sidro ENT_8.jpg",
+        "images/3/Apartmani sidro ENT_9.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "apartment-4",
+      "url": "apartment-4.html",
+      "name": "Suite No. <em>04</em>",
+      "subtitle": "Levanat",
+      "shortDescription": "A warm one-bedroom retreat named after the easterly wind, with a queen bed and a writing nook.",
+      "longDescription": [
+        "Levanat is the still, warm wind that arrives from the east — and it's also the name of our cosiest one-bedroom apartment.",
+        "A queen-size bed, a small writing desk under a window, a kitchenette and a generous bathroom make this an excellent base for a longer Adriatic stay."
+      ],
+      "facts": {
+        "guests": "2",
+        "bedrooms": "1",
+        "bathrooms": "1",
+        "size": "32 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Kitchenette", "Nespresso",
+        "Walk-in shower", "Premium linen", "Blackout curtains", "Hair dryer",
+        "Iron on request", "Safe", "Weekly housekeeping"
+      ],
+      "heroImage": "images/4/Apartmani sidro ENT 1_10.jpg",
+      "thumbImage": "images/4/Apartmani sidro ENT 1_10.jpg",
+      "gallery": [
+        "images/4/Apartmani sidro ENT 1_10.jpg",
+        "images/4/Apartmani sidro ENT 1_11.jpg",
+        "images/4/Apartmani sidro ENT 1_12.jpg",
+        "images/4/Apartmani sidro ENT 1_13.jpg",
+        "images/4/Apartmani sidro ENT 1_14.jpg",
+        "images/4/Apartmani sidro ENT 1_15.jpg",
+        "images/4/Apartmani sidro ENT 1_16.jpg",
+        "images/4/Apartmani sidro ENT 1_17.jpg",
+        "images/4/Apartmani sidro ENT_22.jpg",
+        "images/4/Apartmani sidro ENT_23.jpg",
+        "images/4/Apartmani sidro ENT_24.jpg",
+        "images/4/Apartmani sidro ENT_25.jpg",
+        "images/4/Apartmani sidro ENT_26.jpg",
+        "images/4/Apartmani sidro ENT_27.jpg",
+        "images/4/Apartmani sidro ENT_28.jpg",
+        "images/4/Apartmani sidro ENT_29.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "apartment-5",
+      "url": "apartment-5.html",
+      "name": "Suite No. <em>05</em>",
+      "subtitle": "The Garret",
+      "shortDescription": "A romantic top-floor apartment under original sloping beams — for travellers who like a view from above.",
+      "longDescription": [
+        "Tucked under the building's original timber beams, The Garret is our top-floor escape — quiet, intimate, with a small skylight that frames the Adriatic morning light.",
+        "A queen bed, a softly lit reading corner, a kitchenette and a beautifully tiled bathroom make it the apartment couples often book for anniversaries."
+      ],
+      "facts": {
+        "guests": "2",
+        "bedrooms": "1",
+        "bathrooms": "1",
+        "size": "30 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Kitchenette", "Nespresso",
+        "Walk-in shower", "Premium linen", "Blackout curtains", "Hair dryer",
+        "Iron on request", "Safe", "Weekly housekeeping"
+      ],
+      "heroImage": "images/5/Apartmani sidro ENT 1_53.jpg",
+      "thumbImage": "images/5/Apartmani sidro ENT 1_53.jpg",
+      "gallery": [
+        "images/5/Apartmani sidro ENT 1_53.jpg",
+        "images/5/Apartmani sidro ENT 1_54.jpg",
+        "images/5/Apartmani sidro ENT 1_55.jpg",
+        "images/5/Apartmani sidro ENT 1_56.jpg",
+        "images/5/Apartmani sidro ENT 1_57.jpg",
+        "images/5/Apartmani sidro ENT 1_58.jpg",
+        "images/5/Apartmani sidro ENT 1_59.jpg",
+        "images/5/Apartmani sidro ENT 1_60.jpg",
+        "images/5/Apartmani sidro ENT_56.jpg",
+        "images/5/Apartmani sidro ENT_57.jpg",
+        "images/5/Apartmani sidro ENT_58.jpg",
+        "images/5/Apartmani sidro ENT_59.jpg",
+        "images/5/Apartmani sidro ENT_66.jpg",
+        "images/5/Apartmani sidro ENT_69.jpg",
+        "images/5/Apartmani sidro ENT_70.jpg",
+        "images/5/Apartmani sidro ENT_71.jpg",
+        "images/5/Apartmani sidro ENT_72.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "apartment-6",
+      "url": "apartment-6.html",
+      "name": "Suite No. <em>06</em>",
+      "subtitle": "Bonaca",
+      "shortDescription": "A serene one-bedroom apartment named after the dead-calm Adriatic — for stillness, sleep and slow mornings.",
+      "longDescription": [
+        "Bonaca is the local word for the moment when the sea sits absolutely still — and it's the feeling we want for guests of this apartment.",
+        "A queen bed dressed in deep linen, a soft sitting area, a kitchenette and a calm, stone-tiled bathroom make this our most restful room. Sleep here is rumoured to be a little better than usual."
+      ],
+      "facts": {
+        "guests": "2",
+        "bedrooms": "1",
+        "bathrooms": "1",
+        "size": "31 m²"
+      },
+      "amenities": [
+        "Air conditioning", "Free Wi-Fi", "Smart TV", "Kitchenette", "Nespresso",
+        "Walk-in shower", "Premium linen", "Blackout curtains", "Hair dryer",
+        "Iron on request", "Safe", "Weekly housekeeping"
+      ],
+      "heroImage": "images/6/Apartmani sidro ENT 1_18.jpg",
+      "thumbImage": "images/6/Apartmani sidro ENT 1_18.jpg",
+      "gallery": [
+        "images/6/Apartmani sidro ENT 1_18.jpg",
+        "images/6/Apartmani sidro ENT 1_19.jpg",
+        "images/6/Apartmani sidro ENT 1_20.jpg",
+        "images/6/Apartmani sidro ENT 1_21.jpg",
+        "images/6/Apartmani sidro ENT 1_22.jpg",
+        "images/6/Apartmani sidro ENT 1_23.jpg",
+        "images/6/Apartmani sidro ENT 1_24.jpg",
+        "images/6/Apartmani sidro ENT 1_25.jpg",
+        "images/6/Apartmani sidro ENT 1_26.jpg",
+        "images/6/Apartmani sidro ENT_32.jpg",
+        "images/6/Apartmani sidro ENT_33.jpg",
+        "images/6/Apartmani sidro ENT_34.jpg",
+        "images/6/Apartmani sidro ENT_35.jpg",
+        "images/6/Apartmani sidro ENT_36.jpg",
+        "images/6/Apartmani sidro ENT_37.jpg"
+      ]
+    }
+  ],
+
+  "amenities": [
+    {
+      "icon": "wifi",
+      "title": "Fast Wi-Fi",
+      "body": "Symmetric fibre across every apartment — designed for travellers who still need to work."
+    },
+    {
+      "icon": "key",
+      "title": "Self check-in",
+      "body": "Smart locks and a 24-hour digital concierge make late arrivals effortless."
+    },
+    {
+      "icon": "car",
+      "title": "Private parking",
+      "body": "A real rarity inside the old town. Reserved spots steps from the entrance, included for our guests."
+    },
+    {
+      "icon": "linen",
+      "title": "Hotel-grade linen",
+      "body": "300-thread cotton, daily-changed towels and the kind of pillows you'll want to take home."
+    }
+  ],
+
+  "building": {
+    "title": "An <em>old stone</em> house, refined.",
+    "lede": "Anchora occupies a single, four-century-old building in the strict centre of Herceg Novi's historic core. We've kept its bones honest — and made everything else quietly modern.",
+    "metaItems": [
+      "Built ~ 1620",
+      "Stone façade",
+      "Inner courtyard",
+      "Restored 2024"
+    ],
+    "images": [
+      "images/Exterijer/Sidro napolje.jpg",
+      "images/Exterijer/Sidro napolje 1.jpg",
+      "images/Exterijer/Sidro napolje 1_1.jpg",
+      "images/Exterijer/Sidro napolje 1_2.jpg",
+      "images/Exterijer/Sidro napolje 1_3.jpg",
+      "images/Exterijer/Sidro napolje 1_4.jpg",
+      "images/Exterijer/Sidro napolje 1_5.jpg",
+      "images/Exterijer/Sidro napolje 1_6.jpg",
+      "images/Exterijer/Sidro napolje 1_7.jpg",
+      "images/Exterijer/Sidro napolje 1_8.jpg",
+      "images/Exterijer/Sidro napolje 1_9.jpg",
+      "images/Exterijer/Sidro napolje 1_10.jpg",
+      "images/Exterijer/Sidro napolje 1_11.jpg",
+      "images/Exterijer/Sidro napolje 1_12.jpg",
+      "images/Exterijer/Sidro napolje 1_13.jpg",
+      "images/Exterijer/Sidro napolje 1_14.jpg",
+      "images/Exterijer/Sidro napolje_1.jpg",
+      "images/Exterijer/Sidro napolje_2.jpg",
+      "images/Exterijer/Sidro napolje_3.jpg",
+      "images/Exterijer/Sidro napolje_4.jpg",
+      "images/Exterijer/Sidro napolje_5.jpg",
+      "images/Exterijer/Sidro napolje_6.jpg",
+      "images/Exterijer/Sidro napolje_7.jpg",
+      "images/Exterijer/Sidro napolje_8.jpg",
+      "images/Exterijer/Sidro napolje_9.jpg",
+      "images/Exterijer/Sidro napolje_10.jpg",
+      "images/Exterijer/Sidro napolje_11.jpg",
+      "images/Exterijer/Sidro napolje_12.jpg",
+      "images/Exterijer/Sidro napolje_13.jpg",
+      "images/Exterijer/Sidro napolje_14.jpg",
+      "images/Exterijer/Sidro napolje_15.jpg",
+      "images/Exterijer/Sidro napolje_16.jpg",
+      "images/Exterijer/Sidro napolje_17.jpg",
+      "images/Exterijer/Sidro napolje_18.jpg",
+      "images/Exterijer/Sidro napolje_19.jpg",
+      "images/Exterijer/Sidro napolje_20.jpg",
+      "images/Exterijer/Sidro napolje_21.jpg",
+      "images/Exterijer/Sidro napolje_22.jpg",
+      "images/Exterijer/Sidro napolje_23.jpg",
+      "images/Exterijer/Sidro napolje_24.jpg",
+      "images/Exterijer/Sidro napolje_25.jpg",
+      "images/Exterijer/Sidro napolje_26.jpg",
+      "images/Exterijer/Sidro napolje_27.jpg",
+      "images/Exterijer/Sidro napolje_28.jpg",
+      "images/Exterijer/Sidro napolje_29.jpg",
+      "images/Exterijer/Sidro napolje_30.jpg"
+    ]
+  },
+
+  "parking": {
+    "title": "Private <em>parking</em>, in the old town.",
+    "lede": "Parking inside Herceg Novi's strict centre is famously rare. Our guests don't worry about it — reserved, secure spots are part of every booking.",
+    "metaItems": [
+      "Reserved spot",
+      "Steps from the door",
+      "Free for guests",
+      "24-hour access"
+    ],
+    "images": [
+      "images/Parking/ Parking.jpg",
+      "images/Parking/ Parking_1.jpg",
+      "images/Parking/ Parking_2.jpg",
+      "images/Parking/ Parking_3.jpg",
+      "images/Parking/ Parking_4.jpg",
+      "images/Parking/ Parking_5.jpg"
+    ]
+  },
+
+  "location": {
+    "eyebrow": "Where you'll be",
+    "title": "In the <em>old town</em>, two minutes from the sea.",
+    "lede": "Anchora sits inside Herceg Novi's historic centre — the kind of address where everything that matters is on foot. The Adriatic is roughly 200 metres away; the bus station, the bay-front promenade and the medieval walls are minutes from the door.",
+    "distances": [
+      { "name": "Adriatic Sea",            "value": "200 m · 2 min walk" },
+      { "name": "Old Town Square",         "value": "120 m · 1 min walk" },
+      { "name": "Bay-front Promenade",     "value": "350 m · 4 min walk" },
+      { "name": "Tivat Airport (TIV)",     "value": "26 km · 25 min drive" },
+      { "name": "Dubrovnik Airport (DBV)", "value": "40 km · 40 min drive" },
+      { "name": "Kotor",                   "value": "43 km · 40 min drive" }
+    ],
+    "mapEmbed": "https://www.google.com/maps?q=Marka+Vojnovi%C4%87a+33,+Herceg+Novi,+Montenegro&output=embed"
+  },
+
+  "contact": {
+    "eyebrow": "Reservations",
+    "title": "Plan your stay at <em>Anchora</em>.",
+    "lede": "Tell us your dates and how many guests are travelling — we'll respond personally, usually within a few hours.",
+    "details": [
+      { "icon": "mail",      "label": "Email",     "value": "anchorapartmentshn@gmail.com", "href": "mailto:anchorapartmentshn@gmail.com" },
+      { "icon": "pin",       "label": "Address",   "value": "Marka Vojnovića 33, 85340 Herceg Novi, Montenegro", "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" },
+      { "icon": "instagram", "label": "Instagram", "value": "@anchorapartmentshn", "href": "https://www.instagram.com/anchorapartmentshn/" }
+    ],
+    "form": {
+      "title": "Request availability",
+      "subtitle": "Pressing send opens your email client with the request pre-filled."
+    }
+  },
+
+  "seo": {
+    "home": {
+      "title": "Anchora Apartments Herceg Novi — Six Rustic-Luxe Suites in the Old Town",
+      "description": "Six unique apartments inside a 400-year-old stone house in the strict centre of Herceg Novi, Montenegro. 200 m from the Adriatic, 25 min from Tivat airport, 40 min from Dubrovnik. Private parking, premium linen, self check-in.",
+      "ogImage": "images/Exterijer/Sidro napolje.jpg",
+      "keywords": "Anchora Apartments Herceg Novi, apartments Herceg Novi old town, luxury apartments Montenegro, stone house apartment Adriatic, Herceg Novi accommodation, near Tivat airport, near Dubrovnik airport"
+    },
+    "apartmentTitleTemplate": "{name} — Anchora Apartments Herceg Novi",
+    "apartmentDescriptionTemplate": "{name} at Anchora Apartments — a {type} inside a 400-year-old stone house in old-town Herceg Novi, 200 m from the Adriatic. Sleeps {guests}. Private parking, premium linen, self check-in.",
+    "gallery": {
+      "title": "Gallery — Anchora Apartments, Herceg Novi",
+      "description": "The 400-year-old stone building, courtyards, façades and private parking of Anchora Apartments in old-town Herceg Novi."
+    }
+  }
+}

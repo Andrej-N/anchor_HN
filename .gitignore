@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel/
+
+# Claude Code workspace settings
+.claude/
+
+# Memory files (local session notes)
+memory/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build artifacts (none today, but future-proof)
+dist/
+build/
+.cache/
+
+# Original-resolution image backup (we serve compressed copies in /images)
+images-original/

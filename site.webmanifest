@@ -1,0 +1,23 @@
+{
+  "name": "Anchora Apartments",
+  "short_name": "Anchora",
+  "description": "Six luxury rustic apartments inside a 400-year-old stone house in the heart of Herceg Novi old town, Montenegro.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#1F8C8C",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
