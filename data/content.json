@@ -5,7 +5,7 @@
     "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder."
   },
   "site": {
-    "brand": "Anchora Apartments",
+    "brand": "Anchor Apartments",
     "tagline": "Herceg Novi · Old Town",
     "logo": "images/logo.png",
     "url": "https://anchora-apartments.me",
