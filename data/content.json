@@ -626,7 +626,7 @@
       "ogImage": "images/Exterijer/Sidro napolje.jpg",
       "keywords": "Anchor Apartments Herceg Novi, apartments Herceg Novi old town, luxury apartments Montenegro, stone house apartment Adriatic, Herceg Novi accommodation, near Tivat airport, near Dubrovnik airport"
     },
-    "apartmentTitleTemplate": "{name} — Anchora Apartments Herceg Novi",
+    "apartmentTitleTemplate": "{name} — Anchor Apartments Herceg Novi",
     "apartmentDescriptionTemplate": "{name} at Anchora Apartments — a {type} inside a 400-year-old stone house in old-town Herceg Novi, 200 m from the Adriatic. Sleeps {guests}. Private parking, premium linen, self check-in.",
     "gallery": {
       "title": "Gallery — Anchora Apartments, Herceg Novi",
