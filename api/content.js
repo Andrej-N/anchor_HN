@@ -37,12 +37,28 @@ export default async function handler(req, res) {
       }
 
       const b64 = jsonToBase64(content);
-      const result = await ghPut(
-        FILE_PATH,
-        b64,
-        "Update site content (admin)",
-        sha || undefined
-      );
+      let result;
+      try {
+        result = await ghPut(
+          FILE_PATH,
+          b64,
+          "Update site content (admin)",
+          sha || undefined
+        );
+      } catch (e) {
+        // Stale sha (file moved on since client GET) — refetch latest sha and retry once.
+        if (e && e.status === 409) {
+          const latest = await ghGet(FILE_PATH);
+          result = await ghPut(
+            FILE_PATH,
+            b64,
+            "Update site content (admin)",
+            latest && latest.sha
+          );
+        } else {
+          throw e;
+        }
+      }
       return res.status(200).json({
         ok: true,
         sha: result.content && result.content.sha,

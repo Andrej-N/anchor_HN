@@ -58,7 +58,9 @@ export async function ghPut(path, contentBase64, message, sha = null) {
     body: JSON.stringify(body)
   });
   if (!r.ok) {
-    throw new Error(`GitHub PUT ${path} failed: ${r.status} ${await r.text()}`);
+    const err = new Error(`GitHub PUT ${path} failed: ${r.status} ${await r.text()}`);
+    err.status = r.status;
+    throw err;
   }
   return await r.json();
 }
