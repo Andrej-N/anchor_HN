@@ -1,7 +1,7 @@
 {
   "_meta": {
     "version": "1.0.0",
-    "lastUpdated": "2026-05-02",
+    "lastUpdated": "2026-05-03",
     "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder."
   },
   "site": {
@@ -51,11 +51,11 @@
     }
   ],
   "hero": {
-    "eyebrow": "Anchora · Est. in a 400-year-old stone house",
+    "eyebrow": "Anchor · Est. in a 400-year-old stone house",
     "title": "Six rustic-luxe retreats in <em>old-town</em> Herceg Novi.",
     "lede": "A quiet sanctuary inside a 400-year-old stone house, two minutes from the Adriatic, in the historic heart of Herceg Novi.",
     "image": "images/Exterijer/Sidro napolje.jpg",
-    "imageAlt": "Anchora Apartments — historic stone façade in old-town Herceg Novi",
+    "imageAlt": "Anchor Apartments — historic stone façade in old-town Herceg Novi",
     "captionTitle": "Marka Vojnovića 33",
     "captionMeta": "42.4530° N · 18.5375° E",
     "primaryCta": {
