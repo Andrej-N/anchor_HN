@@ -98,6 +98,17 @@ a:hover{color:var(--aqua)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media (max-width:780px){.row{grid-template-columns:1fr}}
 
+/* ─── i18n (Serbian) field styling ─── */
+.field--i18n{padding:.65rem .7rem;background:linear-gradient(180deg, #fff 0 50%, #fdf6ed 50% 100%);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:1rem;display:flex;flex-direction:column;gap:.45rem}
+.field--i18n .field__label{margin:0}
+.field--i18n .lang-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.field--i18n .lang-tag--sr{color:var(--brass)}
+.input--sr,.textarea--sr{background:#fdf6ed;border-color:#e6d6b4}
+.input--sr:focus,.textarea--sr:focus{background:#fff;border-color:var(--brass)}
+.list__row .input--sr,.list__row .textarea--sr{background:#fdf6ed}
+.field--i18n .field__hint{font-size:.7rem;color:var(--muted);font-style:italic;margin-top:-.1rem}
+.list__sr-empty{color:var(--brass);background:#fdf6ed;border:1px dashed #e6d6b4;padding:.4rem .55rem;border-radius:var(--r-sm);font-size:.75rem;font-style:italic}
+
 /* ─── Lists (paragraphs, amenities, distances, galleries) ─── */
 .list{display:flex;flex-direction:column;gap:.55rem;margin-top:.4rem}
 .list__row{display:flex;align-items:flex-start;gap:.4rem;background:var(--cream);padding:.5rem;border-radius:var(--r-sm);border:1px solid var(--line)}
@@ -284,6 +295,49 @@ a:hover{color:var(--aqua)}
   }
   function deepClone(v){ return JSON.parse(JSON.stringify(v)); }
 
+  /* ---------- i18n (Serbian) helpers ---------- */
+  function srMap(){
+    if (!content) return {};
+    if (!content.translations) content.translations = {};
+    if (!content.translations.sr) content.translations.sr = {};
+    return content.translations.sr;
+  }
+  function getSr(path){ return srMap()[path]; }
+  function setSr(path, value){
+    if (!content) return;
+    const sr = srMap();
+    if (value === "" || value == null) {
+      delete sr[path];
+    } else {
+      sr[path] = value;
+    }
+  }
+  function ensureSrList(path){
+    const sr = srMap();
+    if (!Array.isArray(sr[path])) {
+      const enArr = getAt(content, path);
+      if (Array.isArray(enArr)) {
+        sr[path] = enArr.map(v => {
+          if (v != null && typeof v === "object") return deepClone(v);
+          return "";
+        });
+      } else {
+        sr[path] = [];
+      }
+    }
+    return sr[path];
+  }
+  function setSrListItem(path, idx, key, value){
+    const arr = ensureSrList(path);
+    while (arr.length <= idx) arr.push(key ? {} : "");
+    if (key) {
+      if (typeof arr[idx] !== "object" || arr[idx] == null) arr[idx] = {};
+      arr[idx][key] = value;
+    } else {
+      arr[idx] = value;
+    }
+  }
+
   function markDirty(){
     dirty = true;
     $("#save-btn").disabled = false;
@@ -345,6 +399,17 @@ a:hover{color:var(--aqua)}
     const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
     const v = getAt(content, path) ?? "";
     const hint = opts.hint ? `<span class="field__hint">${opts.hint}</span>` : "";
+    if (opts.i18n) {
+      const srV = getSr(path) ?? "";
+      return `<div class="field field--i18n">
+        <label class="field__label" for="${id}">${label}</label>
+        <span class="lang-tag">EN</span>
+        <input class="input" type="${opts.type||"text"}" id="${id}" data-bind="${path}" value="${escapeAttr(v)}">
+        <span class="lang-tag lang-tag--sr">SR · Srpski</span>
+        <input class="input input--sr" type="${opts.type||"text"}" data-bind-sr="${escapeAttr(path)}" value="${escapeAttr(srV)}" placeholder="Srpski prevod...">
+        ${hint}
+      </div>`;
+    }
     return `<div class="field">
       <label class="field__label" for="${id}">${label}</label>
       <input class="input" type="${opts.type||"text"}" id="${id}" data-bind="${path}" value="${escapeAttr(v)}">
@@ -355,6 +420,17 @@ a:hover{color:var(--aqua)}
     const id = "f_" + path.replace(/[^a-z0-9]/gi,"_");
     const v = getAt(content, path) ?? "";
     const hint = opts.hint ? `<span class="field__hint">${opts.hint}</span>` : "";
+    if (opts.i18n) {
+      const srV = getSr(path) ?? "";
+      return `<div class="field field--i18n">
+        <label class="field__label" for="${id}">${label}</label>
+        <span class="lang-tag">EN</span>
+        <textarea class="textarea" id="${id}" data-bind="${path}" rows="${opts.rows||3}">${escapeHtml(v)}</textarea>
+        <span class="lang-tag lang-tag--sr">SR · Srpski</span>
+        <textarea class="textarea textarea--sr" data-bind-sr="${escapeAttr(path)}" rows="${opts.rows||3}" placeholder="Srpski prevod...">${escapeHtml(srV)}</textarea>
+        ${hint}
+      </div>`;
+    }
     return `<div class="field">
       <label class="field__label" for="${id}">${label}</label>
       <textarea class="textarea" id="${id}" data-bind="${path}" rows="${opts.rows||3}">${escapeHtml(v)}</textarea>
@@ -395,13 +471,23 @@ a:hover{color:var(--aqua)}
     const arr = getAt(content, path) || [];
     const isArea = !!opts.textarea;
     const placeholder = opts.placeholder || "";
+    const i18n = !!opts.i18n;
+    const srArr = i18n ? (srMap()[path] || []) : null;
     let rows = arr.map((v, i) => {
       const itemPath = `${path}[${i}]`;
-      const inputHtml = isArea
+      const enInput = isArea
         ? `<textarea class="textarea" rows="2" data-bind="${itemPath}" placeholder="${escapeAttr(placeholder)}">${escapeHtml(v)}</textarea>`
         : `<input class="input" type="text" data-bind="${itemPath}" value="${escapeAttr(v)}" placeholder="${escapeAttr(placeholder)}">`;
+      let inner = enInput;
+      if (i18n) {
+        const srV = (srArr && srArr[i] != null && typeof srArr[i] !== "object") ? srArr[i] : "";
+        const srInput = isArea
+          ? `<textarea class="textarea textarea--sr" rows="2" data-bind-sr-list="${escapeAttr(path)}" data-bind-sr-index="${i}" placeholder="Srpski prevod...">${escapeHtml(srV)}</textarea>`
+          : `<input class="input input--sr" type="text" data-bind-sr-list="${escapeAttr(path)}" data-bind-sr-index="${i}" value="${escapeAttr(srV)}" placeholder="Srpski prevod...">`;
+        inner = `<span class="lang-tag">EN</span>${enInput}<span class="lang-tag lang-tag--sr">SR · Srpski</span>${srInput}`;
+      }
       return `<div class="list__row" data-list-row="${path}" data-list-index="${i}">
-        <div class="list__row-inner">${inputHtml}</div>
+        <div class="list__row-inner">${inner}</div>
         <div class="list__ctrl">
           <button class="btn--icon" type="button" title="Move up" data-list-move="up">▲</button>
           <button class="btn--icon" type="button" title="Move down" data-list-move="down">▼</button>
@@ -410,8 +496,8 @@ a:hover{color:var(--aqua)}
       </div>`;
     }).join("");
     return `<div class="field">
-      <label class="field__label">${label}</label>
-      <div class="list" data-list-container="${path}" data-list-textarea="${isArea?1:0}">${rows}</div>
+      <label class="field__label">${label}${i18n?' <span class="lang-tag lang-tag--sr">EN + SR</span>':''}</label>
+      <div class="list" data-list-container="${path}" data-list-textarea="${isArea?1:0}" data-list-i18n="${i18n?1:0}">${rows}</div>
       <div class="list__add">
         <button class="btn btn--ghost btn--sm" type="button" data-list-add="${path}">+ Add</button>
       </div>
@@ -421,10 +507,35 @@ a:hover{color:var(--aqua)}
   /* ---------- List of objects (stats, distances, contact rows…) ---------- */
   function listObjects(label, path, fields, opts={}){
     const arr = getAt(content, path) || [];
+    const hasI18n = fields.some(f => f.i18n);
+    const srArr = hasI18n ? (srMap()[path] || null) : null;
     const rows = arr.map((item, i) => {
       const itemPath = `${path}[${i}]`;
       const inner = fields.map(f => {
         const fp = `${itemPath}.${f.key}`;
+        if (f.i18n) {
+          const enV = getAt(content, fp) ?? "";
+          const srV = (Array.isArray(srArr) && srArr[i] && typeof srArr[i] === "object" && srArr[i][f.key] != null) ? srArr[i][f.key] : "";
+          const id = "f_" + fp.replace(/[^a-z0-9]/gi,"_");
+          if (f.type === "textarea") {
+            return `<div class="field field--i18n">
+              <label class="field__label" for="${id}">${f.label}</label>
+              <span class="lang-tag">EN</span>
+              <textarea class="textarea" id="${id}" data-bind="${fp}" rows="2">${escapeHtml(enV)}</textarea>
+              <span class="lang-tag lang-tag--sr">SR · Srpski</span>
+              <textarea class="textarea textarea--sr" data-bind-sr-obj-list="${escapeAttr(path)}" data-bind-sr-obj-index="${i}" data-bind-sr-obj-key="${escapeAttr(f.key)}" rows="2" placeholder="Srpski prevod...">${escapeHtml(srV)}</textarea>
+              ${f.hint ? `<span class="field__hint">${f.hint}</span>` : ""}
+            </div>`;
+          }
+          return `<div class="field field--i18n">
+            <label class="field__label" for="${id}">${f.label}</label>
+            <span class="lang-tag">EN</span>
+            <input class="input" type="text" id="${id}" data-bind="${fp}" value="${escapeAttr(enV)}">
+            <span class="lang-tag lang-tag--sr">SR · Srpski</span>
+            <input class="input input--sr" type="text" data-bind-sr-obj-list="${escapeAttr(path)}" data-bind-sr-obj-index="${i}" data-bind-sr-obj-key="${escapeAttr(f.key)}" value="${escapeAttr(srV)}" placeholder="Srpski prevod...">
+            ${f.hint ? `<span class="field__hint">${f.hint}</span>` : ""}
+          </div>`;
+        }
         if (f.type === "textarea") return fieldArea(f.label, fp, { rows:2 });
         if (f.type === "select")   return fieldSelect(f.label, fp, f.options || []);
         return fieldText(f.label, fp, { hint:f.hint });
@@ -439,8 +550,8 @@ a:hover{color:var(--aqua)}
       </div>`;
     }).join("");
     return `<div class="field">
-      <label class="field__label">${label}</label>
-      <div class="list" data-list-container="${path}" data-list-objects='${JSON.stringify(fields).replace(/'/g,"&apos;")}'>${rows}</div>
+      <label class="field__label">${label}${hasI18n?' <span class="lang-tag lang-tag--sr">EN + SR</span>':''}</label>
+      <div class="list" data-list-container="${path}" data-list-objects='${JSON.stringify(fields).replace(/'/g,"&apos;")}' data-list-i18n="${hasI18n?1:0}">${rows}</div>
       <div class="list__add">
         <button class="btn btn--ghost btn--sm" type="button" data-list-add-obj="${path}">+ Add</button>
       </div>
@@ -519,7 +630,7 @@ a:hover{color:var(--aqua)}
         <h3 class="group__title">Brand</h3>
         <div class="row">
           ${fieldText("Brand name","site.brand")}
-          ${fieldText("Tagline","site.tagline")}
+          ${fieldText("Tagline","site.tagline",{i18n:true})}
         </div>
         ${fieldImage("Logo","site.logo")}
         <div class="row">
@@ -543,7 +654,7 @@ a:hover{color:var(--aqua)}
         </div>
         <div class="row">
           ${fieldText("City","site.address.city")}
-          ${fieldText("Country","site.address.country")}
+          ${fieldText("Country","site.address.country",{i18n:true})}
         </div>
         <div class="row">
           ${fieldText("Country code","site.address.countryCode",{hint:"2-letter ISO, e.g. ME"})}
@@ -565,15 +676,15 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Headline</h3>
-        ${fieldText("Eyebrow (small label above the title)","hero.eyebrow")}
-        ${fieldText("Title","hero.title",{hint:"HTML allowed. Wrap a word with &lt;em&gt;...&lt;/em&gt; for italic accent."})}
-        ${fieldArea("Lede paragraph","hero.lede",{rows:3})}
-        ${fieldText("Bottom signature line","hero.signature")}
+        ${fieldText("Eyebrow (small label above the title)","hero.eyebrow",{i18n:true})}
+        ${fieldText("Title","hero.title",{hint:"HTML allowed. Wrap a word with &lt;em&gt;...&lt;/em&gt; for italic accent.",i18n:true})}
+        ${fieldArea("Lede paragraph","hero.lede",{rows:3,i18n:true})}
+        ${fieldText("Bottom signature line","hero.signature",{i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Background image</h3>
         ${fieldImage("Hero image","hero.image")}
-        ${fieldText("Image alt-text","hero.imageAlt")}
+        ${fieldText("Image alt-text","hero.imageAlt",{i18n:true})}
         <div class="row">
           ${fieldText("Caption — title","hero.captionTitle")}
           ${fieldText("Caption — meta","hero.captionMeta")}
@@ -582,11 +693,11 @@ a:hover{color:var(--aqua)}
       <div class="group">
         <h3 class="group__title">Call-to-action buttons</h3>
         <div class="row">
-          ${fieldText("Primary — label","hero.primaryCta.label")}
+          ${fieldText("Primary — label","hero.primaryCta.label",{i18n:true})}
           ${fieldText("Primary — href","hero.primaryCta.href")}
         </div>
         <div class="row">
-          ${fieldText("Secondary — label","hero.secondaryCta.label")}
+          ${fieldText("Secondary — label","hero.secondaryCta.label",{i18n:true})}
           ${fieldText("Secondary — href","hero.secondaryCta.href")}
         </div>
       </div>
@@ -596,7 +707,7 @@ a:hover{color:var(--aqua)}
   function renderMarquee(){
     return `<div class="group">
       <h3 class="group__title">Scrolling words band</h3>
-      ${listStrings("Words / phrases","marqueeWords",{placeholder:"E.g. 200 m to the sea"})}
+      ${listStrings("Words / phrases","marqueeWords",{placeholder:"E.g. 200 m to the sea",i18n:true})}
     </div>`;
   }
 
@@ -604,19 +715,19 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Headline</h3>
-        ${fieldText("Eyebrow","story.eyebrow")}
-        ${fieldText("Title (HTML allowed)","story.title")}
-        ${fieldText("Closing signature line","story.signature")}
+        ${fieldText("Eyebrow","story.eyebrow",{i18n:true})}
+        ${fieldText("Title (HTML allowed)","story.title",{i18n:true})}
+        ${fieldText("Closing signature line","story.signature",{i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Body paragraphs</h3>
-        ${listStrings("Paragraphs","story.paragraphs",{textarea:true,placeholder:"Tell the story…"})}
+        ${listStrings("Paragraphs","story.paragraphs",{textarea:true,placeholder:"Tell the story…",i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Stats row (3 numbers)</h3>
         ${listObjects("Stats","story.stats",[
           {key:"value",label:"Value (HTML allowed)",hint:"E.g. 400&lt;em&gt;+&lt;/em&gt;"},
-          {key:"label",label:"Label"}
+          {key:"label",label:"Label",i18n:true}
         ])}
       </div>
       <div class="group">
@@ -630,9 +741,9 @@ a:hover{color:var(--aqua)}
     return `<div class="group">
       <h3 class="group__title">Stay essentials — 4 icon tiles</h3>
       ${listObjects("Tiles","amenities",[
-        {key:"icon",label:"Icon",type:"select",options:["wifi","key","car","linen"]},
-        {key:"title",label:"Title"},
-        {key:"body",label:"Body",type:"textarea"}
+        {key:"icon",label:"Icon",type:"select",options:["wifi","key","car","linen","events"]},
+        {key:"title",label:"Title",i18n:true},
+        {key:"body",label:"Body",type:"textarea",i18n:true}
       ])}
     </div>`;
   }
@@ -640,9 +751,9 @@ a:hover{color:var(--aqua)}
   function renderApartmentsHeader(){
     return `<div class="group">
       <h3 class="group__title">Apartments — section heading on the homepage</h3>
-      ${fieldText("Eyebrow","apartmentsSection.eyebrow")}
-      ${fieldText("Title (HTML allowed)","apartmentsSection.title")}
-      ${fieldArea("Lede","apartmentsSection.lede",{rows:2})}
+      ${fieldText("Eyebrow","apartmentsSection.eyebrow",{i18n:true})}
+      ${fieldText("Title (HTML allowed)","apartmentsSection.title",{i18n:true})}
+      ${fieldArea("Lede","apartmentsSection.lede",{rows:2,i18n:true})}
     </div>`;
   }
 
@@ -653,8 +764,8 @@ a:hover{color:var(--aqua)}
       <div class="group">
         <h3 class="group__title">Identity</h3>
         <div class="row">
-          ${fieldText("Display name (HTML allowed)", base+".name", {hint:"E.g. Suite No. &lt;em&gt;01&lt;/em&gt;"})}
-          ${fieldText("Subtitle / theme name", base+".subtitle")}
+          ${fieldText("Display name (HTML allowed)", base+".name", {hint:"E.g. Suite No. &lt;em&gt;01&lt;/em&gt;",i18n:true})}
+          ${fieldText("Subtitle / theme name", base+".subtitle",{i18n:true})}
         </div>
         <div class="row">
           ${fieldText("Slug", base+".slug")}
@@ -663,14 +774,14 @@ a:hover{color:var(--aqua)}
       </div>
       <div class="group">
         <h3 class="group__title">Description</h3>
-        ${fieldArea("Short description", base+".shortDescription",{rows:3})}
-        ${listStrings("Long description (paragraphs)", base+".longDescription",{textarea:true})}
+        ${fieldArea("Short description", base+".shortDescription",{rows:3,i18n:true})}
+        ${listStrings("Long description (paragraphs)", base+".longDescription",{textarea:true,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Quick facts</h3>
         <div class="row">
           ${fieldText("Guests", base+".facts.guests",{hint:"HTML allowed"})}
-          ${fieldText("Bedrooms", base+".facts.bedrooms")}
+          ${fieldText("Bedrooms", base+".facts.bedrooms",{i18n:true,hint:"E.g. Studio → Garsonjera"})}
         </div>
         <div class="row">
           ${fieldText("Bathrooms", base+".facts.bathrooms")}
@@ -679,7 +790,7 @@ a:hover{color:var(--aqua)}
       </div>
       <div class="group">
         <h3 class="group__title">Amenities</h3>
-        ${listStrings("Amenities (one per line)", base+".amenities",{placeholder:"E.g. Air conditioning"})}
+        ${listStrings("Amenities (one per line)", base+".amenities",{placeholder:"E.g. Air conditioning",i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Featured photos</h3>
@@ -697,12 +808,12 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Heading</h3>
-        ${fieldText("Title (HTML allowed)","building.title")}
-        ${fieldArea("Lede","building.lede",{rows:3})}
+        ${fieldText("Title (HTML allowed)","building.title",{i18n:true})}
+        ${fieldArea("Lede","building.lede",{rows:3,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Meta tags row</h3>
-        ${listStrings("Tags","building.metaItems",{placeholder:"E.g. Built ~ 1620"})}
+        ${listStrings("Tags","building.metaItems",{placeholder:"E.g. Built ~ 1620",i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Photo gallery</h3>
@@ -715,12 +826,12 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Heading</h3>
-        ${fieldText("Title (HTML allowed)","parking.title")}
-        ${fieldArea("Lede","parking.lede",{rows:3})}
+        ${fieldText("Title (HTML allowed)","parking.title",{i18n:true})}
+        ${fieldArea("Lede","parking.lede",{rows:3,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Meta tags row</h3>
-        ${listStrings("Tags","parking.metaItems",{placeholder:"E.g. Reserved spot"})}
+        ${listStrings("Tags","parking.metaItems",{placeholder:"E.g. Reserved spot",i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Photo gallery</h3>
@@ -733,15 +844,15 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Heading</h3>
-        ${fieldText("Eyebrow","location.eyebrow")}
-        ${fieldText("Title (HTML allowed)","location.title")}
-        ${fieldArea("Lede","location.lede",{rows:3})}
+        ${fieldText("Eyebrow","location.eyebrow",{i18n:true})}
+        ${fieldText("Title (HTML allowed)","location.title",{i18n:true})}
+        ${fieldArea("Lede","location.lede",{rows:3,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Distances</h3>
         ${listObjects("Distance rows","location.distances",[
-          {key:"name",label:"Place"},
-          {key:"value",label:"Distance / time",hint:"E.g. 200 m · 2 min walk"}
+          {key:"name",label:"Place",i18n:true},
+          {key:"value",label:"Distance / time",hint:"E.g. 200 m · 2 min walk",i18n:true}
         ])}
       </div>
       <div class="group">
@@ -755,16 +866,16 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Heading</h3>
-        ${fieldText("Eyebrow","contact.eyebrow")}
-        ${fieldText("Title (HTML allowed)","contact.title")}
-        ${fieldArea("Lede","contact.lede",{rows:2})}
+        ${fieldText("Eyebrow","contact.eyebrow",{i18n:true})}
+        ${fieldText("Title (HTML allowed)","contact.title",{i18n:true})}
+        ${fieldArea("Lede","contact.lede",{rows:2,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Contact rows (icons + values)</h3>
         ${listObjects("Rows","contact.details",[
           {key:"icon",label:"Icon",type:"select",options:["phone","mail","pin","instagram"]},
-          {key:"label",label:"Label"},
-          {key:"value",label:"Display value"},
+          {key:"label",label:"Label",i18n:true},
+          {key:"value",label:"Display value",i18n:true},
           {key:"href",label:"Link href",hint:"E.g. tel:+38269..., mailto:..., https://..."}
         ])}
       </div>
@@ -775,33 +886,32 @@ a:hover{color:var(--aqua)}
     return `
       <div class="group">
         <h3 class="group__title">Home page</h3>
-        ${fieldText("Page title","seo.home.title",{hint:"~60 characters"})}
-        ${fieldArea("Meta description","seo.home.description",{rows:3,hint:"~155 characters"})}
+        ${fieldText("Page title","seo.home.title",{hint:"~60 characters",i18n:true})}
+        ${fieldArea("Meta description","seo.home.description",{rows:3,hint:"~155 characters",i18n:true})}
         ${fieldImage("Social share image","seo.home.ogImage")}
-        ${fieldArea("Keywords","seo.home.keywords",{rows:2})}
+        ${fieldArea("Keywords","seo.home.keywords",{rows:2,i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Apartment pages</h3>
-        ${fieldText("Title template","seo.apartmentTitleTemplate",{hint:"Use {name}"})}
-        ${fieldText("Description template","seo.apartmentDescriptionTemplate")}
+        ${fieldText("Title template","seo.apartmentTitleTemplate",{hint:"Use {name}",i18n:true})}
+        ${fieldText("Description template","seo.apartmentDescriptionTemplate",{i18n:true})}
       </div>
       <div class="group">
         <h3 class="group__title">Gallery page</h3>
-        ${fieldText("Page title","seo.gallery.title")}
-        ${fieldArea("Meta description","seo.gallery.description",{rows:2})}
+        ${fieldText("Page title","seo.gallery.title",{i18n:true})}
+        ${fieldArea("Meta description","seo.gallery.description",{rows:2,i18n:true})}
       </div>
     `;
   }
 
   /* ---------- Field event binding ---------- */
   function bindFieldEvents(){
-    // Bind text/textarea/select inputs
+    // Bind EN text/textarea/select inputs
     $$("[data-bind]").forEach(el => {
       el.addEventListener("input", () => {
         const path = el.getAttribute("data-bind");
         setAt(content, path, el.value);
         markDirty();
-        // If image path field, update its sibling thumbnail
         if (el.classList.contains("imgrow__path")) {
           const row = el.closest(".imgrow");
           if (row) {
@@ -812,7 +922,37 @@ a:hover{color:var(--aqua)}
       });
     });
 
-    // List moves & removes
+    // Bind SR scalar fields
+    $$("[data-bind-sr]").forEach(el => {
+      el.addEventListener("input", () => {
+        const path = el.getAttribute("data-bind-sr");
+        setSr(path, el.value);
+        markDirty();
+      });
+    });
+
+    // Bind SR string-list items
+    $$("[data-bind-sr-list]").forEach(el => {
+      el.addEventListener("input", () => {
+        const path = el.getAttribute("data-bind-sr-list");
+        const idx = parseInt(el.getAttribute("data-bind-sr-index"), 10);
+        setSrListItem(path, idx, null, el.value);
+        markDirty();
+      });
+    });
+
+    // Bind SR object-list field items
+    $$("[data-bind-sr-obj-list]").forEach(el => {
+      el.addEventListener("input", () => {
+        const path = el.getAttribute("data-bind-sr-obj-list");
+        const idx = parseInt(el.getAttribute("data-bind-sr-obj-index"), 10);
+        const key = el.getAttribute("data-bind-sr-obj-key");
+        setSrListItem(path, idx, key, el.value);
+        markDirty();
+      });
+    });
+
+    // List moves & removes (mirror to SR if list is i18n)
     $$("[data-list-move]").forEach(b => b.addEventListener("click", () => {
       const row = b.closest(".list__row");
       const path = row.getAttribute("data-list-row");
@@ -823,6 +963,12 @@ a:hover{color:var(--aqua)}
       const target = dir === "up" ? idx - 1 : idx + 1;
       if (target < 0 || target >= arr.length) return;
       [arr[idx], arr[target]] = [arr[target], arr[idx]];
+      const container = row.closest("[data-list-container]");
+      if (container && container.getAttribute("data-list-i18n") === "1") {
+        const sr = ensureSrList(path);
+        while (sr.length < arr.length) sr.push(typeof arr[sr.length] === "object" ? {} : "");
+        [sr[idx], sr[target]] = [sr[target], sr[idx]];
+      }
       markDirty();
       renderSection();
     }));
@@ -834,6 +980,11 @@ a:hover{color:var(--aqua)}
       const arr = getAt(content, path);
       if (!Array.isArray(arr)) return;
       arr.splice(idx, 1);
+      const container = row.closest("[data-list-container]");
+      if (container && container.getAttribute("data-list-i18n") === "1") {
+        const sr = srMap()[path];
+        if (Array.isArray(sr) && sr.length > idx) sr.splice(idx, 1);
+      }
       markDirty();
       renderSection();
     }));
@@ -844,6 +995,10 @@ a:hover{color:var(--aqua)}
       const arr = getAt(content, path) || [];
       arr.push("");
       setAt(content, path, arr);
+      const container = b.closest(".field") && b.closest(".field").querySelector("[data-list-container]");
+      if (container && container.getAttribute("data-list-i18n") === "1") {
+        ensureSrList(path).push("");
+      }
       markDirty();
       renderSection();
     }));
@@ -859,6 +1014,13 @@ a:hover{color:var(--aqua)}
       const arr = getAt(content, path) || [];
       arr.push(obj);
       setAt(content, path, arr);
+      // Mirror SR — push an empty object with translatable keys
+      if (container && container.getAttribute("data-list-i18n") === "1") {
+        const sr = ensureSrList(path);
+        const srItem = {};
+        fields.forEach(f => { if (f.i18n) srItem[f.key] = ""; });
+        sr.push(srItem);
+      }
       markDirty();
       renderSection();
     }));

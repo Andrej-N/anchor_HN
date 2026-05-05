@@ -1,8 +1,10 @@
 {
   "_meta": {
-    "version": "1.0.0",
-    "lastUpdated": "2026-05-03",
-    "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder."
+    "version": "1.1.0",
+    "lastUpdated": "2026-05-05",
+    "languages": ["en", "sr"],
+    "defaultLanguage": "en",
+    "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder. Serbian translations live under translations.sr — keys are the same path as the English value (e.g. 'hero.title')."
   },
   "site": {
     "brand": "Anchor Apartments",
@@ -70,9 +72,9 @@
   },
   "marqueeWords": [
     "Old-town Herceg Novi",
-    "200 m to the sea",
-    "Tivat airport · 25 min",
-    "Dubrovnik airport · 40 min",
+    "200 m to the beaches & promenade",
+    "Tivat (MNE) · 20 km · 30–40 min",
+    "Dubrovnik (HR) · 25 km · 40–50 min",
     "Private parking",
     "400-year-old stone house",
     "Six unique apartments"
@@ -81,8 +83,8 @@
     "eyebrow": "Our House",
     "title": "Four centuries of stone, refined for the way you travel <em>today</em>.",
     "paragraphs": [
-      "Anchor test test test occupies a 17th-century stone house in the strict centre of Herceg Novi's old town — a building shaped by Venetian, Austro-Hungarian and Mediterranean hands, now carefully reimagined into six distinct apartments.",
-      "Original walls, hand-hewn timber beams and quiet inner courtyards have been preserved alongside considered modern comforts: linen-soft beds, deep showers, fast Wi-Fi and air conditioning. Rustic in spirit, luxurious in detail."
+      "Anchor stone villa occupies a 17th-century stone house (built in 1680, restored 2014/2024) in the strict centre of Herceg Novi's old town — a building shaped by Venetian, Austro-Hungarian and Mediterranean hands, now carefully reimagined into six distinct apartments.",
+      "A panoramic terrace looks straight onto the entrance of the Boka Bay, while the spectacular stone yard reads like a small open-air museum. Original walls, hand-hewn timber beams and quiet inner courtyards have been preserved alongside considered modern comforts: hotel-grade linen, deep showers, fast Wi-Fi and air conditioning. Rustic in spirit, luxurious in detail."
     ],
     "signature": "— It feels like a private home, because it once was.",
     "stats": [
@@ -96,7 +98,7 @@
       },
       {
         "value": "200<em>m</em>",
-        "label": "To the Adriatic"
+        "label": "To the beaches & promenade"
       }
     ],
     "images": [
@@ -124,10 +126,10 @@
         "Tall narrow windows frame the cobbled lane below; mornings come gently, evenings come golden."
       ],
       "facts": {
-        "guests": "2<em>–3</em>",
+        "guests": "2<em>–4</em>",
         "bedrooms": "1",
         "bathrooms": "1",
-        "size": "42 m²"
+        "size": "65 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -191,7 +193,7 @@
         "guests": "2",
         "bedrooms": "Studio",
         "bathrooms": "1",
-        "size": "28 m²"
+        "size": "35 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -234,17 +236,17 @@
       "slug": "apartment-3",
       "url": "apartment-3.html",
       "name": "Suite No. <em>03</em>",
-      "subtitle": "The Heritage Apartment",
+      "subtitle": "Heritage",
       "shortDescription": "Our largest residence — two bedrooms, a separate living room and the building's most generous bathroom.",
       "longDescription": [
         "The Heritage is the largest of our six apartments — two private bedrooms, a separate sitting room, a fully equipped kitchen and a marble bathroom that you'll want to linger in.",
         "It's the home we recommend for families, friends travelling together, or anyone who simply wants room to breathe. Original stone meets soft, hand-finished plasterwork; light pours in from two sides through the day."
       ],
       "facts": {
-        "guests": "4<em>–6</em>",
+        "guests": "2<em>–4</em>",
         "bedrooms": "2",
         "bathrooms": "1",
-        "size": "62 m²"
+        "size": "68 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -316,7 +318,7 @@
         "guests": "2",
         "bedrooms": "1",
         "bathrooms": "1",
-        "size": "32 m²"
+        "size": "35 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -358,17 +360,17 @@
       "slug": "apartment-5",
       "url": "apartment-5.html",
       "name": "Suite No. <em>05</em>",
-      "subtitle": "The Garret",
-      "shortDescription": "A romantic top-floor apartment under original sloping beams — for travellers who like a view from above.",
+      "subtitle": "Nevera",
+      "shortDescription": "A romantic top-floor apartment named after the sudden Adriatic squall — intimate, atmospheric, with a view from above.",
       "longDescription": [
-        "Tucked under the building's original timber beams, The Garret is our top-floor escape — quiet, intimate, with a small skylight that frames the Adriatic morning light.",
+        "Nevera takes its name from the dramatic summer storm that sweeps across the Adriatic — and the apartment carries the same atmosphere: intimate, atmospheric, quietly thrilling. Tucked under the building's original timber beams, it is our top-floor escape.",
         "A queen bed, a softly lit reading corner, a kitchenette and a beautifully tiled bathroom make it the apartment couples often book for anniversaries."
       ],
       "facts": {
         "guests": "2",
         "bedrooms": "1",
         "bathrooms": "1",
-        "size": "30 m²"
+        "size": "35 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -421,7 +423,7 @@
         "guests": "2",
         "bedrooms": "1",
         "bathrooms": "1",
-        "size": "31 m²"
+        "size": "35 m²"
       },
       "amenities": [
         "Air conditioning",
@@ -478,16 +480,22 @@
       "icon": "linen",
       "title": "Hotel-grade linen",
       "body": "300-thread cotton, daily-changed towels and the kind of pillows you'll want to take home."
+    },
+    {
+      "icon": "events",
+      "title": "Events on the terrace",
+      "body": "Private gatherings on the panoramic terrace and the open-air stone yard — tailored to your stay."
     }
   ],
   "building": {
     "title": "An <em>old stone</em> house, refined.",
-    "lede": "Anchor occupies a single, four-century-old building in the strict centre of Herceg Novi's historic core. We've kept its bones honest — and made everything else quietly modern.",
+    "lede": "Anchor occupies a single, four-century-old building (built 1680, restored 2014/2024) in the strict centre of Herceg Novi's historic core. A panoramic terrace looks over the entrance of the Boka Bay; the open-air stone yard reads like a small museum. We've kept its bones honest — and made everything else quietly modern.",
     "metaItems": [
-      "Built ~ 1620",
+      "Built 1680",
       "Stone façade",
-      "Inner courtyard",
-      "Restored 2024"
+      "Terrace · Boka Bay view",
+      "Open-air stone yard",
+      "Restored 2014 / 2024"
     ],
     "images": [
       "images/Exterijer/Sidro napolje.jpg",
@@ -559,10 +567,10 @@
   "location": {
     "eyebrow": "Where you'll be",
     "title": "In the <em>old town</em>, two minutes from the sea.",
-    "lede": "Anchor sits inside Herceg Novi's historic centre — the kind of address where everything that matters is on foot. The Adriatic is roughly 200 metres away; the bus station, the bay-front promenade and the medieval walls are minutes from the door.",
+    "lede": "Anchor sits inside Herceg Novi's historic centre — the kind of address where everything that matters is on foot. The beaches and the bay-front promenade are roughly 200 metres away; the bus station and the medieval walls are minutes from the door.",
     "distances": [
       {
-        "name": "Adriatic Sea",
+        "name": "Beaches & Promenade",
         "value": "200 m · 2 min walk"
       },
       {
@@ -574,12 +582,12 @@
         "value": "350 m · 4 min walk"
       },
       {
-        "name": "Tivat Airport (TIV)",
-        "value": "26 km · 25 min drive"
+        "name": "Tivat (MNE) · TIV Airport",
+        "value": "20 km · 30–40 min drive"
       },
       {
-        "name": "Dubrovnik Airport (DBV)",
-        "value": "40 km · 40 min drive"
+        "name": "Dubrovnik (HR) · DBV Airport",
+        "value": "25 km · 40–50 min drive"
       },
       {
         "name": "Kotor",
@@ -622,7 +630,7 @@
   "seo": {
     "home": {
       "title": "Anchor Apartments Herceg Novi — Six Rustic-Luxe Suites in the Old Town",
-      "description": "Six unique apartments inside a 400-year-old stone house in the strict centre of Herceg Novi, Montenegro. 200 m from the Adriatic, 25 min from Tivat airport, 40 min from Dubrovnik. Private parking, premium linen, self check-in.",
+      "description": "Six unique apartments inside a 400-year-old stone house (built 1680, restored 2014/2024) in the strict centre of Herceg Novi, Montenegro. 200 m to the beaches and promenade, 20 km from Tivat (MNE), 25 km from Dubrovnik (HR). Private parking, hotel-grade linen, terrace with Boka Bay view.",
       "ogImage": "images/Exterijer/Sidro napolje.jpg",
       "keywords": "Anchor Apartments Herceg Novi, apartments Herceg Novi old town, luxury apartments Montenegro, stone house apartment Adriatic, Herceg Novi accommodation, near Tivat airport, near Dubrovnik airport"
     },
@@ -631,6 +639,178 @@
     "gallery": {
       "title": "Gallery — Anchor Apartments, Herceg Novi",
       "description": "The 400-year-old stone building, courtyards, façades and private parking of Anchora Apartments in old-town Herceg Novi."
+    }
+  },
+  "translations": {
+    "sr": {
+      "site.tagline": "Herceg Novi · Stari grad",
+      "site.address.country": "Crna Gora",
+
+      "nav": [
+        { "label": "Apartmani", "href": "index.html#apartments" },
+        { "label": "Naša Kuća", "href": "index.html#building" },
+        { "label": "Lokacija", "href": "index.html#location" },
+        { "label": "Galerija", "href": "gallery.html" },
+        { "label": "Kontakt", "href": "index.html#contact" }
+      ],
+
+      "hero.eyebrow": "Anchor · U kamenoj kući staroj 400 godina",
+      "hero.title": "Šest rustično-luksuznih utočišta u <em>starom gradu</em> Herceg Novog.",
+      "hero.lede": "Tihi kutak u kamenoj kući staroj 400 godina, dva minuta od Jadrana, u istorijskom srcu Herceg Novog.",
+      "hero.imageAlt": "Anchor Apartmani — istorijska kamena fasada u starom gradu Herceg Novog",
+      "hero.primaryCta.label": "Pogledaj Apartmane",
+      "hero.secondaryCta.label": "Pošalji Upit",
+      "hero.signature": "Šest ključeva · Jedna kamena kuća · Četiri vijeka",
+
+      "marqueeWords": [
+        "Stari grad Herceg Novi",
+        "200 m do plaža i šetališta",
+        "Tivat (CG) · 20 km · 30–40 min",
+        "Dubrovnik (HR) · 25 km · 40–50 min",
+        "Privatni parking",
+        "Kamena kuća stara 400 godina",
+        "Šest jedinstvenih apartmana"
+      ],
+
+      "story.eyebrow": "Naša Kuća",
+      "story.title": "Četiri vijeka kamena, oplemenjena za način na koji putuješ <em>danas</em>.",
+      "story.paragraphs": [
+        "Anchor kamena vila smještena je u kamenoj kući iz 17. vijeka (sagrađenoj 1680, restauriranoj 2014/2024) u strogom centru starog grada Herceg Novog — građevini koju su oblikovale venecijanske, austrougarske i mediteranske ruke, pažljivo preoblikovanoj u šest različitih apartmana.",
+        "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv, dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi, ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne udobnosti: hotelsku posteljinu, prostrane tuš kabine, brzi Wi-Fi i klimatizaciju. Rustično u duhu, luksuzno u detaljima."
+      ],
+      "story.signature": "— Doživljaj je kao u privatnom domu, jer je nekad to i bio.",
+      "story.stats[0].label": "Godina istorije",
+      "story.stats[1].label": "Pažljivo uređenih apartmana",
+      "story.stats[2].label": "Do plaža i šetališta",
+
+      "apartmentsSection.eyebrow": "Šest Ključeva",
+      "apartmentsSection.title": "Svaki apartman ima <em>svoj karakter</em>.",
+      "apartmentsSection.lede": "Šest različitih prostora, šest različitih raspoloženja. Bilo da putuješ sam, u dvoje ili sa porodicom, za tebe imamo pravi ključ.",
+
+      "apartments[0].name": "Apartman br. <em>01</em>",
+      "apartments[0].subtitle": "Kamen i Greda",
+      "apartments[0].shortDescription": "Prostran apartman sa originalnim kamenim zidovima, vidljivim drvenim gredama i prostranom spavaćom sobom — naše najomiljenije utočište.",
+      "apartments[0].longDescription": [
+        "Naš najupečatljiviji apartman zauzima ugao zgrade u kojem su originalni kameni zidovi i drvene grede ostavljeni potpuno otkriveni — soba u kojoj kuća sama priča svoju priču.",
+        "King-size krevet, kupatilo sa dubokom kadom, promišljen dnevni boravak sa radnim stolom i kompaktnom čajnom kuhinjom čine ovo tiho utočište u koje se redovni gosti vraćaju iz godine u godinu.",
+        "Visoki uski prozori uokviruju popločanu uličicu — jutra dolaze nježno, večeri zlatno."
+      ],
+      "apartments[0].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Espresso aparat", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla i daska", "Sef", "Svakodnevno čišćenje"
+      ],
+
+      "apartments[1].name": "Apartman br. <em>02</em>",
+      "apartments[1].subtitle": "Maestral",
+      "apartments[1].shortDescription": "Svijetli ugaoni studio koji nosi ime svježeg morskog povjetarca — kompaktan, miran, promišljen.",
+      "apartments[1].longDescription": [
+        "Studio Maestral nazvan je po blagom sjeverozapadnom vjetru koji se kroz zaliv povlači svakog ljetnog popodneva. Mekani lan, queen-size krevet i tihi kutak za sjedenje čine ga našim najpopularnijim izborom za parove na kratkom jadranskom odmoru.",
+        "Kompaktna čajna kuhinja i prostrano kupatilo zaokružuju studio — sve što ti treba, ništa što smeta."
+      ],
+      "apartments[1].facts.bedrooms": "Garsonjera",
+      "apartments[1].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+      ],
+
+      "apartments[2].name": "Apartman br. <em>03</em>",
+      "apartments[2].subtitle": "Nasljeđe",
+      "apartments[2].shortDescription": "Naša najprostranija rezidencija — dvije spavaće sobe, odvojeni dnevni boravak i najveće kupatilo u zgradi.",
+      "apartments[2].longDescription": [
+        "Heritage je najveći od naših šest apartmana — dvije odvojene spavaće sobe, izdvojen dnevni boravak, potpuno opremljena kuhinja i mermerno kupatilo u kojem ćeš poželjeti da se zadržiš.",
+        "Ovo je dom koji preporučujemo porodicama, prijateljima koji putuju zajedno, ili svakom ko jednostavno želi prostor da diše. Originalni kamen susreće se sa mekim, ručno obrađenim malterskim površinama; svjetlost ulazi sa dvije strane tokom cijelog dana."
+      ],
+      "apartments[2].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Potpuna kuhinja", "Mašina za suđe", "Espresso aparat", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Mašina za pranje veša", "Pegla i daska", "Sef", "Svakodnevno čišćenje"
+      ],
+
+      "apartments[3].name": "Apartman br. <em>04</em>",
+      "apartments[3].subtitle": "Levanat",
+      "apartments[3].shortDescription": "Topao jednosoban apartman nazvan po istočnom vjetru, sa queen krevetom i kutkom za rad.",
+      "apartments[3].longDescription": [
+        "Levanat je tih, topao vjetar koji dolazi sa istoka — i ime je našeg najprijatnijeg jednosobnog apartmana.",
+        "Queen-size krevet, mali radni sto pod prozorom, čajna kuhinja i prostrano kupatilo čine ga odličnom bazom za duži jadranski boravak."
+      ],
+      "apartments[3].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+      ],
+
+      "apartments[4].name": "Apartman br. <em>05</em>",
+      "apartments[4].subtitle": "Nevera",
+      "apartments[4].shortDescription": "Romantičan apartman na najvišem spratu nazvan po naglom jadranskom nevremenu — intiman, atmosferski, sa pogledom odozgo.",
+      "apartments[4].longDescription": [
+        "Nevera nosi ime dramatične ljetnje oluje koja prelazi preko Jadrana — i apartman ima istu atmosferu: intimnu, slojevitu, tiho uzbudljivu. Smješten pod originalnim drvenim gredama zgrade, ovo je naše utočište na najvišem spratu.",
+        "Queen krevet, mekano osvijetljen kutak za čitanje, čajna kuhinja i prelijepo opločano kupatilo čine ga apartmanom koji parovi često rezervišu za godišnjice."
+      ],
+      "apartments[4].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+      ],
+
+      "apartments[5].name": "Apartman br. <em>06</em>",
+      "apartments[5].subtitle": "Bonaca",
+      "apartments[5].shortDescription": "Mirni jednosoban apartman nazvan po potpuno mirnom Jadranu — za tišinu, san i lagana jutra.",
+      "apartments[5].longDescription": [
+        "Bonaca je lokalni izraz za trenutak kada more potpuno miruje — i to je osjećaj koji želimo za goste ovog apartmana.",
+        "Queen krevet odjeven u duboki lan, mekan kutak za sjedenje, čajna kuhinja i miran kameni kutak za kupatilo čine ga našom najopuštajućom sobom. Govori se da je san ovdje malo bolji nego inače."
+      ],
+      "apartments[5].amenities": [
+        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+      ],
+
+      "amenities": [
+        { "icon": "wifi", "title": "Brzi Wi-Fi", "body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade." },
+        { "icon": "key", "title": "Samostalan check-in", "body": "Pametne brave i 24-časovni digitalni concierge čine kasne dolaske jednostavnim." },
+        { "icon": "car", "title": "Privatni parking", "body": "Prava rijetkost u starom gradu. Rezervisana mjesta na nekoliko koraka od ulaza, uključeno za naše goste." },
+        { "icon": "linen", "title": "Hotelska posteljina", "body": "Pamuk od 300 niti, peškiri koji se mijenjaju dnevno i jastuci koje ćeš poželjeti da poneseš kući." },
+        { "icon": "events", "title": "Događaji na terasi", "body": "Privatna okupljanja na panoramskoj terasi i u otvorenom kamenom dvorištu — prilagođeno tvom boravku." }
+      ],
+
+      "building.title": "Stara <em>kamena</em> kuća, oplemenjena.",
+      "building.lede": "Anchor zauzima jednu zgradu staru četiri vijeka (sagrađenu 1680, restauriranu 2014/2024) u strogom centru istorijskog jezgra Herceg Novog. Panoramska terasa gleda na ulaz u Bokokotorski zaliv; otvoreno kameno dvorište djeluje kao mali muzej. Sačuvali smo kosti zgrade — i sve ostalo učinili tiho modernim.",
+      "building.metaItems": [
+        "Sagrađena 1680.",
+        "Kamena fasada",
+        "Terasa · Pogled na Boku",
+        "Otvoreno kameno dvorište",
+        "Restaurirana 2014. / 2024."
+      ],
+
+      "parking.title": "Privatni <em>parking</em>, u starom gradu.",
+      "parking.lede": "Parking u strogom centru Herceg Novog je čuveno rijedak. Naši gosti o tome ne brinu — rezervisana, sigurna mjesta uključena su u svaku rezervaciju.",
+      "parking.metaItems": [
+        "Rezervisano mjesto",
+        "Nekoliko koraka od ulaza",
+        "Besplatno za goste",
+        "24-časovni pristup"
+      ],
+
+      "location.eyebrow": "Gdje ćeš boraviti",
+      "location.title": "U <em>starom gradu</em>, dva minuta od mora.",
+      "location.lede": "Anchor se nalazi u istorijskom centru Herceg Novog — adresa na kojoj je sve važno na nekoliko koraka. Plaže i obalno šetalište udaljeni su oko 200 metara; autobuska stanica i srednjovjekovne zidine na nekoliko minuta od ulaza.",
+      "location.distances": [
+        { "name": "Plaže i šetalište", "value": "200 m · 2 min hoda" },
+        { "name": "Trg starog grada", "value": "120 m · 1 min hoda" },
+        { "name": "Obalno šetalište", "value": "350 m · 4 min hoda" },
+        { "name": "Tivat (CG) · TIV aerodrom", "value": "20 km · 30–40 min vožnje" },
+        { "name": "Dubrovnik (HR) · DBV aerodrom", "value": "25 km · 40–50 min vožnje" },
+        { "name": "Kotor", "value": "43 km · 40 min vožnje" }
+      ],
+
+      "contact.eyebrow": "Rezervacije",
+      "contact.title": "Planiraj svoj boravak u <em>Anchor</em>-u.",
+      "contact.lede": "Napiši nam datume i broj gostiju — odgovorićemo lično, obično u roku od nekoliko sati.",
+      "contact.details": [
+        { "icon": "phone", "label": "Telefon i WhatsApp", "value": "+382 69 785 573", "href": "tel:+38269785573" },
+        { "icon": "mail", "label": "Email", "value": "anchorapartmentshn@gmail.com", "href": "mailto:anchorapartmentshn@gmail.com" },
+        { "icon": "instagram", "label": "Instagram", "value": "@anchorapartmentshn", "href": "https://www.instagram.com/anchorapartmentshn/" },
+        { "icon": "pin", "label": "Adresa", "value": "Marka Vojnovića 33, 85340 Herceg Novi, Crna Gora", "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" }
+      ],
+
+      "seo.home.title": "Anchor Apartmani Herceg Novi — Šest rustično-luksuznih apartmana u starom gradu",
+      "seo.home.description": "Šest jedinstvenih apartmana u kamenoj kući staroj 400 godina (sagrađenoj 1680, restauriranoj 2014/2024) u strogom centru Herceg Novog, Crna Gora. 200 m do plaža i šetališta, 20 km od Tivta (CG), 25 km od Dubrovnika (HR). Privatni parking, hotelska posteljina, terasa sa pogledom na Boku.",
+      "seo.home.keywords": "Anchor Apartmani Herceg Novi, apartmani Herceg Novi stari grad, luksuzni apartmani Crna Gora, kamena kuća Jadran, smještaj Herceg Novi, blizu Tivat aerodroma, blizu Dubrovnik aerodroma",
+      "seo.apartmentTitleTemplate": "{name} — Anchor Apartmani Herceg Novi",
+      "seo.apartmentDescriptionTemplate": "{name} u Anchor Apartmanima — {type} u kamenoj kući staroj 400 godina u starom gradu Herceg Novog, 200 m od Jadrana. Smještaj za {guests}. Privatni parking, premium posteljina, samostalan check-in.",
+      "seo.gallery.title": "Galerija — Anchor Apartmani, Herceg Novi",
+      "seo.gallery.description": "Kamena kuća stara 400 godina, dvorišta, fasade i privatni parking Anchor apartmana u starom gradu Herceg Novog."
     }
   }
 }
