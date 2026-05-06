@@ -702,6 +702,16 @@
     "galleryCta": {
       "title": "See yourself <em>there</em>?",
       "lede": "The six apartments inside this house are waiting. Pick a key."
+    },
+    "stayEssentials": {
+      "eyebrow": "Stay essentials",
+      "title": "Quiet luxuries, <em>pre-arranged</em>.",
+      "lede": "The kind of details that make a stay feel effortless — taken care of before you arrive, kept invisible during."
+    },
+    "duo": {
+      "eyebrow": "The House & The Yard",
+      "title": "A <em>stone house</em>, and a parking spot to match.",
+      "lede": "Two simple promises: a building you'll want to photograph, and a private parking space — a rare gift inside Herceg Novi's old town."
     }
   },
   "seo": {
@@ -784,6 +794,23 @@
 
       "pages.galleryCta.title": "Vidiš li sebe <em>ovdje</em>?",
       "pages.galleryCta.lede": "Šest apartmana u ovoj kući te čeka. Izaberi ključ.",
+
+      "pages.stayEssentials.eyebrow": "Sadržaji",
+      "pages.stayEssentials.title": "Tihi luksuz, <em>unaprijed pripremljen</em>.",
+      "pages.stayEssentials.lede": "Detalji zbog kojih se boravak čini bezbrižnim — riješeni prije tvog dolaska, nevidljivi tokom njega.",
+
+      "pages.duo.eyebrow": "Kuća i Dvorište",
+      "pages.duo.title": "<em>Kamena kuća</em>, i parking za nju.",
+      "pages.duo.lede": "Dva jednostavna obećanja: zgrada koju ćeš poželjeti fotografisati, i privatno parking mjesto — rijedak poklon u starom gradu Herceg Novog.",
+
+      "amenities[0].title": "Brzi Wi-Fi",
+      "amenities[0].body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade.",
+      "amenities[1].title": "Samostalan check-in",
+      "amenities[1].body": "Pametne brave i 24-satni digitalni concierge čine kasne dolaske bezbrižnim.",
+      "amenities[2].title": "Privatni parking",
+      "amenities[2].body": "Prava rijetkost u starom gradu. Rezervisana mjesta na koraku od ulaza, uključena za naše goste.",
+      "amenities[3].title": "Hotelska posteljina",
+      "amenities[3].body": "Pamuk od 300 niti, peškiri koji se mijenjaju svakodnevno i jastuci koje ćeš poželjeti da poneseš kući.",
 
       "nav": [
         { "label": "Apartmani", "href": "index.html#apartments" },
