@@ -627,6 +627,83 @@
       }
     ]
   },
+  "pages": {
+    "nav": {
+      "apartments": "Apartments",
+      "building": "The Building",
+      "location": "Location",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    },
+    "cta": {
+      "reserve": "Reserve",
+      "useForm": "Use the form",
+      "emailUs": "Email us",
+      "browseApartments": "Browse Apartments"
+    },
+    "facts": {
+      "guests": "Guests",
+      "bedrooms": "Bedrooms",
+      "baths": "Baths",
+      "area": "Area"
+    },
+    "labels": {
+      "about": "About",
+      "phoneWhatsapp": "Phone & WhatsApp",
+      "email": "Email",
+      "instagram": "Instagram"
+    },
+    "footer": {
+      "visit": "Visit",
+      "stayWithUs": "Stay With Us",
+      "contact": "Contact",
+      "reservations": "Reservations",
+      "tag": "Six rustic-luxe apartments inside a 400-year-old stone house, in the strict centre of Herceg Novi old town.",
+      "rights": "All rights reserved.",
+      "builtWith": "Built with care in"
+    },
+    "amenitiesSection": {
+      "eyebrow": "Inside the Suite",
+      "title": "Pre-arranged <em>essentials</em>.",
+      "lede": "Each apartment is set up to meet you ready: linens fresh, climate set, the small things already taken care of."
+    },
+    "photoGallery": {
+      "eyebrow": "Photo gallery",
+      "title": "A look <em>inside</em>.",
+      "lede": "Click any photo to view the full gallery in a lightbox. All images are of the actual apartment."
+    },
+    "otherApartments": {
+      "eyebrow": "Or perhaps",
+      "title": "The <em>other five</em>.",
+      "lede": "Have a look at the rest of the house — six unique keys, six different moods."
+    },
+    "aptCta": {
+      "titlePrefix": "Ready to <em>stay</em> in",
+      "titleSuffix": "?",
+      "lede": "Send us your dates and we'll come back personally — usually within a few hours. Direct bookings always include private parking."
+    },
+    "galleryPage": {
+      "breadcrumb": "Gallery",
+      "eyebrow": "The House & The Yard",
+      "title": "Four centuries of <em>stone</em>, and a parking spot to match.",
+      "lede": "Photographs of the building's exterior, façade, courtyards and the private parking reserved for our guests. Click any photo to enlarge."
+    },
+    "galleryTabs": {
+      "building": "The Building",
+      "parking": "Private Parking",
+      "apartments": "Apartments"
+    },
+    "gallerySection": {
+      "buildingTitle": "The <em>stone house</em>.",
+      "buildingLede": "Built around 1620 in the strict centre of Herceg Novi old town, our stone house has been carefully restored — keeping its original façade, beams and inner courtyard.",
+      "parkingTitle": "<em>Private</em> parking.",
+      "parkingLede": "Parking inside the old town is famously hard to find. Our guests don't worry about it — reserved, secure spots are part of every booking."
+    },
+    "galleryCta": {
+      "title": "See yourself <em>there</em>?",
+      "lede": "The six apartments inside this house are waiting. Pick a key."
+    }
+  },
   "seo": {
     "home": {
       "title": "Anchor Apartments Herceg Novi — Six Rustic-Luxe Suites in the Old Town",
@@ -645,6 +722,68 @@
     "sr": {
       "site.tagline": "Herceg Novi · Stari grad",
       "site.address.country": "Crna Gora",
+
+      "pages.nav.apartments": "Apartmani",
+      "pages.nav.building": "Naša Kuća",
+      "pages.nav.location": "Lokacija",
+      "pages.nav.gallery": "Galerija",
+      "pages.nav.contact": "Kontakt",
+
+      "pages.cta.reserve": "Rezerviši",
+      "pages.cta.useForm": "Koristi formular",
+      "pages.cta.emailUs": "Pošalji email",
+      "pages.cta.browseApartments": "Pogledaj Apartmane",
+
+      "pages.facts.guests": "Gosti",
+      "pages.facts.bedrooms": "Spavaće sobe",
+      "pages.facts.baths": "Kupatila",
+      "pages.facts.area": "Površina",
+
+      "pages.labels.about": "O apartmanu",
+      "pages.labels.phoneWhatsapp": "Telefon i WhatsApp",
+      "pages.labels.email": "Email",
+      "pages.labels.instagram": "Instagram",
+
+      "pages.footer.visit": "Razgledaj",
+      "pages.footer.stayWithUs": "Odsjedni Kod Nas",
+      "pages.footer.contact": "Kontakt",
+      "pages.footer.reservations": "Rezervacije",
+      "pages.footer.tag": "Šest rustično-luksuznih apartmana u kamenoj kući staroj 400 godina, u strogom centru starog grada Herceg Novog.",
+      "pages.footer.rights": "Sva prava zadržana.",
+      "pages.footer.builtWith": "Rađeno s pažnjom u",
+
+      "pages.amenitiesSection.eyebrow": "Unutra u apartmanu",
+      "pages.amenitiesSection.title": "Sve <em>spremno</em>.",
+      "pages.amenitiesSection.lede": "Svaki apartman je pripremljen da te dočeka: posteljina svježa, klima podešena, sitnice riješene.",
+
+      "pages.photoGallery.eyebrow": "Foto galerija",
+      "pages.photoGallery.title": "Pogled <em>iznutra</em>.",
+      "pages.photoGallery.lede": "Klikni na bilo koju sliku da vidiš galeriju u uvećanom prikazu. Sve fotografije su iz stvarnog apartmana.",
+
+      "pages.otherApartments.eyebrow": "Ili možda",
+      "pages.otherApartments.title": "Ostalih <em>pet</em>.",
+      "pages.otherApartments.lede": "Pogledaj i ostatak kuće — šest različitih ključeva, šest različitih raspoloženja.",
+
+      "pages.aptCta.titlePrefix": "Spreman si da <em>odsjedneš</em> u",
+      "pages.aptCta.titleSuffix": "?",
+      "pages.aptCta.lede": "Pošalji nam datume i odgovorićemo lično — obično u roku od nekoliko sati. Direktne rezervacije uvijek uključuju privatni parking.",
+
+      "pages.galleryPage.breadcrumb": "Galerija",
+      "pages.galleryPage.eyebrow": "Kuća i Dvorište",
+      "pages.galleryPage.title": "Četiri vijeka <em>kamena</em>, i parking u centru.",
+      "pages.galleryPage.lede": "Fotografije fasade, vanjskog izgleda, kamenih dvorišta i privatnog parkinga rezervisanog za naše goste. Klikni na sliku da je uvećaš.",
+
+      "pages.galleryTabs.building": "Naša Kuća",
+      "pages.galleryTabs.parking": "Privatni Parking",
+      "pages.galleryTabs.apartments": "Apartmani",
+
+      "pages.gallerySection.buildingTitle": "<em>Kamena</em> kuća.",
+      "pages.gallerySection.buildingLede": "Sagrađena oko 1620. godine u strogom centru starog grada Herceg Novog, naša kamena kuća je pažljivo restaurirana — sačuvane su originalna fasada, drvene grede i unutrašnje dvorište.",
+      "pages.gallerySection.parkingTitle": "<em>Privatni</em> parking.",
+      "pages.gallerySection.parkingLede": "Parking u starom gradu je čuveno teško naći. Naši gosti o tome ne brinu — rezervisana, sigurna mjesta su dio svake rezervacije.",
+
+      "pages.galleryCta.title": "Vidiš li sebe <em>ovdje</em>?",
+      "pages.galleryCta.lede": "Šest apartmana u ovoj kući te čeka. Izaberi ključ.",
 
       "nav": [
         { "label": "Apartmani", "href": "index.html#apartments" },

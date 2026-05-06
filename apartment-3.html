@@ -249,7 +249,7 @@
   <section class="apt-about" id="about">
     <div class="container apt-about__grid">
       <h2 class="apt-about__title reveal">
-        About <em data-key="apartments[2].subtitle">Heritage</em>
+        <span data-key="pages.labels.about">About</span> <em data-key="apartments[2].subtitle">Heritage</em>
       </h2>
       <div class="apt-about__body reveal" data-paragraphs="apartments[2].longDescription">
         <p>The Heritage is the largest of our six apartments — two private bedrooms, a separate sitting room, a fully equipped kitchen and a marble bathroom that you'll want to linger in.</p>
@@ -263,12 +263,12 @@
     <div class="container">
       <header class="section-head">
         <div>
-          <span class="eyebrow reveal">Inside the Suite</span>
-          <h2 class="section-head__title reveal">
+          <span class="eyebrow reveal" data-key="pages.amenitiesSection.eyebrow">Inside the Suite</span>
+          <h2 class="section-head__title reveal" data-key-html="pages.amenitiesSection.title">
             Pre-arranged <em>essentials</em>.
           </h2>
         </div>
-        <p class="section-head__lede reveal">
+        <p class="section-head__lede reveal" data-key="pages.amenitiesSection.lede">
           Each apartment is set up to meet you ready: linens fresh, climate set, the small things already taken care of.
         </p>
       </header>
@@ -297,12 +297,12 @@
     <div class="container">
       <header class="section-head">
         <div>
-          <span class="eyebrow reveal">Photo gallery</span>
-          <h2 id="gal-heading" class="section-head__title reveal">
+          <span class="eyebrow reveal" data-key="pages.photoGallery.eyebrow">Photo gallery</span>
+          <h2 id="gal-heading" class="section-head__title reveal" data-key-html="pages.photoGallery.title">
             A look <em>inside</em>.
           </h2>
         </div>
-        <p class="section-head__lede reveal">
+        <p class="section-head__lede reveal" data-key="pages.photoGallery.lede">
           Click any photo to view the full gallery in a lightbox. All images are of the actual apartment.
         </p>
       </header>
@@ -419,9 +419,9 @@
     <div class="container apt-cta__inner">
       <div>
         <h2 class="apt-cta__title">
-          Ready to <em>stay</em> in <span data-key="apartments[2].subtitle">Heritage</span>?
+          <span data-key-html="pages.aptCta.titlePrefix">Ready to <em>stay</em> in</span> <span data-key="apartments[2].subtitle">Heritage</span><span data-key="pages.aptCta.titleSuffix">?</span>
         </h2>
-        <p class="apt-cta__lede">
+        <p class="apt-cta__lede" data-key="pages.aptCta.lede">
           Send us your dates and we'll come back personally — usually within a few hours. Direct bookings always include private parking.
         </p>
         <div style="margin-top: var(--space-8); display: flex; gap: var(--space-4); flex-wrap: wrap;">
@@ -456,12 +456,12 @@
     <div class="container">
       <header class="section-head">
         <div>
-          <span class="eyebrow reveal">Or perhaps</span>
-          <h2 class="section-head__title reveal">
+          <span class="eyebrow reveal" data-key="pages.otherApartments.eyebrow">Or perhaps</span>
+          <h2 class="section-head__title reveal" data-key-html="pages.otherApartments.title">
             The <em>other five</em>.
           </h2>
         </div>
-        <p class="section-head__lede reveal">
+        <p class="section-head__lede reveal" data-key="pages.otherApartments.lede">
           Have a look at the rest of the house — six unique keys, six different moods.
         </p>
       </header>
@@ -502,20 +502,20 @@
       <div class="footer__brand">
         <img class="footer__brand-mark" src="images/logo.png" alt="">
         <span class="footer__name" data-key="site.brand">Anchora Apartments</span>
-        <p class="footer__tag">Six rustic-luxe apartments inside a 400-year-old stone house, in the strict centre of Herceg Novi old town.</p>
+        <p class="footer__tag" data-key="pages.footer.tag">Six rustic-luxe apartments inside a 400-year-old stone house, in the strict centre of Herceg Novi old town.</p>
       </div>
       <div>
-        <h3 class="footer__title">Visit</h3>
+        <h3 class="footer__title" data-key="pages.footer.visit">Visit</h3>
         <ul class="footer__list">
-          <li><a href="index.html#apartments">Apartments</a></li>
-          <li><a href="index.html#building">The Building</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="index.html#location">Location</a></li>
-          <li><a href="index.html#contact">Reservations</a></li>
+          <li><a href="index.html#apartments" data-key="pages.nav.apartments">Apartments</a></li>
+          <li><a href="index.html#building" data-key="pages.nav.building">The Building</a></li>
+          <li><a href="gallery.html" data-key="pages.nav.gallery">Gallery</a></li>
+          <li><a href="index.html#location" data-key="pages.nav.location">Location</a></li>
+          <li><a href="index.html#contact" data-key="pages.footer.reservations">Reservations</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer__title">Stay With Us</h3>
+        <h3 class="footer__title" data-key="pages.footer.stayWithUs">Stay With Us</h3>
         <ul class="footer__list">
           <li><a href="apartment-1.html">Suite 01 — Stone &amp; Beam</a></li>
           <li><a href="apartment-2.html">Suite 02 — Maestral</a></li>
@@ -526,7 +526,7 @@
         </ul>
       </div>
       <div>
-        <h3 class="footer__title">Contact</h3>
+        <h3 class="footer__title" data-key="pages.footer.contact">Contact</h3>
         <ul class="footer__list">
           <li><a href="mailto:anchorapartmentshn@gmail.com" data-key="site.primaryEmail">anchorapartmentshn@gmail.com</a></li>
           <li><span data-key="site.address.street">Marka Vojnovića 33</span></li>
@@ -537,8 +537,8 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="copy-year">2026</span> Anchora Apartments. All rights reserved.</span>
-      <span>Built with care in Herceg Novi</span>
+      <span>© <span id="copy-year">2026</span> <span data-key="site.brand">Anchora Apartments</span>. <span data-key="pages.footer.rights">All rights reserved.</span></span>
+      <span><span data-key="pages.footer.builtWith">Built with care in</span> <span data-key="site.address.city">Herceg Novi</span></span>
     </div>
   </div>
 </footer>

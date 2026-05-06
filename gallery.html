@@ -100,15 +100,15 @@
     </a>
     <nav class="nav-primary" aria-label="Primary">
       <ul class="nav-primary__list">
-        <li><a class="nav-primary__link" href="index.html#apartments">Apartments</a></li>
-        <li><a class="nav-primary__link" href="index.html#building">The Building</a></li>
-        <li><a class="nav-primary__link" href="index.html#location">Location</a></li>
-        <li><a class="nav-primary__link is-active" href="gallery.html">Gallery</a></li>
-        <li><a class="nav-primary__link" href="index.html#contact">Contact</a></li>
+        <li><a class="nav-primary__link" href="index.html#apartments" data-key="pages.nav.apartments">Apartments</a></li>
+        <li><a class="nav-primary__link" href="index.html#building" data-key="pages.nav.building">The Building</a></li>
+        <li><a class="nav-primary__link" href="index.html#location" data-key="pages.nav.location">Location</a></li>
+        <li><a class="nav-primary__link is-active" href="gallery.html" data-key="pages.nav.gallery">Gallery</a></li>
+        <li><a class="nav-primary__link" href="index.html#contact" data-key="pages.nav.contact">Contact</a></li>
       </ul>
     </nav>
     <div class="header__cta">
-      <a class="btn btn--primary" href="index.html#contact">Reserve <span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--primary" href="index.html#contact"><span data-key="pages.cta.reserve">Reserve</span> <span class="arrow" aria-hidden="true"></span></a>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
       <span class="nav-toggle__bars" aria-hidden="true"></span>
@@ -128,11 +128,11 @@
       </button>
     </div>
     <nav class="mobile-menu__nav" aria-label="Primary mobile">
-      <a class="mobile-menu__link" href="index.html#apartments"><span class="numeral">01</span> Apartments</a>
-      <a class="mobile-menu__link" href="index.html#building"><span class="numeral">02</span> The Building</a>
-      <a class="mobile-menu__link" href="index.html#location"><span class="numeral">03</span> Location</a>
-      <a class="mobile-menu__link" href="gallery.html"><span class="numeral">04</span> Gallery</a>
-      <a class="mobile-menu__link" href="index.html#contact"><span class="numeral">05</span> Contact</a>
+      <a class="mobile-menu__link" href="index.html#apartments"><span class="numeral">01</span> <span data-key="pages.nav.apartments">Apartments</span></a>
+      <a class="mobile-menu__link" href="index.html#building"><span class="numeral">02</span> <span data-key="pages.nav.building">The Building</span></a>
+      <a class="mobile-menu__link" href="index.html#location"><span class="numeral">03</span> <span data-key="pages.nav.location">Location</span></a>
+      <a class="mobile-menu__link" href="gallery.html"><span class="numeral">04</span> <span data-key="pages.nav.gallery">Gallery</span></a>
+      <a class="mobile-menu__link" href="index.html#contact"><span class="numeral">05</span> <span data-key="pages.nav.contact">Contact</span></a>
     </nav>
     <div class="mobile-menu__lang">
       <div class="lang-switch" data-lang-switch role="group" aria-label="Language">
@@ -150,19 +150,19 @@
   <section class="gallery-hero">
     <div class="container">
       <nav class="gallery-hero__crumbs" aria-label="Breadcrumb">
-        <a href="index.html">Anchora</a>
+        <a href="index.html" data-key="site.brand">Anchora</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">Gallery</span>
+        <span aria-current="page" data-key="pages.galleryPage.breadcrumb">Gallery</span>
       </nav>
 
       <div class="gallery-hero__head">
         <div>
-          <span class="eyebrow reveal">The House &amp; The Yard</span>
-          <h1 class="gallery-hero__title reveal">
+          <span class="eyebrow reveal" data-key="pages.galleryPage.eyebrow">The House &amp; The Yard</span>
+          <h1 class="gallery-hero__title reveal" data-key-html="pages.galleryPage.title">
             Four centuries of <em>stone</em>, and a parking spot to match.
           </h1>
         </div>
-        <p class="gallery-hero__lede reveal">
+        <p class="gallery-hero__lede reveal" data-key="pages.galleryPage.lede">
           Photographs of the building's exterior, façade, courtyards and the private parking reserved for our guests. Click any photo to enlarge.
         </p>
       </div>
@@ -172,9 +172,9 @@
   <!-- Sticky tab bar -->
   <div class="gallery-tabs">
     <div class="container gallery-tabs__inner">
-      <a class="gallery-tab is-active" href="#building">The Building</a>
-      <a class="gallery-tab" href="#parking">Private Parking</a>
-      <a class="gallery-tab" href="index.html#apartments">Apartments</a>
+      <a class="gallery-tab is-active" href="#building" data-key="pages.galleryTabs.building">The Building</a>
+      <a class="gallery-tab" href="#parking" data-key="pages.galleryTabs.parking">Private Parking</a>
+      <a class="gallery-tab" href="index.html#apartments" data-key="pages.galleryTabs.apartments">Apartments</a>
       <span class="gallery-count" id="photo-count"></span>
     </div>
   </div>
@@ -185,11 +185,11 @@
       <header class="gallery-section__head">
         <div>
           <span class="section-id">01</span>
-          <h2 id="building-h" class="gallery-section__title reveal">
+          <h2 id="building-h" class="gallery-section__title reveal" data-key-html="pages.gallerySection.buildingTitle">
             The <em>stone house</em>.
           </h2>
         </div>
-        <p class="gallery-section__lede reveal">
+        <p class="gallery-section__lede reveal" data-key="pages.gallerySection.buildingLede">
           Built around 1620 in the strict centre of Herceg Novi old town, our stone house has been carefully restored — keeping its original façade, beams and inner courtyard.
         </p>
       </header>
@@ -345,11 +345,11 @@
       <header class="gallery-section__head">
         <div>
           <span class="section-id">02</span>
-          <h2 id="parking-h" class="gallery-section__title reveal">
+          <h2 id="parking-h" class="gallery-section__title reveal" data-key-html="pages.gallerySection.parkingTitle">
             <em>Private</em> parking.
           </h2>
         </div>
-        <p class="gallery-section__lede reveal">
+        <p class="gallery-section__lede reveal" data-key="pages.gallerySection.parkingLede">
           Parking inside the old town is famously hard to find. Our guests don't worry about it — reserved, secure spots are part of every booking.
         </p>
       </header>
@@ -381,14 +381,14 @@
   <section class="apt-cta" style="background: var(--color-cream); color: var(--color-ink);">
     <div class="container apt-cta__inner" style="grid-template-columns: 1fr; text-align: center;">
       <div>
-        <h2 class="section-head__title" style="margin-bottom: var(--space-4);">
+        <h2 class="section-head__title" style="margin-bottom: var(--space-4);" data-key-html="pages.galleryCta.title">
           See yourself <em>there</em>?
         </h2>
-        <p class="lead" style="margin-inline: auto; margin-bottom: var(--space-6); color: var(--color-ink-soft);">
+        <p class="lead" style="margin-inline: auto; margin-bottom: var(--space-6); color: var(--color-ink-soft);" data-key="pages.galleryCta.lede">
           The six apartments inside this house are waiting. Pick a key.
         </p>
         <a class="btn btn--primary" href="index.html#apartments">
-          Browse Apartments <span class="arrow" aria-hidden="true"></span>
+          <span data-key="pages.cta.browseApartments">Browse Apartments</span> <span class="arrow" aria-hidden="true"></span>
         </a>
       </div>
     </div>
@@ -403,20 +403,20 @@
       <div class="footer__brand">
         <img class="footer__brand-mark" src="images/logo.png" alt="">
         <span class="footer__name" data-key="site.brand">Anchora Apartments</span>
-        <p class="footer__tag">Six rustic-luxe apartments inside a 400-year-old stone house, in the strict centre of Herceg Novi old town.</p>
+        <p class="footer__tag" data-key="pages.footer.tag">Six rustic-luxe apartments inside a 400-year-old stone house, in the strict centre of Herceg Novi old town.</p>
       </div>
       <div>
-        <h3 class="footer__title">Visit</h3>
+        <h3 class="footer__title" data-key="pages.footer.visit">Visit</h3>
         <ul class="footer__list">
-          <li><a href="index.html#apartments">Apartments</a></li>
-          <li><a href="index.html#building">The Building</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="index.html#location">Location</a></li>
-          <li><a href="index.html#contact">Reservations</a></li>
+          <li><a href="index.html#apartments" data-key="pages.nav.apartments">Apartments</a></li>
+          <li><a href="index.html#building" data-key="pages.nav.building">The Building</a></li>
+          <li><a href="gallery.html" data-key="pages.nav.gallery">Gallery</a></li>
+          <li><a href="index.html#location" data-key="pages.nav.location">Location</a></li>
+          <li><a href="index.html#contact" data-key="pages.footer.reservations">Reservations</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer__title">Stay With Us</h3>
+        <h3 class="footer__title" data-key="pages.footer.stayWithUs">Stay With Us</h3>
         <ul class="footer__list">
           <li><a href="apartment-1.html">Suite 01 — Stone &amp; Beam</a></li>
           <li><a href="apartment-2.html">Suite 02 — Maestral</a></li>
@@ -427,7 +427,7 @@
         </ul>
       </div>
       <div>
-        <h3 class="footer__title">Contact</h3>
+        <h3 class="footer__title" data-key="pages.footer.contact">Contact</h3>
         <ul class="footer__list">
           <li><a href="mailto:anchorapartmentshn@gmail.com" data-key="site.primaryEmail">anchorapartmentshn@gmail.com</a></li>
           <li><span data-key="site.address.street">Marka Vojnovića 33</span></li>
@@ -438,8 +438,8 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© <span id="copy-year">2026</span> Anchora Apartments. All rights reserved.</span>
-      <span>Built with care in Herceg Novi</span>
+      <span>© <span id="copy-year">2026</span> <span data-key="site.brand">Anchora Apartments</span>. <span data-key="pages.footer.rights">All rights reserved.</span></span>
+      <span><span data-key="pages.footer.builtWith">Built with care in</span> <span data-key="site.address.city">Herceg Novi</span></span>
     </div>
   </div>
 </footer>
