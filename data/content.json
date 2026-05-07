@@ -1,8 +1,11 @@
 {
   "_meta": {
     "version": "1.1.0",
-    "lastUpdated": "2026-05-05",
-    "languages": ["en", "sr"],
+    "lastUpdated": "2026-05-07",
+    "languages": [
+      "en",
+      "sr"
+    ],
     "defaultLanguage": "en",
     "instructions": "All editable text and image lists for the Anchora Apartments website. Edit this file (or use /admin.html) to change content site-wide. Image filenames must match files in the corresponding /images/ folder. Serbian translations live under translations.sr — keys are the same path as the English value (e.g. 'hero.title')."
   },
@@ -57,7 +60,7 @@
     "title": "Six rustic-luxe retreats in <em>old-town</em> Herceg Novi.",
     "lede": "A quiet sanctuary inside a 400-year-old stone house, two minutes from the Adriatic, in the historic heart of Herceg Novi.",
     "image": "images/Exterijer/Sidro napolje.jpg",
-    "imageAlt": "Anchor Apartments — historic stone façade in old-town Herceg Novi",
+    "imageAlt": "Anchor Apartments — historic stone facade in old-town Herceg Novi",
     "captionTitle": "Marka Vojnovića 33",
     "captionMeta": "42.4530° N · 18.5375° E",
     "primaryCta": {
@@ -732,28 +735,23 @@
     "sr": {
       "site.tagline": "Herceg Novi · Stari grad",
       "site.address.country": "Crna Gora",
-
       "pages.nav.apartments": "Apartmani",
       "pages.nav.building": "Naša Kuća",
       "pages.nav.location": "Lokacija",
       "pages.nav.gallery": "Galerija",
       "pages.nav.contact": "Kontakt",
-
       "pages.cta.reserve": "Rezerviši",
       "pages.cta.useForm": "Koristi formular",
       "pages.cta.emailUs": "Pošalji email",
       "pages.cta.browseApartments": "Pogledaj Apartmane",
-
       "pages.facts.guests": "Gosti",
       "pages.facts.bedrooms": "Spavaće sobe",
       "pages.facts.baths": "Kupatila",
       "pages.facts.area": "Površina",
-
       "pages.labels.about": "O apartmanu",
       "pages.labels.phoneWhatsapp": "Telefon i WhatsApp",
       "pages.labels.email": "Email",
       "pages.labels.instagram": "Instagram",
-
       "pages.footer.visit": "Razgledaj",
       "pages.footer.stayWithUs": "Odsjedni Kod Nas",
       "pages.footer.contact": "Kontakt",
@@ -761,48 +759,37 @@
       "pages.footer.tag": "Šest rustično-luksuznih apartmana u kamenoj kući staroj 400 godina, u strogom centru starog grada Herceg Novog.",
       "pages.footer.rights": "Sva prava zadržana.",
       "pages.footer.builtWith": "Rađeno s pažnjom u",
-
       "pages.amenitiesSection.eyebrow": "Unutra u apartmanu",
       "pages.amenitiesSection.title": "Sve <em>spremno</em>.",
       "pages.amenitiesSection.lede": "Svaki apartman je pripremljen da te dočeka: posteljina svježa, klima podešena, sitnice riješene.",
-
       "pages.photoGallery.eyebrow": "Foto galerija",
       "pages.photoGallery.title": "Pogled <em>iznutra</em>.",
       "pages.photoGallery.lede": "Klikni na bilo koju sliku da vidiš galeriju u uvećanom prikazu. Sve fotografije su iz stvarnog apartmana.",
-
       "pages.otherApartments.eyebrow": "Ili možda",
       "pages.otherApartments.title": "Ostalih <em>pet</em>.",
       "pages.otherApartments.lede": "Pogledaj i ostatak kuće — šest različitih ključeva, šest različitih raspoloženja.",
-
       "pages.aptCta.titlePrefix": "Spreman si da <em>odsjedneš</em> u",
       "pages.aptCta.titleSuffix": "?",
       "pages.aptCta.lede": "Pošalji nam datume i odgovorićemo lično — obično u roku od nekoliko sati. Direktne rezervacije uvijek uključuju privatni parking.",
-
       "pages.galleryPage.breadcrumb": "Galerija",
       "pages.galleryPage.eyebrow": "Kuća i Dvorište",
       "pages.galleryPage.title": "Četiri vijeka <em>kamena</em>, i parking u centru.",
       "pages.galleryPage.lede": "Fotografije fasade, vanjskog izgleda, kamenih dvorišta i privatnog parkinga rezervisanog za naše goste. Klikni na sliku da je uvećaš.",
-
       "pages.galleryTabs.building": "Naša Kuća",
       "pages.galleryTabs.parking": "Privatni Parking",
       "pages.galleryTabs.apartments": "Apartmani",
-
       "pages.gallerySection.buildingTitle": "<em>Kamena</em> kuća.",
       "pages.gallerySection.buildingLede": "Sagrađena oko 1620. godine u strogom centru starog grada Herceg Novog, naša kamena kuća je pažljivo restaurirana — sačuvane su originalna fasada, drvene grede i unutrašnje dvorište.",
       "pages.gallerySection.parkingTitle": "<em>Privatni</em> parking.",
       "pages.gallerySection.parkingLede": "Parking u starom gradu je čuveno teško naći. Naši gosti o tome ne brinu — rezervisana, sigurna mjesta su dio svake rezervacije.",
-
       "pages.galleryCta.title": "Vidiš li sebe <em>ovdje</em>?",
       "pages.galleryCta.lede": "Šest apartmana u ovoj kući te čeka. Izaberi ključ.",
-
       "pages.stayEssentials.eyebrow": "Sadržaji",
       "pages.stayEssentials.title": "Tihi luksuz, <em>unaprijed pripremljen</em>.",
       "pages.stayEssentials.lede": "Detalji zbog kojih se boravak čini bezbrižnim — riješeni prije tvog dolaska, nevidljivi tokom njega.",
-
       "pages.duo.eyebrow": "Kuća i Dvorište",
       "pages.duo.title": "<em>Kamena kuća</em>, i parking za nju.",
       "pages.duo.lede": "Dva jednostavna obećanja: zgrada koju ćeš poželjeti fotografisati, i privatno parking mjesto — rijedak poklon u starom gradu Herceg Novog.",
-
       "amenities[0].title": "Brzi Wi-Fi",
       "amenities[0].body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade.",
       "amenities[1].title": "Samostalan check-in",
@@ -811,23 +798,35 @@
       "amenities[2].body": "Prava rijetkost u starom gradu. Rezervisana mjesta na koraku od ulaza, uključena za naše goste.",
       "amenities[3].title": "Hotelska posteljina",
       "amenities[3].body": "Pamuk od 300 niti, peškiri koji se mijenjaju svakodnevno i jastuci koje ćeš poželjeti da poneseš kući.",
-
       "nav": [
-        { "label": "Apartmani", "href": "index.html#apartments" },
-        { "label": "Naša Kuća", "href": "index.html#building" },
-        { "label": "Lokacija", "href": "index.html#location" },
-        { "label": "Galerija", "href": "gallery.html" },
-        { "label": "Kontakt", "href": "index.html#contact" }
+        {
+          "label": "Apartmani",
+          "href": "index.html#apartments"
+        },
+        {
+          "label": "Naša Kuća",
+          "href": "index.html#building"
+        },
+        {
+          "label": "Lokacija",
+          "href": "index.html#location"
+        },
+        {
+          "label": "Galerija",
+          "href": "gallery.html"
+        },
+        {
+          "label": "Kontakt",
+          "href": "index.html#contact"
+        }
       ],
-
       "hero.eyebrow": "Anchor · U kamenoj kući staroj 400 godina",
-      "hero.title": "Šest rustično-luksuznih utočišta u <em>starom gradu</em> Herceg Novog.",
-      "hero.lede": "Tihi kutak u kamenoj kući staroj 400 godina, dva minuta od Jadrana, u istorijskom srcu Herceg Novog.",
-      "hero.imageAlt": "Anchor Apartmani — istorijska kamena fasada u starom gradu Herceg Novog",
+      "hero.title": "Vaše  luksuzno rustično utočište u srcu<em>starog grada</em> Herceg Novog.",
+      "hero.lede": "Tihi kutak u rekonstruisanoj kamenoj vili staroj 400 godina,udaljenoj dva minuta od mora, u istorijskom srcu starog grada.",
+      "hero.imageAlt": "Anchor Apartmani — četiri vijeka kamena oplemenjena za današnje potrebe  u starom gradu Herceg Novog.",
       "hero.primaryCta.label": "Pogledaj Apartmane",
       "hero.secondaryCta.label": "Pošalji Upit",
-      "hero.signature": "Šest ključeva · Jedna kamena kuća · Četiri vijeka",
-
+      "hero.signature": " Jedna kamena vila -  Četiri vijeka - Šest ključeva",
       "marqueeWords": [
         "Stari grad Herceg Novi",
         "200 m do plaža i šetališta",
@@ -837,7 +836,6 @@
         "Kamena kuća stara 400 godina",
         "Šest jedinstvenih apartmana"
       ],
-
       "story.eyebrow": "Naša Kuća",
       "story.title": "Četiri vijeka kamena, oplemenjena za način na koji putuješ <em>danas</em>.",
       "story.paragraphs": [
@@ -848,11 +846,9 @@
       "story.stats[0].label": "Godina istorije",
       "story.stats[1].label": "Pažljivo uređenih apartmana",
       "story.stats[2].label": "Do plaža i šetališta",
-
       "apartmentsSection.eyebrow": "Šest Ključeva",
       "apartmentsSection.title": "Svaki apartman ima <em>svoj karakter</em>.",
       "apartmentsSection.lede": "Šest različitih prostora, šest različitih raspoloženja. Bilo da putuješ sam, u dvoje ili sa porodicom, za tebe imamo pravi ključ.",
-
       "apartments[0].name": "Apartman br. <em>01</em>",
       "apartments[0].subtitle": "Kamen i Greda",
       "apartments[0].shortDescription": "Prostran apartman sa originalnim kamenim zidovima, vidljivim drvenim gredama i prostranom spavaćom sobom — naše najomiljenije utočište.",
@@ -862,9 +858,19 @@
         "Visoki uski prozori uokviruju popločanu uličicu — jutra dolaze nježno, večeri zlatno."
       ],
       "apartments[0].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Espresso aparat", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla i daska", "Sef", "Svakodnevno čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Čajna kuhinja",
+        "Espresso aparat",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Pegla i daska",
+        "Sef",
+        "Svakodnevno čišćenje"
       ],
-
       "apartments[1].name": "Apartman br. <em>02</em>",
       "apartments[1].subtitle": "Maestral",
       "apartments[1].shortDescription": "Svijetli ugaoni studio koji nosi ime svježeg morskog povjetarca — kompaktan, miran, promišljen.",
@@ -874,9 +880,19 @@
       ],
       "apartments[1].facts.bedrooms": "Garsonjera",
       "apartments[1].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Čajna kuhinja",
+        "Nespresso",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Pegla na zahtjev",
+        "Sef",
+        "Sedmično čišćenje"
       ],
-
       "apartments[2].name": "Apartman br. <em>03</em>",
       "apartments[2].subtitle": "Nasljeđe",
       "apartments[2].shortDescription": "Naša najprostranija rezidencija — dvije spavaće sobe, odvojeni dnevni boravak i najveće kupatilo u zgradi.",
@@ -885,9 +901,21 @@
         "Ovo je dom koji preporučujemo porodicama, prijateljima koji putuju zajedno, ili svakom ko jednostavno želi prostor da diše. Originalni kamen susreće se sa mekim, ručno obrađenim malterskim površinama; svjetlost ulazi sa dvije strane tokom cijelog dana."
       ],
       "apartments[2].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Potpuna kuhinja", "Mašina za suđe", "Espresso aparat", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Mašina za pranje veša", "Pegla i daska", "Sef", "Svakodnevno čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Potpuna kuhinja",
+        "Mašina za suđe",
+        "Espresso aparat",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Mašina za pranje veša",
+        "Pegla i daska",
+        "Sef",
+        "Svakodnevno čišćenje"
       ],
-
       "apartments[3].name": "Apartman br. <em>04</em>",
       "apartments[3].subtitle": "Levanat",
       "apartments[3].shortDescription": "Topao jednosoban apartman nazvan po istočnom vjetru, sa queen krevetom i kutkom za rad.",
@@ -896,9 +924,19 @@
         "Queen-size krevet, mali radni sto pod prozorom, čajna kuhinja i prostrano kupatilo čine ga odličnom bazom za duži jadranski boravak."
       ],
       "apartments[3].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Čajna kuhinja",
+        "Nespresso",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Pegla na zahtjev",
+        "Sef",
+        "Sedmično čišćenje"
       ],
-
       "apartments[4].name": "Apartman br. <em>05</em>",
       "apartments[4].subtitle": "Nevera",
       "apartments[4].shortDescription": "Romantičan apartman na najvišem spratu nazvan po naglom jadranskom nevremenu — intiman, atmosferski, sa pogledom odozgo.",
@@ -907,9 +945,19 @@
         "Queen krevet, mekano osvijetljen kutak za čitanje, čajna kuhinja i prelijepo opločano kupatilo čine ga apartmanom koji parovi često rezervišu za godišnjice."
       ],
       "apartments[4].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Čajna kuhinja",
+        "Nespresso",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Pegla na zahtjev",
+        "Sef",
+        "Sedmično čišćenje"
       ],
-
       "apartments[5].name": "Apartman br. <em>06</em>",
       "apartments[5].subtitle": "Bonaca",
       "apartments[5].shortDescription": "Mirni jednosoban apartman nazvan po potpuno mirnom Jadranu — za tišinu, san i lagana jutra.",
@@ -918,17 +966,46 @@
         "Queen krevet odjeven u duboki lan, mekan kutak za sjedenje, čajna kuhinja i miran kameni kutak za kupatilo čine ga našom najopuštajućom sobom. Govori se da je san ovdje malo bolji nego inače."
       ],
       "apartments[5].amenities": [
-        "Klimatizacija", "Besplatan Wi-Fi", "Smart TV", "Čajna kuhinja", "Nespresso", "Tuš kabina", "Premium posteljina", "Zavjese koje zamračuju", "Fen za kosu", "Pegla na zahtjev", "Sef", "Sedmično čišćenje"
+        "Klimatizacija",
+        "Besplatan Wi-Fi",
+        "Smart TV",
+        "Čajna kuhinja",
+        "Nespresso",
+        "Tuš kabina",
+        "Premium posteljina",
+        "Zavjese koje zamračuju",
+        "Fen za kosu",
+        "Pegla na zahtjev",
+        "Sef",
+        "Sedmično čišćenje"
       ],
-
       "amenities": [
-        { "icon": "wifi", "title": "Brzi Wi-Fi", "body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade." },
-        { "icon": "key", "title": "Samostalan check-in", "body": "Pametne brave i 24-časovni digitalni concierge čine kasne dolaske jednostavnim." },
-        { "icon": "car", "title": "Privatni parking", "body": "Prava rijetkost u starom gradu. Rezervisana mjesta na nekoliko koraka od ulaza, uključeno za naše goste." },
-        { "icon": "linen", "title": "Hotelska posteljina", "body": "Pamuk od 300 niti, peškiri koji se mijenjaju dnevno i jastuci koje ćeš poželjeti da poneseš kući." },
-        { "icon": "events", "title": "Događaji na terasi", "body": "Privatna okupljanja na panoramskoj terasi i u otvorenom kamenom dvorištu — prilagođeno tvom boravku." }
+        {
+          "icon": "wifi",
+          "title": "Brzi Wi-Fi",
+          "body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade."
+        },
+        {
+          "icon": "key",
+          "title": "Samostalan check-in",
+          "body": "Pametne brave i 24-časovni digitalni concierge čine kasne dolaske jednostavnim."
+        },
+        {
+          "icon": "car",
+          "title": "Privatni parking",
+          "body": "Prava rijetkost u starom gradu. Rezervisana mjesta na nekoliko koraka od ulaza, uključeno za naše goste."
+        },
+        {
+          "icon": "linen",
+          "title": "Hotelska posteljina",
+          "body": "Pamuk od 300 niti, peškiri koji se mijenjaju dnevno i jastuci koje ćeš poželjeti da poneseš kući."
+        },
+        {
+          "icon": "events",
+          "title": "Događaji na terasi",
+          "body": "Privatna okupljanja na panoramskoj terasi i u otvorenom kamenom dvorištu — prilagođeno tvom boravku."
+        }
       ],
-
       "building.title": "Stara <em>kamena</em> kuća, oplemenjena.",
       "building.lede": "Anchor zauzima jednu zgradu staru četiri vijeka (sagrađenu 1680, restauriranu 2014/2024) u strogom centru istorijskog jezgra Herceg Novog. Panoramska terasa gleda na ulaz u Bokokotorski zaliv; otvoreno kameno dvorište djeluje kao mali muzej. Sačuvali smo kosti zgrade — i sve ostalo učinili tiho modernim.",
       "building.metaItems": [
@@ -938,7 +1015,6 @@
         "Otvoreno kameno dvorište",
         "Restaurirana 2014. / 2024."
       ],
-
       "parking.title": "Privatni <em>parking</em>, u starom gradu.",
       "parking.lede": "Parking u strogom centru Herceg Novog je čuveno rijedak. Naši gosti o tome ne brinu — rezervisana, sigurna mjesta uključena su u svaku rezervaciju.",
       "parking.metaItems": [
@@ -947,29 +1023,64 @@
         "Besplatno za goste",
         "24-časovni pristup"
       ],
-
       "location.eyebrow": "Gdje ćeš boraviti",
       "location.title": "U <em>starom gradu</em>, dva minuta od mora.",
       "location.lede": "Anchor se nalazi u istorijskom centru Herceg Novog — adresa na kojoj je sve važno na nekoliko koraka. Plaže i obalno šetalište udaljeni su oko 200 metara; autobuska stanica i srednjovjekovne zidine na nekoliko minuta od ulaza.",
       "location.distances": [
-        { "name": "Plaže i šetalište", "value": "200 m · 2 min hoda" },
-        { "name": "Trg starog grada", "value": "120 m · 1 min hoda" },
-        { "name": "Obalno šetalište", "value": "350 m · 4 min hoda" },
-        { "name": "Tivat (CG) · TIV aerodrom", "value": "20 km · 30–40 min vožnje" },
-        { "name": "Dubrovnik (HR) · DBV aerodrom", "value": "25 km · 40–50 min vožnje" },
-        { "name": "Kotor", "value": "43 km · 40 min vožnje" }
+        {
+          "name": "Plaže i šetalište",
+          "value": "200 m · 2 min hoda"
+        },
+        {
+          "name": "Trg starog grada",
+          "value": "120 m · 1 min hoda"
+        },
+        {
+          "name": "Obalno šetalište",
+          "value": "350 m · 4 min hoda"
+        },
+        {
+          "name": "Tivat (CG) · TIV aerodrom",
+          "value": "20 km · 30–40 min vožnje"
+        },
+        {
+          "name": "Dubrovnik (HR) · DBV aerodrom",
+          "value": "25 km · 40–50 min vožnje"
+        },
+        {
+          "name": "Kotor",
+          "value": "43 km · 40 min vožnje"
+        }
       ],
-
       "contact.eyebrow": "Rezervacije",
       "contact.title": "Planiraj svoj boravak u <em>Anchor</em>-u.",
       "contact.lede": "Napiši nam datume i broj gostiju — odgovorićemo lično, obično u roku od nekoliko sati.",
       "contact.details": [
-        { "icon": "phone", "label": "Telefon i WhatsApp", "value": "+382 69 785 573", "href": "tel:+38269785573" },
-        { "icon": "mail", "label": "Email", "value": "anchorapartmentshn@gmail.com", "href": "mailto:anchorapartmentshn@gmail.com" },
-        { "icon": "instagram", "label": "Instagram", "value": "@anchorapartmentshn", "href": "https://www.instagram.com/anchorapartmentshn/" },
-        { "icon": "pin", "label": "Adresa", "value": "Marka Vojnovića 33, 85340 Herceg Novi, Crna Gora", "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi" }
+        {
+          "icon": "phone",
+          "label": "Telefon i WhatsApp",
+          "value": "+382 69 785 573",
+          "href": "tel:+38269785573"
+        },
+        {
+          "icon": "mail",
+          "label": "Email",
+          "value": "anchorapartmentshn@gmail.com",
+          "href": "mailto:anchorapartmentshn@gmail.com"
+        },
+        {
+          "icon": "instagram",
+          "label": "Instagram",
+          "value": "@anchorapartmentshn",
+          "href": "https://www.instagram.com/anchorapartmentshn/"
+        },
+        {
+          "icon": "pin",
+          "label": "Adresa",
+          "value": "Marka Vojnovića 33, 85340 Herceg Novi, Crna Gora",
+          "href": "https://www.google.com/maps/dir/?api=1&destination=Marka+Vojnovi%C4%87a+33,+Herceg+Novi"
+        }
       ],
-
       "seo.home.title": "Anchor Apartmani Herceg Novi — Šest rustično-luksuznih apartmana u starom gradu",
       "seo.home.description": "Šest jedinstvenih apartmana u kamenoj kući staroj 400 godina (sagrađenoj 1680, restauriranoj 2014/2024) u strogom centru Herceg Novog, Crna Gora. 200 m do plaža i šetališta, 20 km od Tivta (CG), 25 km od Dubrovnika (HR). Privatni parking, hotelska posteljina, terasa sa pogledom na Boku.",
       "seo.home.keywords": "Anchor Apartmani Herceg Novi, apartmani Herceg Novi stari grad, luksuzni apartmani Crna Gora, kamena kuća Jadran, smještaj Herceg Novi, blizu Tivat aerodroma, blizu Dubrovnik aerodroma",
