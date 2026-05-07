@@ -608,7 +608,7 @@
       {
         "icon": "phone",
         "label": "Phone & WhatsApp",
-        "value": "+382 69 785 573",
+        "value": "+382 69 785 573 , +382 67 046 086",
         "href": "tel:+38269785573"
       },
       {
@@ -1056,12 +1056,12 @@
       ],
       "contact.eyebrow": "Rezervacije",
       "contact.title": "Planiraj svoj boravak u <em>Anchor</em>-u.",
-      "contact.lede": "Napiši nam datume i broj gostiju — odgovorićemo lično, obično u roku od nekoliko sati.",
+      "contact.lede": "Napiši nam datume i broj gostiju — odgovorićemo lično, obično u roku od par sati.",
       "contact.details": [
         {
           "icon": "phone",
           "label": "Telefon i WhatsApp",
-          "value": "+382 69 785 573",
+          "value": "+382 69 785 573, +382 67 046 086",
           "href": "tel:+38269785573"
         },
         {
