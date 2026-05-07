@@ -495,7 +495,7 @@
     "lede": "Anchor occupies a single, four-century-old building (built 1680, restored 2014/2024) in the strict centre of Herceg Novi's historic core. A panoramic terrace looks over the entrance of the Boka Bay; the open-air stone yard reads like a small museum. We've kept its bones honest — and made everything else quietly modern.",
     "metaItems": [
       "Built 1680",
-      "Stone façade",
+      "Stone facade",
       "Terrace · Boka Bay view",
       "Open-air stone yard",
       "Restored 2014 / 2024"
@@ -1006,8 +1006,8 @@
           "body": "Privatna okupljanja na panoramskoj terasi i u otvorenom kamenom dvorištu — prilagođeno tvom boravku."
         }
       ],
-      "building.title": "Stara <em>kamena</em> kuća, oplemenjena.",
-      "building.lede": "Anchor zauzima jednu zgradu staru četiri vijeka (sagrađenu 1680, restauriranu 2014/2024) u strogom centru istorijskog jezgra Herceg Novog. Panoramska terasa gleda na ulaz u Bokokotorski zaliv; otvoreno kameno dvorište djeluje kao mali muzej. Sačuvali smo kosti zgrade — i sve ostalo učinili tiho modernim.",
+      "building.title": "Stara <em>kamena</em> vila  oplemenjena detaljima",
+      "building.lede": "Anchor zauzima jednu zgradu staru četiri vijeka (sagrađenu 1680, restauriranu 2014/2024) u strogom centru istorijskog jezgra Herceg Novog. Panoramska terasa gleda na ulaz u Bokokotorski zaliv; otvoreno kameno dvorište djeluje kao mali muzej. Sačuvali smo strukturu zgrade i sve ostalo učinili suptilnim i modernim.",
       "building.metaItems": [
         "Sagrađena 1680.",
         "Kamena fasada",
