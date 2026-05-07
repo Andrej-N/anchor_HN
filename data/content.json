@@ -840,7 +840,7 @@
       "story.title": "Četiri vijeka kamena, oplemenjena za način na koji putuješ <em>danas</em>.",
       "story.paragraphs": [
         "Anchor kamena vila smještena je u kamenoj kući iz 17. vijeka (sagrađenoj 1680, restauriranoj 2014/2024) u strogom centru starog grada Herceg Novog — građevini koju su oblikovale venecijanske, austrougarske i mediteranske ruke, pažljivo preoblikovanoj u šest različitih apartmana.",
-        "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv, dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi, ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne udobnosti: hotelsku posteljinu, prostrane tuš kabine, brzi Wi-Fi i klimatizaciju. Rustično u duhu, luksuzno u detaljima."
+        "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv, dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi, ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne detalje: brzi Wi-Fi , klimatizacija,kvalitetna oprema. Rustično u duhu, luksuzno u detaljima. Na otvoreno,uz izloženih preko 40 muzejskih sidara iz epoha po kome je i vila dobila ime - Anchor (Sidro)"
       ],
       "story.signature": "— Doživljaj je kao u privatnom domu, jer je nekad to i bio.",
       "story.stats[0].label": "Godina istorije",
@@ -1087,7 +1087,21 @@
       "seo.apartmentTitleTemplate": "{name} — Anchor Apartmani Herceg Novi",
       "seo.apartmentDescriptionTemplate": "{name} u Anchor Apartmanima — {type} u kamenoj kući staroj 400 godina u starom gradu Herceg Novog, 200 m od Jadrana. Smještaj za {guests}. Privatni parking, premium posteljina, samostalan check-in.",
       "seo.gallery.title": "Galerija — Anchor Apartmani, Herceg Novi",
-      "seo.gallery.description": "Kamena kuća stara 400 godina, dvorišta, fasade i privatni parking Anchor apartmana u starom gradu Herceg Novog."
+      "seo.gallery.description": "Kamena kuća stara 400 godina, dvorišta, fasade i privatni parking Anchor apartmana u starom gradu Herceg Novog.",
+      "story.stats": [
+        {
+          "value": "400<em>+</em>",
+          "label": "Years of history"
+        },
+        {
+          "value": "06",
+          "label": "Curated apartments"
+        },
+        {
+          "value": "200<em>m</em>",
+          "label": "Do plaža i šetališta"
+        }
+      ]
     }
   }
 }
