@@ -556,7 +556,8 @@
       "Reserved spot",
       "Steps from the door",
       "Free for guests",
-      "24-hour access"
+      "24-hour access",
+      ""
     ],
     "images": [
       "images/Parking/ Parking.jpg",
@@ -1021,7 +1022,8 @@
         "Rezervisano mjesto",
         "Nekoliko koraka od ulaza",
         "Besplatno za goste",
-        "24-časovni pristup"
+        "24-časovni pristup",
+        "Video nadzor"
       ],
       "location.eyebrow": "Gdje ćeš boraviti",
       "location.title": "U <em>starom gradu</em>, dva minuta od mora.",
