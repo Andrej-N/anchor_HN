@@ -894,7 +894,6 @@
         "Sedmično čišćenje"
       ],
       "apartments[2].name": "Apartman br. <em>03</em>",
-      "apartments[2].subtitle": "Nasljeđe",
       "apartments[2].shortDescription": "Naša najprostranija rezidencija — dvije spavaće sobe, odvojeni dnevni boravak i najveće kupatilo u zgradi.",
       "apartments[2].longDescription": [
         "Heritage je najveći od naših šest apartmana — dvije odvojene spavaće sobe, izdvojen dnevni boravak, potpuno opremljena kuhinja i mermerno kupatilo u kojem ćeš poželjeti da se zadržiš.",
@@ -1103,7 +1102,8 @@
           "label": "Do plaža i šetališta"
         }
       ],
-      "story.title": "Posebna pažnja data je kamenoj fasadi, drvenim gredama,unutrašnjem dvorištu, spektakularnoj terasi."
+      "story.title": "Posebna pažnja data je kamenoj fasadi, drvenim gredama,unutrašnjem dvorištu, spektakularnoj terasi.",
+      "apartments[2].subtitle": "Heritage"
     }
   }
 }
