@@ -575,7 +575,7 @@
     "distances": [
       {
         "name": "Beaches & Promenade",
-        "value": "200 m · 2 min walk"
+        "value": "200 - 300 m · 2 - 3 min walk"
       },
       {
         "name": "Old Town Square",
@@ -1027,11 +1027,11 @@
       ],
       "location.eyebrow": "Gdje ćeš boraviti",
       "location.title": "U <em>starom gradu</em>, dva minuta od mora.",
-      "location.lede": "Anchor se nalazi u istorijskom centru Herceg Novog — adresa na kojoj je sve važno na nekoliko koraka. Plaže i obalno šetalište udaljeni su oko 200 metara; autobuska stanica i srednjovjekovne zidine na nekoliko minuta od ulaza.",
+      "location.lede": "Anchor se nalazi u istorijskom centru Herceg Novog — adresa na kojoj je sve važno na nekoliko koraka. Plaže i obalno šetalište udaljeni su oko 200  metara; autobuska stanica i srednjovjekovne zidine na nekoliko minuta od ulaza.",
       "location.distances": [
         {
           "name": "Plaže i šetalište",
-          "value": "200 m · 2 min hoda"
+          "value": "200 - 300 m · 2 - 3 min hoda"
         },
         {
           "name": "Trg starog grada",
