@@ -83,7 +83,7 @@
     "Six unique apartments"
   ],
   "story": {
-    "eyebrow": "Our House",
+    "eyebrow": "Our Villa",
     "title": "Four centuries of stone, refined for the way you travel <em>today</em>.",
     "paragraphs": [
       "Anchor stone villa occupies a 17th-century stone house (built in 1680, restored 2014/2024) in the strict centre of Herceg Novi's old town — a building shaped by Venetian, Austro-Hungarian and Mediterranean hands, now carefully reimagined into six distinct apartments.",
@@ -837,8 +837,7 @@
         "Kamena kuća stara 400 godina",
         "Šest jedinstvenih apartmana"
       ],
-      "story.eyebrow": "Naša Kuća",
-      "story.title": "Četiri vijeka kamena, oplemenjena za način na koji putuješ <em>danas</em>.",
+      "story.eyebrow": "Naša Vila",
       "story.paragraphs": [
         "Anchor kamena vila smještena je u kamenoj kući iz 17. vijeka (sagrađenoj 1680, restauriranoj 2014/2024) u strogom centru starog grada Herceg Novog — građevini koju su oblikovale venecijanske, austrougarske i mediteranske ruke, pažljivo preoblikovanoj u šest različitih apartmana.",
         "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv, dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi, ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne detalje: brzi Wi-Fi , klimatizacija,kvalitetna oprema. Rustično u duhu, luksuzno u detaljima. Na otvoreno,uz izloženih preko 40 muzejskih sidara iz epoha po kome je i vila dobila ime - Anchor (Sidro)"
@@ -1103,7 +1102,8 @@
           "value": "200<em>m</em>",
           "label": "Do plaža i šetališta"
         }
-      ]
+      ],
+      "story.title": "Posebna pažnja data je kamenoj fasadi, drvenim gredama,unutrašnjem dvorištu, spektakularnoj terasi."
     }
   }
 }
