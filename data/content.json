@@ -312,10 +312,10 @@
       "url": "apartment-4.html",
       "name": "Suite No. <em>04</em>",
       "subtitle": "Levanat",
-      "shortDescription": "A warm one-bedroom retreat named after the easterly wind, with a queen bed and a writing nook.",
+      "shortDescription": "A warm one-bedroom apartment named after the east wind, with a complete kitchen and a work corner.",
       "longDescription": [
         "Levanat is the still, warm wind that arrives from the east — and it's also the name of our cosiest one-bedroom apartment.",
-        "A queen-size bed, a small writing desk under a window, a kitchenette and a generous bathroom make this an excellent base for a longer Adriatic stay."
+        "A good bed, a small desk under the window, a kitchen, and a spacious bathroom with a beautiful view of Boka make it ideal for a longer stay."
       ],
       "facts": {
         "guests": "2",
@@ -916,10 +916,10 @@
       ],
       "apartments[3].name": "Apartman br. <em>04</em>",
       "apartments[3].subtitle": "Levanat",
-      "apartments[3].shortDescription": "Topao jednosoban apartman nazvan po istočnom vjetru, sa queen krevetom i kutkom za rad.",
+      "apartments[3].shortDescription": "Topao jednosoban apartman nazvan po istočnom vjetru, sa kompletnom kuhinjom  i kutkom za rad.",
       "apartments[3].longDescription": [
         "Levanat je tih, topao vjetar koji dolazi sa istoka — i ime je našeg najprijatnijeg jednosobnog apartmana.",
-        "Queen-size krevet, mali radni sto pod prozorom, čajna kuhinja i prostrano kupatilo čine ga odličnom bazom za duži jadranski boravak."
+        "Dobar krevet, mali radni sto pod prozorom,  kuhinja i prostrano kupatilom uz predivan pogled na Boku čine ga idealnim za duži boravak."
       ],
       "apartments[3].amenities": [
         "Klimatizacija",
