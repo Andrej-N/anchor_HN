@@ -596,6 +596,10 @@
       {
         "name": "Kotor",
         "value": "43 km · 40 min drive"
+      },
+      {
+        "name": "Podgorica ",
+        "value": "100 kom - 2 hours"
       }
     ],
     "mapEmbed": "https://www.google.com/maps?q=Marka+Vojnovi%C4%87a+33,+Herceg+Novi,+Montenegro&output=embed"
@@ -1049,6 +1053,10 @@
         {
           "name": "Kotor",
           "value": "43 km · 40 min vožnje"
+        },
+        {
+          "name": "Podgorica",
+          "value": "100 km 2 sata"
         }
       ],
       "contact.eyebrow": "Rezervacije",
