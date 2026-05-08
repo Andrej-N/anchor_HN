@@ -850,7 +850,6 @@
       "apartmentsSection.title": "Svaki apartman ima <em>svoj karakter</em>.",
       "apartmentsSection.lede": "Šest različitih prostora, šest različitih raspoloženja. Bilo da putuješ sam, u dvoje ili sa porodicom, za tebe imamo pravi ključ.",
       "apartments[0].name": "Apartman br. <em>01</em>",
-      "apartments[0].subtitle": "Kamen i Greda",
       "apartments[0].shortDescription": "Prostran apartman sa originalnim kamenim zidovima, vidljivim drvenim gredama i prostranom spavaćom sobom — naše najomiljenije utočište.",
       "apartments[0].longDescription": [
         "Naš najupečatljiviji apartman zauzima ugao zgrade u kojem su originalni kameni zidovi i drvene grede ostavljeni potpuno otkriveni — soba u kojoj kuća sama priča svoju priču.",
@@ -1103,7 +1102,8 @@
         }
       ],
       "story.title": "Posebna pažnja data je kamenoj fasadi, drvenim gredama,unutrašnjem dvorištu, spektakularnoj terasi.",
-      "apartments[2].subtitle": "Heritage"
+      "apartments[2].subtitle": "Heritage",
+      "apartments[0].subtitle": "Stone & Beam"
     }
   }
 }
