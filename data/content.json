@@ -90,7 +90,7 @@
       "Anchor stone villa occupies a 17th-century stone house (built in 1680 , restored 2014/2024) in the strict centre of Herceg Novi's old town — a building shaped by Venetian , Austro-Hungarian and Mediterranean hands , now carefully reimagined into six distinct apartments.",
       "A panoramic terrace looks straight onto the entrance of the Boka Bay , while the spectacular stone yard reads like a small open-air museum. Original walls , hand-hewn timber beams and quiet inner courtyards have been preserved alongside considered modern comforts: hotel-grade linen , deep showers , fast Wi-Fi and air conditioning. Rustic in spirit , luxurious in detail."
     ],
-    "signature": "— It feels like a private home , because it once was.",
+    "signature": "",
     "stats": [
       {
         "value": "400<em>+</em>",
@@ -485,9 +485,9 @@
       "body": "A real rarity inside the old town. Reserved spots steps from the entrance , included for our guests."
     },
     {
-      "icon": "linen",
-      "title": "Hotel bedding",
-      "body": "High-quality hotel bedding , at your special request , is changed in agreement with you."
+      "icon": "view",
+      "title": "For all senses",
+      "body": "A spectacular view from our terrace — Lovćen , the bay and the entrance to Boka , Forte Mare fortress — for unforgettable sunrises and sunsets."
     },
     {
       "icon": "events",
@@ -803,11 +803,11 @@
       "amenities[0].title": "Brzi Wi-Fi",
       "amenities[0].body": "Simetrični optički internet u svakom apartmanu — za putnike koji i dalje moraju da rade.",
       "amenities[1].title": "Samostalan check-in",
-      "amenities[1].body": "Pametne brave i 24-satni digitalni concierge čine kasne dolaske bezbrižnim.",
+      "amenities[1].body": "24-satni digitalni concierge čini vaše dolaske bezbrižnim , a odlaske ugodnim i opuštenim.",
       "amenities[2].title": "Privatni parking",
-      "amenities[2].body": "Prava rijetkost u starom gradu. Rezervisana mjesta na koraku od ulaza , uključena za naše goste.",
-      "amenities[3].title": "Hotelska posteljina",
-      "amenities[3].body": "Pamuk od 300 niti , peškiri koji se mijenjaju svakodnevno i jastuci koje ćeš poželjeti da poneseš kući.",
+      "amenities[2].body": "Rezervisana mjesta uz sami objekat , uključena za naše goste.",
+      "amenities[3].title": "Za sva čula",
+      "amenities[3].body": "Spektakularan pogled sa naše terase na Lovćen , zaliv i ulaz u Boku , tvrđavu Forte Mare ,... za nezaboravne izlaske i zalaske sunca.",
       "nav": [
         {
           "label": "Apartmani",
@@ -850,9 +850,9 @@
       "story.eyebrow": "Naša Vila",
       "story.paragraphs": [
         "Anchor kamena vila smještena je u kamenoj kući iz 17. vijeka (sagrađenoj 1680 , restauriranoj 2014/2024) u strogom centru starog grada Herceg Novog — građevini koju su oblikovale venecijanske , austrougarske i mediteranske ruke , pažljivo preoblikovanoj u šest različitih apartmana.",
-        "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv , dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi , ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne detalje: brzi Wi-Fi , klimatizacija , kvalitetna oprema. Rustično u duhu , luksuzno u detaljima. Na otvorenom , izloženi su preko 40 muzejskih sidara iz epoha po kome je i vila dobila ime - Anchor (Sidro)"
+        "Panoramska terasa gleda direktno na ulaz u Bokokotorski zaliv , dok prostrano kameno dvorište djeluje poput malog muzeja na otvorenom. Originalni zidovi , ručno tesane drvene grede i tihi unutrašnji kutci sačuvani su uz pažljivo odabrane moderne detalje: brzi Wi-Fi , klimatizacija , kvalitetna oprema. Rustično u duhu , luksuzno u detaljima. Na otvorenom , u kamenom dvorištu , prijatnom za odmor i druženje , izloženo je preko 40 muzejskih sidara iz raznih epoha , po kojima je i vila dobila ime - Anchor (Sidro)"
       ],
-      "story.signature": "— Doživljaj je kao u privatnom domu , jer je nekad to i bio.",
+      "story.signature": "",
       "story.stats[0].label": "Godina istorije",
       "story.stats[1].label": "Pažljivo uređenih apartmana",
       "story.stats[2].label": "Do plaža i šetališta",
@@ -1000,17 +1000,17 @@
         {
           "icon": "key",
           "title": "Samostalan check-in",
-          "body": "Pametne brave i 24-časovni digitalni concierge čine kasne dolaske jednostavnim."
+          "body": "24-satni digitalni concierge čini vaše dolaske bezbrižnim , a odlaske ugodnim i opuštenim."
         },
         {
           "icon": "car",
           "title": "Privatni parking",
-          "body": "Prava rijetkost u starom gradu. Rezervisana mjesta na nekoliko koraka od ulaza , uključeno za naše goste."
+          "body": "Rezervisana mjesta uz sami objekat , uključena za naše goste."
         },
         {
-          "icon": "linen",
-          "title": "Hotelska posteljina ",
-          "body": "Hotelska posteljina visokog kvaliteta uz vaš poseban zahtjev , mjenja se u dogovoru s vama"
+          "icon": "view",
+          "title": "Za sva čula",
+          "body": "Spektakularan pogled sa naše terase na Lovćen , zaliv i ulaz u Boku , tvrđavu Forte Mare ,... za nezaboravne izlaske i zalaske sunca."
         },
         {
           "icon": "events",
