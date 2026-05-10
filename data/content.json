@@ -1,7 +1,7 @@
 {
   "_meta": {
     "version": "1.1.0",
-    "lastUpdated": "2026-05-09",
+    "lastUpdated": "2026-05-10",
     "languages": [
       "en",
       "sr"
@@ -867,7 +867,19 @@
         "Visoki uski prozori uokviruju sa jedne strane kamenu ulicu, a sa druge  predivan pogled na Bokokotorski zaliv - tada jutra dolaze nježno, večeri zlatno."
       ],
       "apartments[0].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "apartments[1].name": "Apartman br. <em>02</em>",
       "apartments[1].subtitle": "Maestral",
@@ -878,7 +890,19 @@
       ],
       "apartments[1].facts.bedrooms": "Garsonjera",
       "apartments[1].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "apartments[2].name": "Apartman br. <em>03</em>",
       "apartments[2].shortDescription": "Naš najprostranjeniji apartman — velika spavaća soba, prostran dnevni boravak za potpuno uživanje.",
@@ -887,7 +911,19 @@
         "Ovo je dom koji preporučujemo porodicama, prijateljima koji putuju zajedno, ili svakom ko jednostavno želi prostor da diše. Originalni kamen susreće se sa  ručno obrađenim drvenim površinama svjetlost ulazi  i sa ulične strane i sa prozora okrenutim prema moru."
       ],
       "apartments[2].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "apartments[3].name": "Apartman br. <em>04</em>",
       "apartments[3].subtitle": "Levanat",
@@ -897,7 +933,19 @@
         "Dobar krevet, mali radni sto pod prozorom,  kuhinja i prostrano kupatilom uz predivan pogled na Boku čine ga idealnim za duži boravak."
       ],
       "apartments[3].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "apartments[4].name": "Apartman br. <em>05</em>",
       "apartments[4].subtitle": "Nevera",
@@ -907,7 +955,19 @@
         "Dobar krevet, opremljena kuhinja , moderno kupatilo čine ga apartmanom koji parovi često rezervišu za godišnjice."
       ],
       "apartments[4].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "apartments[5].name": "Apartman br. <em>06</em>",
       "apartments[5].subtitle": "Bonaca",
@@ -917,7 +977,19 @@
         "Dobar krevet , mekan kutak za sjedenje,  kuhinja i komforno  kupatilo čine ga našom najopuštajućom sobom. Govori se da je san ovdje malo bolji nego inače, posebno uz juarnje i večernje poglede na Boku."
       ],
       "apartments[5].amenities": [
-        "Klimatizacija", "Kuhinja", "Premium posteljina", "Vertikalna pegla", "Besplatan Wi-Fi", "Zavjese koje zamračuju", "Sef", "Smart TV", "Tuš kabina", "Fen za kosu", "Sedmično čišćenje (opciono i češće)", "Velika terasa sa pogledom na more", "Korišćenje kamenog dvorišta i terase za sunčanje"
+        "Klimatizacija",
+        "Kuhinja",
+        "Premium posteljina",
+        "Vertikalna pegla",
+        "Besplatan Wi-Fi",
+        "Zavjese koje zamračuju",
+        "Sef",
+        "Smart TV",
+        "Tuš kabina",
+        "Fen za kosu",
+        "Sedmično čišćenje (opciono i češće)",
+        "Velika terasa sa pogledom na more",
+        "Korišćenje kamenog dvorišta i terase za sunčanje"
       ],
       "amenities": [
         {
@@ -1049,7 +1121,7 @@
       ],
       "story.title": "Posebna pažnja data je kamenoj fasadi, drvenim gredama,unutrašnjem dvorištu, spektakularnoj terasi.",
       "apartments[2].subtitle": "Heritage",
-      "apartments[0].subtitle": "Stone & Beam"
+      "apartments[0].subtitle": "Stone & Beam 1"
     }
   }
 }
