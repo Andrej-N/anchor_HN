@@ -260,7 +260,7 @@ a:hover{color:var(--aqua)}
   let baseline = null;      // pristine (for "discard changes")
   let sha = null;
   let dirty = false;
-  let activeSection = "site";
+  let activeSection = "apt-1";
 
   /* ---------- Toast ---------- */
   const toastEl = $("#toast");
@@ -349,23 +349,15 @@ a:hover{color:var(--aqua)}
 
   /* ---------- Sidebar ---------- */
   const SECTIONS = [
-    { id:"site",          label:"Site",            group:"General" },
-    { id:"hero",          label:"Hero",            group:"Homepage" },
-    { id:"marquee",       label:"Marquee",         group:"Homepage" },
-    { id:"story",         label:"Story",           group:"Homepage" },
-    { id:"essentials",    label:"Stay essentials", group:"Homepage" },
-    { id:"apartments",    label:"Apartments — header", group:"Apartments" },
-    { id:"apt-1",         label:"Suite 01", group:"Apartments", nested:true, aptIndex:0 },
-    { id:"apt-2",         label:"Suite 02", group:"Apartments", nested:true, aptIndex:1 },
-    { id:"apt-3",         label:"Suite 03", group:"Apartments", nested:true, aptIndex:2 },
-    { id:"apt-4",         label:"Suite 04", group:"Apartments", nested:true, aptIndex:3 },
-    { id:"apt-5",         label:"Suite 05", group:"Apartments", nested:true, aptIndex:4 },
-    { id:"apt-6",         label:"Suite 06", group:"Apartments", nested:true, aptIndex:5 },
+    { id:"apt-1",         label:"Suite 01", group:"Apartments", aptIndex:0 },
+    { id:"apt-2",         label:"Suite 02", group:"Apartments", aptIndex:1 },
+    { id:"apt-3",         label:"Suite 03", group:"Apartments", aptIndex:2 },
+    { id:"apt-4",         label:"Suite 04", group:"Apartments", aptIndex:3 },
+    { id:"apt-5",         label:"Suite 05", group:"Apartments", aptIndex:4 },
+    { id:"apt-6",         label:"Suite 06", group:"Apartments", aptIndex:5 },
     { id:"building",      label:"The Building",     group:"Photo collections" },
     { id:"parking",       label:"Private Parking",  group:"Photo collections" },
-    { id:"location",      label:"Location",         group:"Footer & misc" },
-    { id:"contact",       label:"Contact",          group:"Footer & misc" },
-    { id:"seo",           label:"SEO",              group:"Advanced" }
+    { id:"site",          label:"Contact info",     group:"Contact" }
   ];
 
   function renderSidebar(){
@@ -604,17 +596,9 @@ a:hover{color:var(--aqua)}
       body = renderApartment(s.aptIndex);
     } else {
       switch (s.id) {
-        case "site":       sub="Brand, contact email, address, social."; body=renderSite(); break;
-        case "hero":       sub="The first thing people see on the homepage."; body=renderHero(); break;
-        case "marquee":    sub="The horizontal scrolling word band under the hero."; body=renderMarquee(); break;
-        case "story":      sub="The 'Our House' block: paragraphs, stats, three small photos."; body=renderStory(); break;
-        case "essentials": sub="The four icon tiles (Wi-Fi, Self check-in, Parking, Linen)."; body=renderEssentials(); break;
-        case "apartments": sub="The headline above the apartments grid on the homepage."; body=renderApartmentsHeader(); break;
-        case "building":   sub="The whole 400-year-old stone building (gallery + sidebar)."; body=renderBuilding(); break;
-        case "parking":    sub="The private parking section."; body=renderParking(); break;
-        case "location":   sub="Distances, embed map URL."; body=renderLocation(); break;
-        case "contact":    sub="Contact rows + form headings."; body=renderContact(); break;
-        case "seo":        sub="Page titles and descriptions for search engines + social previews."; body=renderSeo(); break;
+        case "site":       title="Contact info"; sub="Email and phone shown across the site."; body=renderSite(); break;
+        case "building":   sub="Photos of the 400-year-old stone building."; body=renderBuilding(); break;
+        case "parking":    sub="Photos of the private parking area."; body=renderParking(); break;
       }
     }
 
@@ -627,46 +611,11 @@ a:hover{color:var(--aqua)}
   function renderSite(){
     return `
       <div class="group">
-        <h3 class="group__title">Brand</h3>
-        <div class="row">
-          ${fieldText("Brand name","site.brand")}
-          ${fieldText("Tagline","site.tagline",{i18n:true})}
-        </div>
-        ${fieldImage("Logo","site.logo")}
-        <div class="row">
-          ${fieldText("Public URL","site.url",{hint:"E.g. https://anchora-apartments.me"})}
-          ${fieldText("Primary email","site.primaryEmail")}
-        </div>
+        <h3 class="group__title">Contact details</h3>
+        ${fieldText("Email","site.primaryEmail")}
         <div class="row">
           ${fieldText("Phone (display)","site.primaryPhone",{hint:"E.g. +382 69 785 573"})}
           ${fieldText("Phone (tel: link)","site.primaryPhoneTel",{hint:"Digits only with +country, e.g. +38269785573"})}
-        </div>
-        <div class="row">
-          ${fieldText("Language code","site.lang",{hint:"E.g. en, sr"})}
-          ${fieldText("Locale","site.locale",{hint:"E.g. en_US"})}
-        </div>
-      </div>
-      <div class="group">
-        <h3 class="group__title">Address</h3>
-        <div class="row">
-          ${fieldText("Street","site.address.street")}
-          ${fieldText("Postal code","site.address.postalCode")}
-        </div>
-        <div class="row">
-          ${fieldText("City","site.address.city")}
-          ${fieldText("Country","site.address.country",{i18n:true})}
-        </div>
-        <div class="row">
-          ${fieldText("Country code","site.address.countryCode",{hint:"2-letter ISO, e.g. ME"})}
-          ${fieldText("Latitude","site.address.lat")}
-        </div>
-        ${fieldText("Longitude","site.address.lng")}
-      </div>
-      <div class="group">
-        <h3 class="group__title">Social</h3>
-        <div class="row">
-          ${fieldText("Instagram URL","site.social.instagram")}
-          ${fieldText("Instagram handle","site.social.instagramHandle")}
         </div>
       </div>
     `;
