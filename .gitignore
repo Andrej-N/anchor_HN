@@ -38,3 +38,8 @@ build/
 
 # Original-resolution image backup (we serve compressed copies in /images)
 images-original/
+
+# Raw image source / staging (not served directly)
+images/New-Images/
+images/wetransfer_*
+.verify-shots/
